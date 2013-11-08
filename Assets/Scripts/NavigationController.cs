@@ -21,15 +21,19 @@ public class NavigationController : MonoBehaviour {
 	
 	void RespawnBlocks(){
 		Destroy(tubes[tubeIdx].gameObject);
+		
 		int prvIdx=(tubeIdx+tubes.Length-1)%tubes.Length;
 		Spline previousSpline=tubes[prvIdx].GetComponent<Spline>();
 		
 		tubes[tubeIdx]=Instantiate((Random.value>0.5)?block0Prefab:block45Prefab, previousSpline.GetPositionOnSpline(1f), previousSpline.GetOrientationOnSpline(1f)) as NavigationBehaviour;
 		tubes[tubeIdx].transform.parent=transform;
-			
+
 		float torque=Random.Range(0,360);
+		
 		tubes[tubeIdx].torque=torque;
+		tubes[tubeIdx].SpawnObstacle();
 		tubes[tubeIdx].transform.Rotate(new Vector3(0,0,torque), Space.Self);
+		
 		
 		tubeIdx=(tubeIdx+1)%tubes.Length;
 	}
@@ -69,6 +73,7 @@ public class NavigationController : MonoBehaviour {
 			splinePosition=exceedingDistance/spline.Length;
 			
 			Player.GetComponentInChildren<PlayerBehaviour>().Shift(-tubes[tubeIdx].torque/360);
+			
 		}
 		
 		Vector3 offset=-spline.GetPositionOnSpline(splinePosition);

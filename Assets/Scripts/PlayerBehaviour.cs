@@ -10,10 +10,12 @@ public class PlayerBehaviour : MonoBehaviour {
 	public float maxSpeed=1f;
 	public float acceleration=2f;
 	public float deceleration=2f;
+	bool ft = false;
 	public Spline ring;
 	private float positionOnRing=0f;
-
+	private float motion;
 	private float shiftAmount=0f;
+	private bool onCollision=false;
 	
 	public void Shift(float shiftAmount){
 		this.shiftAmount=shiftAmount;
@@ -26,6 +28,13 @@ public class PlayerBehaviour : MonoBehaviour {
 		//Camera.main.transform.position=Vector3.down*cameraRadius;
 		
 	}
+	
+	void OnTriggerEnter(Collider other) {
+        onCollision=true;
+		NavigationController.speed=0f;
+		motion=0f;
+		GetComponent<Detonator>().Explode();
+    }
 		
 	// Update is called once per frame
 	
@@ -41,25 +50,28 @@ public class PlayerBehaviour : MonoBehaviour {
 				else speed = speed + deceleration * Time.deltaTime;
 			}
 		}
-	/*
-		else if (positionOnRing == 0)
-			speed = 0;
-		else if(positionOnRing > 0.01 && positionOnRing <= 0.5)
-			speed = -4f * (positionOnRing * positionOnRing);
-				else if (positionOnRing > 0.5 && positionOnRing < 0.99)
-			speed = 4f * (1f - positionOnRing) * (1f - positionOnRing);
-		else speed = 0;
-	*/
-		float motion=speed * Time.deltaTime;
+		
+		//Camera.main.transform.position=Vector3.back*speed*10;
+		
+
+			//Camera.main.transform.Translate(speed,0,0);
+			//Camera.main.transform.position=Vector3.back*50;
+		
+		
+		//Camera.main.transform.position=Vector3.back*50;
+		
+		motion=speed * Time.deltaTime;
 		
 		motion+=shiftAmount;
 		shiftAmount=0f;
 		positionOnRing+=motion;		
 		positionOnRing=(positionOnRing+1)%1;
-		
+		if (!onCollision){
 		transform.position=ring.GetPositionOnSpline(positionOnRing);
 		transform.Rotate(new Vector3(0f, 0f, motion*360),Space.Self);
+		}
 		//transform.rotation=ring.GetOrientationOnSpline(positionOnRing);				
-	}
+		
 			
+	}
 }

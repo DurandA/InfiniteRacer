@@ -9,6 +9,8 @@ Project("{687943E8-9490-2599-2A28-0F16578D7993}") = "InfiniteRacer", "Assembly-C
 EndProject
 Project("{687943E8-9490-2599-2A28-0F16578D7993}") = "InfiniteRacer", "Assembly-UnityScript-firstpass.unityproj", "{BE8922B9-F675-5F93-B021-B75A3FA935C6}"
 EndProject
+Project("{687943E8-9490-2599-2A28-0F16578D7993}") = "InfiniteRacer", "Assembly-UnityScript.unityproj", "{78B3EE57-0A5F-2C4B-7D48-CD6269AC1484}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,11 +33,15 @@ Global
 		{BE8922B9-F675-5F93-B021-B75A3FA935C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE8922B9-F675-5F93-B021-B75A3FA935C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE8922B9-F675-5F93-B021-B75A3FA935C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78B3EE57-0A5F-2C4B-7D48-CD6269AC1484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78B3EE57-0A5F-2C4B-7D48-CD6269AC1484}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78B3EE57-0A5F-2C4B-7D48-CD6269AC1484}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78B3EE57-0A5F-2C4B-7D48-CD6269AC1484}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																	GlobalSection(MonoDevelopProperties) = preSolution
+																								GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

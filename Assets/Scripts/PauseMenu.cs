@@ -64,8 +64,7 @@ public class PauseMenu : MonoBehaviour {
 			GUI.skin = pauseQuit;
 			if(GUI.Button (new Rect (width,height + 80,250,30), "Rage Quit"))
 			{
-				Debug.Log("Quit application requested from pause menu");
-				// TO DO : get back to the main menu.
+				Application.Quit();
 			}
 		}
 	}
