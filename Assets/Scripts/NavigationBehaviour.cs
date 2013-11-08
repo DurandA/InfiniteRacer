@@ -25,6 +25,7 @@ public class NavigationBehaviour : MonoBehaviour {
 			else
 				createBlock();
 		}
+
 			
 	}
 	
@@ -33,7 +34,7 @@ public class NavigationBehaviour : MonoBehaviour {
 		Transform obs = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs.transform.parent=transform;
 	}
-	
+
 	private void createTwoBlocks(){
 		float newPosition =Random.value;
 		Transform obs = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
@@ -41,6 +42,7 @@ public class NavigationBehaviour : MonoBehaviour {
 		Transform obs2 = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs2.transform.Rotate(new Vector3(0,0,180),Space.Self);
 		obs2.transform.parent=transform;
+
 	}
 	
 	private void createBlower(){
@@ -48,7 +50,5 @@ public class NavigationBehaviour : MonoBehaviour {
 		Transform obs = Instantiate(blowerObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs.transform.parent=transform;
 	}
-	
 
-	
 }
