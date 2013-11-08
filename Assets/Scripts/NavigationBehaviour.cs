@@ -4,8 +4,6 @@ using System.Collections;
 [RequireComponent(typeof (Spline))]
 public class NavigationBehaviour : MonoBehaviour {
 	
-	
-	
 	public Spline spline
 	{
 		get {return GetComponent<Spline>();}
@@ -18,17 +16,37 @@ public class NavigationBehaviour : MonoBehaviour {
 	/*
 	 * TODO: Spawn obstacles as blocks children
 	 */
-	public virtual void SpawnObstacle() {
-		float random =Random.value;
-
-		Transform obs = Instantiate(blockObstacle,spline.GetPositionOnSpline(random),spline.GetOrientationOnSpline(random)) as Transform;
-				obs.transform.parent=transform;
-		//Transform obs2 = Instantiate(blockObstacle,new Vector3(x,y,z),new Quaternion(-r_x,-r_y,r_z,r_w)) as Transform;
-		//Transform obs2 = Instantiate(blockObstacle,spline.GetPositionOnSpline(random),spline.GetOrientationOnSpline(random)) as Transform;
-		//	obs2.transform.Rotate(new Vector3(0,0,180),Space.Self);
-		//	obs2.transform.parent=transform;
+	public virtual void SpawnObstacles() {
+		int total = Random.Range(1,5);
+		for (int i = 0; i < total; i++)
+		{
+			if(i==2)
+	   	 		createTwoBlocks();
+			else
+				createBlock();
+		}
 			
-			
+	}
+	
+	private void createBlock(){
+		float newPosition =Random.value;
+		Transform obs = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
+		obs.transform.parent=transform;
+	}
+	
+	private void createTwoBlocks(){
+		float newPosition =Random.value;
+		Transform obs = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
+		obs.transform.parent=transform;
+		Transform obs2 = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
+		obs2.transform.Rotate(new Vector3(0,0,180),Space.Self);
+		obs2.transform.parent=transform;
+	}
+	
+	private void createBlower(){
+		float newPosition =Random.value;
+		Transform obs = Instantiate(blowerObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
+		obs.transform.parent=transform;
 	}
 	
 

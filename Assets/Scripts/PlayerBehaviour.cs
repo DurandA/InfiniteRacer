@@ -39,16 +39,17 @@ public class PlayerBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	
 	void LateUpdate () {
-		if(Input.anyKey){		
-			if (Input.GetKey ("left")&&(speed > -maxSpeed))
-				speed = speed - acceleration * Time.deltaTime;
-			else if (Input.GetKey ("right")&&(speed < maxSpeed))
-				speed = speed + acceleration * Time.deltaTime;
-			else {
-				if(speed > deceleration * Time.deltaTime)
-					speed = speed - deceleration * Time.deltaTime;
-				else speed = speed + deceleration * Time.deltaTime;
-			}
+		if (Input.GetKey ("left")&&(speed > -maxSpeed))
+       		speed = speed - acceleration * Time.deltaTime;
+     	else if (Input.GetKey ("right")&&(speed < maxSpeed))
+       		speed = speed + acceleration * Time.deltaTime;
+     	else {
+       		if(speed > deceleration * Time.deltaTime)
+         		speed = speed - deceleration * Time.deltaTime;
+       		else if(speed < -deceleration * Time.deltaTime)
+         		speed = speed + deceleration * Time.deltaTime;
+       		else
+        		speed = 0;
 		}
 		
 		//Camera.main.transform.position=Vector3.back*speed*10;

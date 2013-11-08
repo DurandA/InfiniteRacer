@@ -31,7 +31,7 @@ public class NavigationController : MonoBehaviour {
 		float torque=Random.Range(0,360);
 		
 		tubes[tubeIdx].torque=torque;
-		tubes[tubeIdx].SpawnObstacle();
+		tubes[tubeIdx].SpawnObstacles();
 		tubes[tubeIdx].transform.Rotate(new Vector3(0,0,torque), Space.Self);
 		
 		
