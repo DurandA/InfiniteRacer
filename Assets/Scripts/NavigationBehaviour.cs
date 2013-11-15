@@ -21,9 +21,6 @@ public class NavigationBehaviour : MonoBehaviour {
 			int total = Random.Range(1,5);
 			for (int i = 0; i < total; i++)
 			{
-				if(i==2)
-		   	 		createTwoBlocks();
-				else
 					createBlock();
 			}
 		}
