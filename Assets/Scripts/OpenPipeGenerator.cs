@@ -4,11 +4,15 @@ using System.Collections;
 [RequireComponent(typeof(NavigationBehaviour))]
 public class OpenPipeGenerator : MonoBehaviour{
 	
-	public float splRad=200f;
+	public float splineRad=200f;
 	public float ringRad=25f;
-//	public Vector3[][] ringsPoints;//private int _segments[][];
+
 	private Transform[] lines;	
-	private Transform splChild;
+	private Transform splineParent;
+
+	public Transform ringPrefab;
+	public int ringDistanceFactor=3;
+	public Material lineMaterial;
 	
 	public int segments=16;
 	
@@ -19,11 +23,12 @@ public class OpenPipeGenerator : MonoBehaviour{
 			GameObject node = GetComponent<NavigationBehaviour>().spline.AddSplineNode();
 			node.name=""+i;
 			
-			node.transform.parent = splChild;
-			node.transform.localPosition = new Vector3(Mathf.Cos(bias)*splRad-splRad,0f,Mathf.Sin(bias)*splRad);
+			node.transform.parent = splineParent;
+			node.transform.localPosition = new Vector3(Mathf.Cos(bias)*splineRad-splineRad,0f,Mathf.Sin(bias)*splineRad);
 			node.transform.localRotation = Quaternion.Euler(new Vector3(0f,bias*-Mathf.Rad2Deg/*-90*/,0f));
 			
 		}
+		GetComponent<NavigationBehaviour>().spline.UpdateSpline();
 	}
 	
 	private Vector3 RotateAroundPoint(Vector3 point, Vector3 pivot, Quaternion angle){
@@ -32,12 +37,17 @@ public class OpenPipeGenerator : MonoBehaviour{
 	
 	// Use this for initialization
 	void Start () {
-		splChild = new GameObject("Spline").transform;
-		splChild.parent=transform;
-		splChild.localPosition=Vector3.zero;
-		splChild.localRotation=Quaternion.identity;
+		splineParent = new GameObject("Spline").transform;
+		splineParent.parent=transform;
+		splineParent.localPosition=Vector3.zero;
+		splineParent.localRotation=Quaternion.identity;
 		
 		GenerateSplineNodes();
+		
+		for(int i=0;i<(segments-1)/ringDistanceFactor+1;i++){
+			SplineNode node=GetComponent<NavigationBehaviour>().spline.SplineNodes[i*ringDistanceFactor];
+			((Transform)Instantiate(ringPrefab,node.Position,node.Rotation)).parent=transform;
+		}
 		
 		lines = new Transform[12];
 		
@@ -46,7 +56,7 @@ public class OpenPipeGenerator : MonoBehaviour{
 			line.parent=transform;
 			line.localPosition=Vector3.zero;
 			line.localRotation=Quaternion.identity;
-			line.gameObject.AddComponent<LineRenderer>();
+			line.gameObject.AddComponent<LineRenderer>().material=lineMaterial;
 			lines[i]=line;
 			float rBias = (i/12f)*(2*Mathf.PI);
 			lines[i].gameObject.GetComponent<LineRenderer>().SetVertexCount(segments);

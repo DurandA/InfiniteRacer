@@ -39,9 +39,11 @@ public class PlayerBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	
 	void LateUpdate () {
-		if (Input.GetKey ("left")&&(speed > -maxSpeed))
+
+		
+		if ((Input.GetKey ("left")||(Input.GetMouseButton(0)&&Input.mousePosition.x<Screen.width/2))&&(speed > -maxSpeed))
        		speed = speed - acceleration * Time.deltaTime;
-     	else if (Input.GetKey ("right")&&(speed < maxSpeed))
+     	else if( (Input.GetKey ("right")||(Input.GetMouseButton(0)&&Input.mousePosition.x>Screen.width/2))&&(speed < maxSpeed))
        		speed = speed + acceleration * Time.deltaTime;
      	else {
        		if(speed > deceleration * Time.deltaTime)
