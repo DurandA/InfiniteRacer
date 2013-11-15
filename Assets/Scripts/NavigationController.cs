@@ -31,7 +31,7 @@ public class NavigationController : MonoBehaviour {
 		pipes[pipeIdx]=Instantiate(pipePrefabs[Random.Range(0,pipePrefabs.Length)], previousSpline.GetPositionOnSpline(1f), previousSpline.GetOrientationOnSpline(1f)) as NavigationBehaviour;
 		pipes[pipeIdx].transform.parent=transform;
 
-		float torque=Random.Range(0,12)*30f;
+		float torque=Random.Range(0,12)*60f;
 		
 		pipes[pipeIdx].torque=torque;
 		pipes[pipeIdx].SpawnObstacles();
