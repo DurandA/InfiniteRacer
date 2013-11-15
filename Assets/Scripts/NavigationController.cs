@@ -10,74 +10,77 @@ public class NavigationController : MonoBehaviour {
 	private float splinePosition=0f;
 	//public static float acceleration=1f;
 	
-	public NavigationBehaviour[] tubes;
-	private int tubeIdx=0;
+	private NavigationBehaviour[] pipes;
+	private int pipeIdx=0;
 
-	public NavigationBehaviour block0Prefab;
-	public NavigationBehaviour block45Prefab;
+	public NavigationBehaviour[] pipePrefabs;
+	
+	//could be static
+
 	
 	public Transform Ring;
 	public Transform Player;
 	
 	void RespawnBlocks(){
-		Destroy(tubes[tubeIdx].gameObject);
+		Destroy(pipes[pipeIdx].gameObject);
 		
-		int prvIdx=(tubeIdx+tubes.Length-1)%tubes.Length;
-		Spline previousSpline=tubes[prvIdx].GetComponent<Spline>();
+		int prvIdx=(pipeIdx+pipes.Length-1)%pipes.Length;
+		Spline previousSpline=pipes[prvIdx].GetComponent<Spline>();
 		
-		tubes[tubeIdx]=Instantiate((Random.value>0.5)?block0Prefab:block45Prefab, previousSpline.GetPositionOnSpline(1f), previousSpline.GetOrientationOnSpline(1f)) as NavigationBehaviour;
-		tubes[tubeIdx].transform.parent=transform;
+		
+		pipes[pipeIdx]=Instantiate(pipePrefabs[Random.Range(0,pipePrefabs.Length)], previousSpline.GetPositionOnSpline(1f), previousSpline.GetOrientationOnSpline(1f)) as NavigationBehaviour;
+		pipes[pipeIdx].transform.parent=transform;
 
-		float torque=Random.Range(0,360);
+		float torque=Random.Range(0,12)*30f;
 		
-		tubes[tubeIdx].torque=torque;
-		tubes[tubeIdx].SpawnObstacles();
-		tubes[tubeIdx].transform.Rotate(new Vector3(0,0,torque), Space.Self);
+		pipes[pipeIdx].torque=torque;
+		pipes[pipeIdx].SpawnObstacles();
+		pipes[pipeIdx].transform.Rotate(new Vector3(0,0,torque), Space.Self);
 		
 		
-		tubeIdx=(tubeIdx+1)%tubes.Length;
+		pipeIdx=(pipeIdx+1)%pipes.Length;
 	}
 	
 
 	
 	
 	void Start(){
-		tubes=new NavigationBehaviour[6];
+		pipes=new NavigationBehaviour[6];
 		
 		Vector3 nextPosition=Vector3.zero;
 		Quaternion nextOrientation=Quaternion.identity;
 		Spline nextSpline=null;
 		
-		for(int i=0; i<tubes.Length; i++){
-			tubes[i]=Instantiate (block0Prefab, nextPosition, nextOrientation) as NavigationBehaviour;
+		for(int i=0; i<pipes.Length; i++){
+			pipes[i]=Instantiate (pipePrefabs[0], nextPosition, nextOrientation) as NavigationBehaviour;
 
-			nextSpline=tubes[i].spline;
+			nextSpline=pipes[i].spline;
 			nextPosition=nextSpline.GetPositionOnSpline(1f);
 			nextOrientation=nextSpline.GetOrientationOnSpline(1f);
-			tubes[i].transform.parent=transform;
+			pipes[i].transform.parent=transform;
 		}
 	}
 	
 	void Update () {
-		Spline spline=tubes[tubeIdx].spline;
+		Spline spline=pipes[pipeIdx].spline;
 		splinePosition+=(speed*Time.deltaTime)/spline.Length;
 		
 		if (splinePosition>1f)/*Change current tube*/{
 			float exceedingDistance=(splinePosition%1)*spline.Length;
 			Vector3 sOffset=-spline.GetPositionOnSpline(1f);
-			foreach (NavigationBehaviour tube in tubes){
+			foreach (NavigationBehaviour tube in pipes){
       	      tube.transform.position+=sOffset;
        		 }
 			RespawnBlocks(); //Warning: change tubeIdx
-			spline=tubes[tubeIdx].spline;
+			spline=pipes[pipeIdx].spline;
 			splinePosition=exceedingDistance/spline.Length;
 			
-			Player.GetComponentInChildren<PlayerBehaviour>().Shift(-tubes[tubeIdx].torque/360);
+			Player.GetComponentInChildren<PlayerBehaviour>().Shift(-pipes[pipeIdx].torque/360);
 			
 		}
 		
 		Vector3 offset=-spline.GetPositionOnSpline(splinePosition);
-		foreach (NavigationBehaviour tube in tubes){
+		foreach (NavigationBehaviour tube in pipes){
             tube.transform.position+=offset;
         }
 		

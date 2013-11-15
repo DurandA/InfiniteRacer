@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class OpenPipe : NavigationBehaviour{
+[RequireComponent(typeof(NavigationBehaviour))]
+public class OpenPipeGenerator : MonoBehaviour{
 	
-	public float splRad=100f;
-	public float ringRad=12.5f;
+	public float splRad=200f;
+	public float ringRad=25f;
 //	public Vector3[][] ringsPoints;//private int _segments[][];
 	private Transform[] lines;	
 	private Transform splChild;
@@ -12,14 +13,16 @@ public class OpenPipe : NavigationBehaviour{
 	public int segments=16;
 	
 	private void GenerateSplineNodes () {
-		float maxFunc = Mathf.PI/2;
+		float arc = Mathf.PI/2;
 		for (int i=0;i<segments; i++){
-			float bias=(i/(float)segments)*maxFunc;
-			GameObject node = spline.AddSplineNode();
+			float bias=(i/(float)segments)*arc;
+			GameObject node = GetComponent<NavigationBehaviour>().spline.AddSplineNode();
 			node.name=""+i;
-			node.transform.localPosition = new Vector3(Mathf.Sin(bias)*splRad,0f,Mathf.Cos(bias)*splRad);
-			node.transform.localRotation = Quaternion.Euler(new Vector3(0f,bias*Mathf.Rad2Deg+90,0f));
+			
 			node.transform.parent = splChild;
+			node.transform.localPosition = new Vector3(Mathf.Cos(bias)*splRad-splRad,0f,Mathf.Sin(bias)*splRad);
+			node.transform.localRotation = Quaternion.Euler(new Vector3(0f,bias*-Mathf.Rad2Deg/*-90*/,0f));
+			
 		}
 	}
 	
@@ -28,9 +31,11 @@ public class OpenPipe : NavigationBehaviour{
     }
 	
 	// Use this for initialization
-	void Awake () {
+	void Start () {
 		splChild = new GameObject("Spline").transform;
 		splChild.parent=transform;
+		splChild.localPosition=Vector3.zero;
+		splChild.localRotation=Quaternion.identity;
 		
 		GenerateSplineNodes();
 		
@@ -39,16 +44,18 @@ public class OpenPipe : NavigationBehaviour{
 		for (int i=0; i<12; i++){
 			Transform line = new GameObject("Line").transform;
 			line.parent=transform;
+			line.localPosition=Vector3.zero;
+			line.localRotation=Quaternion.identity;
 			line.gameObject.AddComponent<LineRenderer>();
 			lines[i]=line;
 			float rBias = (i/12f)*(2*Mathf.PI);
-			line.position = Vector3.zero;
 			lines[i].gameObject.GetComponent<LineRenderer>().SetVertexCount(segments);
 			for (int j=0; j<segments;j++){
-				SplineNode node=spline.SplineNodes[j];
-				lines[i].gameObject.GetComponent<LineRenderer>().SetPosition(j,
-					node.transform.position+RotateAroundPoint(new Vector3(Mathf.Cos(rBias)*ringRad,Mathf.Sin(rBias)*ringRad, 0f), Vector3.zero, node.transform.rotation));
+				SplineNode node=GetComponent<NavigationBehaviour>().spline.SplineNodes[j];
 				lines[i].gameObject.GetComponent<LineRenderer>().useWorldSpace=false;
+				lines[i].gameObject.GetComponent<LineRenderer>().SetPosition(j,
+					node.transform.localPosition+RotateAroundPoint(new Vector3(Mathf.Cos(rBias)*ringRad,Mathf.Sin(rBias)*ringRad, 0f), Vector3.zero, node.transform.localRotation));
+				
 			}
 		}
 	}

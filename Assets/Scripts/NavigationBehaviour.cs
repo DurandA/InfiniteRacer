@@ -17,22 +17,28 @@ public class NavigationBehaviour : MonoBehaviour {
 	 * TODO: Spawn obstacles as blocks children
 	 */
 	public virtual void SpawnObstacles() {
-		int total = Random.Range(1,5);
-		for (int i = 0; i < total; i++)
-		{
-			if(i==2)
-	   	 		createTwoBlocks();
-			else
-				createBlock();
+		if(blockObstacle!=null){
+			int total = Random.Range(1,5);
+			for (int i = 0; i < total; i++)
+			{
+				if(i==2)
+		   	 		createTwoBlocks();
+				else
+					createBlock();
+			}
 		}
 
 			
 	}
 	
 	private void createBlock(){
+		
 		float newPosition =Random.value;
-		Transform obs = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
+		Transform obs = Instantiate(blockObstacle) as Transform;
 		obs.transform.parent=transform;
+		obs.localPosition=spline.GetPositionOnSpline(newPosition);
+		obs.localRotation=spline.GetOrientationOnSpline(newPosition);
+		
 	}
 
 	private void createTwoBlocks(){

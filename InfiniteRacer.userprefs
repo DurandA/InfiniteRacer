@@ -1,6 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NavigationController.cs">
+    <Files>
+      <File FileName="Assets\Scripts\NavigationController.cs" Line="31" Column="75" />
+      <File FileName="Assets\Scripts\OpenPipeGenerator.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\NavigationBehaviour.cs" Line="26" Column="9" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
