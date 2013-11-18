@@ -21,7 +21,12 @@ public class NavigationBehaviour : MonoBehaviour {
 			int total = Random.Range(1,5);
 			for (int i = 0; i < total; i++)
 			{
+				if( i == 1 )
+					createBlower();
+				else
 					createBlock();
+
+
 			}
 		}
 
@@ -31,15 +36,16 @@ public class NavigationBehaviour : MonoBehaviour {
 	private void createBlock(){
 		
 		float newPosition =Random.value;
-		Transform obs = Instantiate(blockObstacle) as Transform;
+		Debug.Log(newPosition);
+		Transform obs = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs.transform.parent=transform;
-		obs.localPosition=spline.GetPositionOnSpline(newPosition);
-		obs.localRotation=spline.GetOrientationOnSpline(newPosition);
+
 		
 	}
 
 	private void createTwoBlocks(){
 		float newPosition =Random.value;
+		Debug.Log(newPosition);
 		Transform obs = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs.transform.parent=transform;
 		Transform obs2 = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
@@ -50,6 +56,7 @@ public class NavigationBehaviour : MonoBehaviour {
 	
 	private void createBlower(){
 		float newPosition =Random.value;
+		Debug.Log(newPosition);
 		Transform obs = Instantiate(blowerObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs.transform.parent=transform;
 	}

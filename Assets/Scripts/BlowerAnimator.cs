@@ -18,7 +18,7 @@ public class BlowerAnimator : MonoBehaviour {
 	// Rotate the propellers.
 	void rotatePropellers()
 	{
-		GameObject.Find("Propeller").transform.Rotate(Vector3.forward, Time.deltaTime * 4);
+		GameObject.Find("Propeller").transform.Rotate(Vector3.forward, Time.deltaTime * 10);
 	}
 }
 
