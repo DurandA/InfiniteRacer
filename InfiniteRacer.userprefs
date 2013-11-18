@@ -2,13 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BlowerAnimator.cs">
     <Files>
-      <File FileName="Assets\Scripts\NavigationBehaviour.cs" Line="12" Column="25" />
-      <File FileName="Assets\Scripts\NavigationController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\OpenPipeGenerator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerBehaviour.cs" Line="36" Column="39" />
-      <File FileName="Assets\Scripts\CameraInterpolator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ShipAnimator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BlowerAnimator.cs" Line="21" Column="86" />
+      <File FileName="Assets\Scripts\BlowerAnimator.cs" Line="16" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

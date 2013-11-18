@@ -59,6 +59,7 @@
      <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSound.cs" />
      <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSparks.cs" />
      <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSpray.cs" />
+     <Compile Include="Assets\Scripts\BlowerAnimator.cs" />
      <Compile Include="Assets\Scripts\CameraInterpolator.cs" />
      <Compile Include="Assets\Scripts\Loader.cs" />
      <Compile Include="Assets\Scripts\LoadingScreen.cs" />
