@@ -5,7 +5,7 @@ using UnityEngine;
  */
 public class NavigationController : MonoBehaviour {
 	
-	public static float speed=100f;
+	public static float speed=120f;
 	
 	private float splinePosition=0f;
 	//public static float acceleration=1f;
@@ -45,7 +45,7 @@ public class NavigationController : MonoBehaviour {
 	
 	
 	void Start(){
-		pipes=new NavigationBehaviour[3];
+		pipes=new NavigationBehaviour[6];
 		
 		Vector3 nextPosition=Vector3.zero;
 		Quaternion nextOrientation=Quaternion.identity;

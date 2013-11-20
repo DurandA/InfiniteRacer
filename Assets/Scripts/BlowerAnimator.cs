@@ -3,12 +3,15 @@ using System.Collections;
 
 
 public class BlowerAnimator : MonoBehaviour {
-	
+
+	public GameObject propeller;
+
+
 	
 	// Update is called once per frame.
 	void Update ()
 	{
-		rotatePropellers(); 	// Rotate the propellers.
+		propeller.transform.Rotate(Vector3.forward, Time.deltaTime * 25);
 	}
 	
 	// --------------------------------------------------------------
@@ -18,7 +21,7 @@ public class BlowerAnimator : MonoBehaviour {
 	// Rotate the propellers.
 	void rotatePropellers()
 	{
-		GameObject.Find("Propeller").transform.Rotate(Vector3.forward, Time.deltaTime * 10);
+
 	}
 }
 
