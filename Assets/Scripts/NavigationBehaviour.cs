@@ -38,8 +38,8 @@ public class NavigationBehaviour : MonoBehaviour {
 		for (float i = 0.0f; i < 1.0f; i = i + 0.5f)
 		{
 			//obstacle type
-			int obstalceType = Random.Range(1,4);
-			switch (obstalceType)
+			int obstacleType = Random.Range(1,4);
+			switch (obstacleType)
 			{
 			case 1:
 				createBlock(i);
@@ -73,5 +73,4 @@ public class NavigationBehaviour : MonoBehaviour {
 		Transform obs = Instantiate(blowerObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs.transform.parent=transform;
 	}
-
 }

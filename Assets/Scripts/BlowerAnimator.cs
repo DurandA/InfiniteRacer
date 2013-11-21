@@ -11,7 +11,7 @@ public class BlowerAnimator : MonoBehaviour {
 	// Update is called once per frame.
 	void Update ()
 	{
-		propeller.transform.Rotate(Vector3.forward, Time.deltaTime * 25);
+		propeller.transform.Rotate(Vector3.forward, Time.deltaTime * -25);
 	}
 	
 	// --------------------------------------------------------------

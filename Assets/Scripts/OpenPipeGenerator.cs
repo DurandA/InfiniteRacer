@@ -60,6 +60,7 @@ public class OpenPipeGenerator : MonoBehaviour{
 			lines[i]=line;
 			float rBias = (i/12f)*(2*Mathf.PI);
 			lines[i].gameObject.GetComponent<LineRenderer>().SetVertexCount(segments);
+
 			for (int j=0; j<segments;j++){
 				SplineNode node=GetComponent<NavigationBehaviour>().spline.SplineNodes[j];
 				lines[i].gameObject.GetComponent<LineRenderer>().useWorldSpace=false;

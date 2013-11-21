@@ -27,13 +27,12 @@ public class PlayerBehaviour : MonoBehaviour {
 	void Start () {
 		//transform.position=new Vector3(0,-radius,depth);
 		//Camera.main.transform.position=Vector3.down*cameraRadius;
-		
 	}
 
 	
 	void OnTriggerEnter(Collider other) {
 		Debug.Log(other.gameObject.name);
-		if(other.gameObject.name == "Capsule(Clone)")
+		if(other.gameObject.name == "Coin(Clone)")
 		{
 			coins++;
 			Debug.Log (coins);
@@ -42,18 +41,12 @@ public class PlayerBehaviour : MonoBehaviour {
 			NavigationController.speed=0f;
 			motion=0f;
 			GetComponent<Detonator>().Explode();
-		}
-			
-
-		
-        
+		}   
     }
 		
 	// Update is called once per frame
 	
 	void LateUpdate () {
-
-		
 		if ((Input.GetKey ("left")||(Input.GetMouseButton(0)&&Input.mousePosition.x<Screen.width/2))&&(speed > -maxSpeed))
        		speed = speed - acceleration * Time.deltaTime;
      	else if( (Input.GetKey ("right")||(Input.GetMouseButton(0)&&Input.mousePosition.x>Screen.width/2))&&(speed < maxSpeed))
@@ -82,9 +75,10 @@ public class PlayerBehaviour : MonoBehaviour {
 		shiftAmount=0f;
 		positionOnRing+=motion;		
 		positionOnRing=(positionOnRing+1)%1;
+
 		if (!onCollision){
-		transform.position=ring.GetPositionOnSpline(positionOnRing);
-		transform.Rotate(new Vector3(0f, 0f, motion*360),Space.Self);
+			transform.position=ring.GetPositionOnSpline(positionOnRing);
+			transform.Rotate(new Vector3(0f, 0f, motion*360),Space.Self);
 		}
 		//transform.rotation=ring.GetOrientationOnSpline(positionOnRing);				
 		
