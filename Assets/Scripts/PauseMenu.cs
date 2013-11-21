@@ -4,7 +4,7 @@ using System.Collections;
 public class PauseMenu : MonoBehaviour {
 	
 	// Variables.
-	public bool paused = false;
+	public static bool paused = false;
 	
 	// GUI.
 	public GUISkin pauseBackground;

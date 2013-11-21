@@ -42,8 +42,6 @@ public class NavigationController : MonoBehaviour {
 		pipeIdx=(pipeIdx+1)%pipes.Length;
 	}
 	
-
-	
 	
 	void Start(){
 		pipes=new NavigationBehaviour[3];

@@ -15,8 +15,8 @@ public class PlayerBehaviour : MonoBehaviour {
 	private float positionOnRing=0f;
 	private float motion;
 	private float shiftAmount=0f;
-	private bool onCollision=false;
-	private int coins;
+	public static bool onCollision=false;
+	public static int coins;
 
 	public void Shift(float shiftAmount){
 		this.shiftAmount=shiftAmount;
@@ -35,8 +35,12 @@ public class PlayerBehaviour : MonoBehaviour {
 		if(other.gameObject.name == "Coin(Clone)")
 		{
 			coins++;
-			Debug.Log (coins);
+			ScoreManager.currentScore += 25;
 		}else{
+			// Notify the score manager the game is over.
+			HUD.running = false;
+
+			// Destroy the ship.
 			onCollision=true;
 			NavigationController.speed=0f;
 			motion=0f;
