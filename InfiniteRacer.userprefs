@@ -1,10 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NavigationBehaviour.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerBehaviour.cs">
     <Files>
-      <File FileName="Assets\Scripts\NavigationBehaviour.cs" Line="37" Column="20" />
-      <File FileName="Assets\Scripts\BlowerAnimator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\NavigationController.cs" Line="74" Column="17" />
+      <File FileName="Assets\Scripts\NavigationBehaviour.cs" Line="24" Column="15" />
+      <File FileName="Assets\Scripts\NavigationController.cs" Line="38" Column="3" />
+      <File FileName="Assets\Scripts\OpenPipeGenerator.cs" Line="32" Column="3" />
+      <File FileName="Assets\Scripts\PlayerBehaviour.cs" Line="30" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

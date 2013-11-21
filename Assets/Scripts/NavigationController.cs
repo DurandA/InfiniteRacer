@@ -35,6 +35,7 @@ public class NavigationController : MonoBehaviour {
 		
 		pipes[pipeIdx].torque=torque;
 		pipes[pipeIdx].SpawnObstacles();
+		pipes[pipeIdx].SpawnCoins();
 		pipes[pipeIdx].transform.Rotate(new Vector3(0,0,torque), Space.Self);
 		
 		
@@ -45,7 +46,7 @@ public class NavigationController : MonoBehaviour {
 	
 	
 	void Start(){
-		pipes=new NavigationBehaviour[6];
+		pipes=new NavigationBehaviour[3];
 		
 		Vector3 nextPosition=Vector3.zero;
 		Quaternion nextOrientation=Quaternion.identity;
@@ -61,7 +62,7 @@ public class NavigationController : MonoBehaviour {
 		}
 	}
 	
-	void Update () {
+	void Update (){
 		Spline spline=pipes[pipeIdx].spline;
 		splinePosition+=(speed*Time.deltaTime)/spline.Length;
 		
@@ -72,9 +73,9 @@ public class NavigationController : MonoBehaviour {
       	      tube.transform.position+=sOffset;
        		 }
 			RespawnBlocks(); //Warning: change tubeIdx
+
 			spline=pipes[pipeIdx].spline;
 			splinePosition=exceedingDistance/spline.Length;
-			
 			Player.GetComponentInChildren<PlayerBehaviour>().Shift(-pipes[pipeIdx].torque/360);
 			
 		}

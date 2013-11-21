@@ -12,40 +12,60 @@ public class NavigationBehaviour : MonoBehaviour {
 	public float torque=0f;
 	public Transform blockObstacle;
 	public Transform blowerObstacle;
-	
+	public Transform coin;
+
+
+	public virtual void SpawnCoins(){
+		//Debug.Log();
+		Transform[] coins = new Transform[10];
+		float k = 0f;
+		for (int i =0; i < 5; i++){
+			Vector3 v = spline.GetPositionOnSpline(k);
+			v.z = v.z-0;
+			v.x = v.x-15;
+			v.y = v.y-15;
+			coins[i] = Instantiate(coin,v,spline.GetOrientationOnSpline(0)) as Transform;
+			k = k + 0.05f;
+			coins[i].transform.parent=transform;
+		}
+		
+		
+		
+	}
+
 	/*
 	 * TODO: Spawn obstacles as blocks children
 	 */
 	public virtual void SpawnObstacles() {
-		if(blockObstacle!=null){
-			int total = Random.Range(1,5);
-			for (int i = 0; i < total; i++)
+		for (float i = 0.0f; i < 1.0f; i = i + 0.5f)
+		{
+			//obstacle type
+			int obstalceType = Random.Range(1,4);
+			switch (obstalceType)
 			{
-				if( i == 1 )
-					createBlower();
-				else
-					createBlock();
-
-
+			case 1:
+				createBlock(i);
+				break;
+			case 2:
+				createTwoBlocks(i);
+				break;
+			case 3:
+				createBlower(i);
+				break;
+			default:
+				break;
 			}
 		}
-
-			
 	}
 	
-	private void createBlock(){
-		
-		float newPosition =Random.value;
-		Debug.Log(newPosition);
+	private void createBlock(float newPosition){
 		Transform obs = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs.transform.parent=transform;
 
 		
 	}
 
-	private void createTwoBlocks(){
-		float newPosition =Random.value;
-		Debug.Log(newPosition);
+	private void createTwoBlocks(float newPosition){
 		Transform obs = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs.transform.parent=transform;
 		Transform obs2 = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
@@ -54,9 +74,7 @@ public class NavigationBehaviour : MonoBehaviour {
 
 	}
 	
-	private void createBlower(){
-		float newPosition =Random.value;
-		Debug.Log(newPosition);
+	private void createBlower(float newPosition){
 		Transform obs = Instantiate(blowerObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs.transform.parent=transform;
 	}
