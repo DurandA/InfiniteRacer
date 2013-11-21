@@ -73,22 +73,17 @@ public class NavigationController : MonoBehaviour {
       	      tube.transform.position+=sOffset;
        		 }
 			RespawnBlocks(); //Warning: change tubeIdx
-
 			spline=pipes[pipeIdx].spline;
 			splinePosition=exceedingDistance/spline.Length;
 			Player.GetComponentInChildren<PlayerBehaviour>().Shift(-pipes[pipeIdx].torque/360);
-			
 		}
 		
 		Vector3 offset=-spline.GetPositionOnSpline(splinePosition);
 		foreach (NavigationBehaviour tube in pipes){
             tube.transform.position+=offset;
         }
-		
 		Ring.rotation=spline.GetOrientationOnSpline(splinePosition);
 		Player.rotation=spline.GetOrientationOnSpline(splinePosition);
-		
-		
 	}
 	
 }

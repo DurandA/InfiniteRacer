@@ -10,6 +10,7 @@ public class ScoreManager : MonoBehaviour {
 	private float rateIncrease;
 	private long currentScore;
 	private float timer;
+	public long coins;
 
 	// Use this for initialization
 	void Start () {

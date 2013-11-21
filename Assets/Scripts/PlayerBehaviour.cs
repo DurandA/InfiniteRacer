@@ -16,7 +16,8 @@ public class PlayerBehaviour : MonoBehaviour {
 	private float motion;
 	private float shiftAmount=0f;
 	private bool onCollision=false;
-	
+	private int coins;
+
 	public void Shift(float shiftAmount){
 		this.shiftAmount=shiftAmount;
 	}
@@ -28,12 +29,24 @@ public class PlayerBehaviour : MonoBehaviour {
 		//Camera.main.transform.position=Vector3.down*cameraRadius;
 		
 	}
+
 	
 	void OnTriggerEnter(Collider other) {
-        onCollision=true;
-		NavigationController.speed=0f;
-		motion=0f;
-		GetComponent<Detonator>().Explode();
+		Debug.Log(other.gameObject.name);
+		if(other.gameObject.name == "Capsule(Clone)")
+		{
+			coins++;
+			Debug.Log (coins);
+		}else{
+			onCollision=true;
+			NavigationController.speed=0f;
+			motion=0f;
+			GetComponent<Detonator>().Explode();
+		}
+			
+
+		
+        
     }
 		
 	// Update is called once per frame

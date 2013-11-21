@@ -21,16 +21,14 @@ public class NavigationBehaviour : MonoBehaviour {
 		float k = 0f;
 		for (int i =0; i < 5; i++){
 			Vector3 v = spline.GetPositionOnSpline(k);
-			v.z = v.z-0;
+			//Debug.Log(v.x + " " + v.y);
 			v.x = v.x-15;
 			v.y = v.y-15;
+			//v.z = v.z-20;
 			coins[i] = Instantiate(coin,v,spline.GetOrientationOnSpline(0)) as Transform;
-			k = k + 0.05f;
+			k = k + 0.02f;
 			coins[i].transform.parent=transform;
 		}
-		
-		
-		
 	}
 
 	/*
@@ -61,8 +59,6 @@ public class NavigationBehaviour : MonoBehaviour {
 	private void createBlock(float newPosition){
 		Transform obs = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs.transform.parent=transform;
-
-		
 	}
 
 	private void createTwoBlocks(float newPosition){
@@ -71,7 +67,6 @@ public class NavigationBehaviour : MonoBehaviour {
 		Transform obs2 = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs2.transform.Rotate(new Vector3(0,0,180),Space.Self);
 		obs2.transform.parent=transform;
-
 	}
 	
 	private void createBlower(float newPosition){
