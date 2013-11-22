@@ -20,8 +20,8 @@ public class HUD : MonoBehaviour {
 		if(running == true)
 		{
 			// Update the fields.
-			coinNumber.text = "Money : " + PlayerBehaviour.coins ;
-			score.text = "Score : " + ScoreManager.score; 
+			coinNumber.text = PlayerBehaviour.coins.ToString() ;
+			score.text = ScoreManager.score.ToString(); 
 			speed.text = "Speed : " + NavigationController.speed;
 			totalTime.text = "Time : " + Time.time.ToString("F2");
 		}
