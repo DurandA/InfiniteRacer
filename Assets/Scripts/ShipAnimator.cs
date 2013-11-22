@@ -24,6 +24,8 @@ public class ShipAnimator : MonoBehaviour {
 	private Quaternion rotRight0;
 	private Vector3 posLeft0;
 	private Vector3 posRight0;
+	private Vector3 rotWingLeft;
+	private Vector3 rotWingRight;
 	
 	// --------------------------------------------------------------
 	// Update.
@@ -67,26 +69,51 @@ public class ShipAnimator : MonoBehaviour {
 	}
 	
 	//Moves the wings when right/left keys are pressed.
-	//TODO clamp the angles of the rotation
 	void moveWings()
 	{
+		//Max and min angle between rotation of the wings during lateral movements
+		float wingDeltaAngle = 20.0f;
+		//Speed rotation of the wings during lateral movements
+		float speedDeltaAngle = 2.5f;
+		
+		//Setting x and y Euler angle during lateral movements
+		rotWingLeft.x = 0f;
+		rotWingLeft.y = 0f;	
+		rotWingRight.x = 0f;
+		rotWingRight.y = 0f;
+		
+		//If statement of the lateral movement
 		if (Input.GetKey ("left"))
 		{
-			wingLeft.transform.Rotate(Vector3.forward,Time.deltaTime * 100);
-			wingRight.transform.Rotate(Vector3.forward,Time.deltaTime * 100);
+			//Rotate wings for left lateral movement
+			rotWingLeft.z +=  speedDeltaAngle;
+			rotWingRight.z +=  speedDeltaAngle;
+			rotWingLeft.z = Mathf.Clamp(rotWingLeft.z, -wingDeltaAngle, wingDeltaAngle);
+			rotWingRight.z = Mathf.Clamp(rotWingRight.z, 270f - wingDeltaAngle, 270f + wingDeltaAngle);
+			wingLeft.transform.localEulerAngles = rotWingLeft;
+			wingRight.transform.localEulerAngles = rotWingRight;
 		}
 		else if (Input.GetKey("right"))
 		{
-			wingLeft.transform.Rotate(-Vector3.forward,Time.deltaTime * 100);
-			wingRight.transform.Rotate(-Vector3.forward,Time.deltaTime * 100);
-			
-		}else
+			//Rotate wings for right lateral movement
+			rotWingLeft.z -=  speedDeltaAngle;
+			rotWingRight.z -=  speedDeltaAngle;
+			rotWingLeft.z = Mathf.Clamp(rotWingLeft.z, -wingDeltaAngle, wingDeltaAngle);
+			rotWingRight.z = Mathf.Clamp(rotWingRight.z, 270f - wingDeltaAngle, 270f + wingDeltaAngle);
+			wingLeft.transform.localEulerAngles = rotWingLeft;
+			wingRight.transform.localEulerAngles = rotWingRight;	
+		}
+		else
 		{
+			//Rotate back to initial rotation state (also for position)
 			wingRight.transform.localRotation = Quaternion.Slerp(wingRight.transform.localRotation, rotRight0, Time.time / 50);
 			wingRight.transform.localPosition = Vector3.Lerp(wingRight.transform.localPosition, posRight0, Time.time / 50);
 			
 			wingLeft.transform.localRotation = Quaternion.Slerp(wingLeft.transform.localRotation, rotLeft0, Time.time / 50);
 			wingLeft.transform.localPosition = Vector3.Lerp(wingLeft.transform.localPosition, posLeft0, Time.time / 50);
+			
+			rotWingLeft.z =  0f;
+			rotWingRight.z = 270f;
 		}
 	}
 }
