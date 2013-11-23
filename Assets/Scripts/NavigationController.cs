@@ -5,7 +5,8 @@ using UnityEngine;
  */
 public class NavigationController : MonoBehaviour {
 	
-	public static float speed=140f;
+	public static float speed=90f;
+	public float speedIncrement = 0.05f;
 	
 	private float splinePosition=0f;
 	//public static float acceleration=1f;
@@ -82,6 +83,9 @@ public class NavigationController : MonoBehaviour {
         }
 		Ring.rotation=spline.GetOrientationOnSpline(splinePosition);
 		Player.rotation=spline.GetOrientationOnSpline(splinePosition);
+
+		// Increment speed.
+		speed += speedIncrement;
 	}
 	
 }

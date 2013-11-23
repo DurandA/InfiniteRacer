@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\BlowerAnimator.cs" />
      <Compile Include="Assets\Scripts\CameraInterpolator.cs" />
      <Compile Include="Assets\Scripts\HUD.cs" />
+     <Compile Include="Assets\Scripts\HudRenderer.cs" />
      <Compile Include="Assets\Scripts\Loader.cs" />
      <Compile Include="Assets\Scripts\LoadingScreen.cs" />
      <Compile Include="Assets\Scripts\NavigationBehaviour.cs" />

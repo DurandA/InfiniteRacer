@@ -4,19 +4,18 @@ using System.Collections;
 public class ScoreManager : MonoBehaviour {
 	
 	// Variables.
-	public static float score;
+	public long score;
 	public float scoreCoefficient;
-	
-	private float rateIncrease;
-	public static long currentScore;
-	private float timer;
-	public long coins;
+	public float currentScore;
+	public float timer;
+	public float increment;
 
 	// Use this for initialization
 	void Start () {
-		score = 0.0f;
+		score = 0;
 		currentScore = 0;
-		rateIncrease = 0.000001f;
+		scoreCoefficient = 1.0f;
+		increment = 0.0f;
 	}
 	
 	// Update score.
@@ -25,10 +24,11 @@ public class ScoreManager : MonoBehaviour {
 		// Update and detect each second.
 		if(score < currentScore)
 		{
-			score += 1.0f;
+			score += 1;
 			timer = Time.time;
 		}
 		
-		currentScore += (long)((Time.time - timer) * scoreCoefficient);
+		currentScore += ((long)((Time.time - timer)) * scoreCoefficient);
+		scoreCoefficient += increment;
 	}
 }

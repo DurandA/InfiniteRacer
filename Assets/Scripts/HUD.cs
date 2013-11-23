@@ -3,27 +3,39 @@ using System.Collections;
 
 public class HUD : MonoBehaviour {
 
+	// Variables.
 	public TextMesh coinNumber;
 	public TextMesh totalTime;
 	public TextMesh score;
-	public TextMesh speed;
-	public static bool running;
+	public bool running;
 
-	// Use this for initialization
+	private GameObject nav;
+	private GameObject ship;
+	private ScoreManager scoreScript;
+	private PlayerBehaviour playerScript;
+
+	// Get the required script references for the information displayed in the HUD.
 	void Start () {
 		running = true;
+
+		// Get score script.
+		nav = GameObject.Find("Nav");
+		scoreScript = nav.GetComponent<ScoreManager>();
+
+		// Get player management script.
+		ship = GameObject.Find("Ship");
+		playerScript = ship.GetComponent<PlayerBehaviour>();
 	}
 	
-	// Update is called once per frame
+	// Update fields in the HUD
 	void Update () {
 		// As long as we are not dead.
 		if(running == true)
 		{
 			// Update the fields.
-			coinNumber.text = PlayerBehaviour.coins.ToString() ;
-			score.text = ScoreManager.score.ToString(); 
-			speed.text = "Speed : " + NavigationController.speed;
-			totalTime.text = "Time : " + Time.time.ToString("F2");
+			coinNumber.text = playerScript.coins.ToString() ;
+			score.text = scoreScript.score.ToString(); 
+			totalTime.text = Time.time.ToString("F2");
 		}
 	}
 }
