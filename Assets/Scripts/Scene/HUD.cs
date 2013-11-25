@@ -19,7 +19,7 @@ public class HUD : MonoBehaviour {
 		running = true;
 
 		// Get score script.
-		nav = GameObject.Find("Nav");
+		nav = GameObject.Find("Navigation");
 		scoreScript = nav.GetComponent<ScoreManager>();
 
 		// Get player management script.
