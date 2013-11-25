@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Detonator Explosion Framework\Sample Supporting Emitters\Detonator Spray Helper.js" />
-     <Compile Include="Assets\Detonator Explosion Framework\TestScene\DetonatorTest.js" />
      <None Include="Assets\Shaders\UnlitColorOnly.shader" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Detonator Explosion Framework\Resources\Detonator\Textures\HeatDistort.shader" />

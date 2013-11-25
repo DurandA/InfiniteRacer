@@ -25,6 +25,7 @@ public class HUD : MonoBehaviour {
 		// Get player management script.
 		ship = GameObject.Find("Ship");
 		playerScript = ship.GetComponent<PlayerBehaviour>();
+
 	}
 	
 	// Update fields in the HUD

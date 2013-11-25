@@ -19,8 +19,8 @@ public class NavigationController : MonoBehaviour {
 	//could be static
 
 	
-	public Transform Ring;
-	public Transform Player;
+	public Transform rotationAxis;
+	public PlayerBehaviour player;
 	
 	void RespawnBlocks(){
 		Destroy(pipes[pipeIdx].gameObject);
@@ -45,7 +45,7 @@ public class NavigationController : MonoBehaviour {
 	
 	
 	void Start(){
-		pipes=new NavigationBehaviour[3];
+		pipes=new NavigationBehaviour[5];
 		
 		Vector3 nextPosition=Vector3.zero;
 		Quaternion nextOrientation=Quaternion.identity;
@@ -74,15 +74,14 @@ public class NavigationController : MonoBehaviour {
 			RespawnBlocks(); //Warning: change tubeIdx
 			spline=pipes[pipeIdx].spline;
 			splinePosition=exceedingDistance/spline.Length;
-			Player.GetComponentInChildren<PlayerBehaviour>().Shift(-pipes[pipeIdx].torque/360);
+			player.Shift(-pipes[pipeIdx].torque/360);
 		}
 		
 		Vector3 offset=-spline.GetPositionOnSpline(splinePosition);
 		foreach (NavigationBehaviour tube in pipes){
             tube.transform.position+=offset;
         }
-		Ring.rotation=spline.GetOrientationOnSpline(splinePosition);
-		Player.rotation=spline.GetOrientationOnSpline(splinePosition);
+		rotationAxis.rotation=spline.GetOrientationOnSpline(splinePosition);
 
 		// Increment speed.
 		speed += speedIncrement;

@@ -3,7 +3,7 @@ using System.Collections;
 	
 public class PlayerBehaviour : MonoBehaviour {
 	// Variables.
-	public float radius=12f;
+	public float radius=18f;
 	public float depth=12;
 	public float cameraRadius=6f;
 	private float speed=0f;
@@ -11,12 +11,14 @@ public class PlayerBehaviour : MonoBehaviour {
 	public float acceleration=2f;
 	public float deceleration=2f;
 	private bool ft = false;
-	public Spline ring;
-	private float positionOnRing=0f;
+	public Transform rotationAxis;
+	private float positionOnOrbit=0f;
 	private float motion;
 	private float shiftAmount=0f;
 	public static bool onCollision=false;
 	public int coins;
+
+
 
 	// HUD management variables.
 	public GameObject nav;
@@ -32,10 +34,12 @@ public class PlayerBehaviour : MonoBehaviour {
 	//public static float horizontalSpeed=200f;
 	
 	void Start () {
+		//TODO: move all the score logic to another script
 		// Initialization for the HUD.
 		coins = 0;
 
-		nav = GameObject.Find("Nav");
+		//TODO: assign by instance reference
+		nav = GameObject.Find("Navigation");
 		scoreScript = nav.GetComponent<ScoreManager>();
 
 		camera = GameObject.Find("Main Camera");
@@ -63,8 +67,10 @@ public class PlayerBehaviour : MonoBehaviour {
 			GetComponent<Detonator>().Explode();
 		}   
     }
-		
-	// Update is called once per frame
+
+	private Vector3 RotateAroundPoint(Vector3 point, Vector3 pivot, Quaternion angle){
+		return angle * ( point - pivot) + pivot;
+	}
 	
 	void LateUpdate () {
 		if ((Input.GetKey ("left")||(Input.GetMouseButton(0)&&Input.mousePosition.x<Screen.width/2))&&(speed > -maxSpeed))
@@ -80,28 +86,17 @@ public class PlayerBehaviour : MonoBehaviour {
         		speed = 0;
 		}
 		
-		//Camera.main.transform.position=Vector3.back*speed*10;
-		
-
-			//Camera.main.transform.Translate(speed,0,0);
-			//Camera.main.transform.position=Vector3.back*50;
-		
-		
-		//Camera.main.transform.position=Vector3.back*50;
-		
 		motion=speed * Time.deltaTime;
 		
 		motion+=shiftAmount;
 		shiftAmount=0f;
-		positionOnRing+=motion;		
-		positionOnRing=(positionOnRing+1)%1;
+		positionOnOrbit+=motion;		
+		positionOnOrbit=(positionOnOrbit+1)%1;
 
 		if (!onCollision){
-			transform.position=ring.GetPositionOnSpline(positionOnRing);
-			transform.Rotate(new Vector3(0f, 0f, motion*360),Space.Self);
-		}
-		//transform.rotation=ring.GetOrientationOnSpline(positionOnRing);				
-		
-			
+			transform.position=RotateAroundPoint(new Vector3(0f, -radius, 0f), rotationAxis.transform.position, rotationAxis.transform.rotation*Quaternion.Euler(0f,0f,positionOnOrbit*360));
+			transform.rotation=rotationAxis.transform.rotation*Quaternion.Euler(0f,0f,positionOnOrbit*360);
+		}			
+
 	}
 }
