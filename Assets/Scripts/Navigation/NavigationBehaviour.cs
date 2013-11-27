@@ -21,10 +21,7 @@ public class NavigationBehaviour : MonoBehaviour {
 		float k = 0f;
 		for (int i =0; i < 5; i++){
 			Vector3 v = spline.GetPositionOnSpline(k);
-			//Debug.Log(v.x + " " + v.y);
-			v.x = v.x-15;
-			v.y = v.y-15;
-			//v.z = v.z-20;
+
 			coins[i] = Instantiate(coin,v,spline.GetOrientationOnSpline(0)) as Transform;
 			k = k + 0.02f;
 			coins[i].transform.parent=transform;

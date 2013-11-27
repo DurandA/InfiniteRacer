@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\Navigation\NavigationBehaviour.cs" />
      <Compile Include="Assets\Scripts\Navigation\NavigationController.cs" />
      <Compile Include="Assets\Scripts\Obstacles\BlowerAnimator.cs" />
+     <Compile Include="Assets\Scripts\Obstacles\CoinAnimator.cs" />
      <Compile Include="Assets\Scripts\Pipes\OpenPipeGenerator.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBehaviour.cs" />
      <Compile Include="Assets\Scripts\Player\ScoreManager.cs" />
