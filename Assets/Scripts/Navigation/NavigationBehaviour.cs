@@ -15,27 +15,46 @@ public class NavigationBehaviour : MonoBehaviour {
 	public Transform coin;
 
 
-	public virtual void SpawnCoins(){
-		//Debug.Log();
-		Transform[] coins = new Transform[10];
-		float k = 0f;
-		for (int i =0; i < 5; i++){
-			Vector3 v = spline.GetPositionOnSpline(k);
-
+	public virtual void SpawnCoins(float positionOnSpline, int number, float shift){
+		float shiftAdd = shift;
+		Transform[] coins = new Transform[number];
+		for (int i =0; i < number; i++){
+			Vector3 v = spline.GetPositionOnSpline(positionOnSpline);
 			coins[i] = Instantiate(coin,v,spline.GetOrientationOnSpline(0)) as Transform;
-			k = k + 0.02f;
+			positionOnSpline = positionOnSpline + 0.03f;
 			coins[i].transform.parent=transform;
+			coins[i].transform.Rotate(new Vector3(0,0,shiftAdd),Space.Self);
+			Debug.Log(shiftAdd);
+			shiftAdd += shift;
 		}
 	}
 
 	/*
 	 * TODO: Spawn obstacles as blocks children
 	 */
-	public virtual void SpawnObstacles() {
+	public virtual void SpawnSpineContent() {
 		for (float i = 0.0f; i < 1.0f; i = i + 0.5f)
 		{
-			//obstacle type
 			int obstacleType = Random.Range(1,4);
+			if(i>0.4)
+			{
+				switch (obstacleType)
+				{
+				case 1:
+					SpawnCoins(i+0.3f,7,8.0f);
+					break;
+				case 2:
+					SpawnCoins(i+0.3f,10,0.0f);
+					break;
+				case 3:
+					SpawnCoins(i+0.3f,15,0.0f);
+					break;
+				default:
+					break;
+				}
+			}
+				
+			//obstacle type
 			switch (obstacleType)
 			{
 			case 1:
