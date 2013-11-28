@@ -19,7 +19,6 @@ public class PlayerBehaviour : MonoBehaviour {
 	public int coins;
 
 
-
 	// HUD management variables.
 	public GameObject nav;
 	private ScoreManager scoreScript;
@@ -37,7 +36,6 @@ public class PlayerBehaviour : MonoBehaviour {
 		//TODO: move all the score logic to another script
 		// Initialization for the HUD.
 		coins = 0;
-
 		//TODO: assign by instance reference
 		nav = GameObject.Find("Navigation");
 		scoreScript = nav.GetComponent<ScoreManager>();
@@ -51,9 +49,11 @@ public class PlayerBehaviour : MonoBehaviour {
 
 	
 	void OnTriggerEnter(Collider other) {
+
 		Debug.Log(other.gameObject.name);
 		if(other.gameObject.name == "Coin(Clone)")
 		{
+			Destroy(other.gameObject);
 			coins++;
 			scoreScript.currentScore += 25.0f;
 		}else{
