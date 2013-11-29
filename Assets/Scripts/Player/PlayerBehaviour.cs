@@ -53,6 +53,7 @@ public class PlayerBehaviour : MonoBehaviour {
 		Debug.Log(other.gameObject.name);
 		if(other.gameObject.name == "Coin(Clone)")
 		{
+			GameObject.Find("Audio Coin Noise").audio.Play();
 			Destroy(other.gameObject);
 			coins++;
 			scoreScript.currentScore += 25.0f;
