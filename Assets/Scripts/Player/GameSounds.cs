@@ -9,20 +9,26 @@
 //------------------------------------------------------------------------------
 using UnityEngine;
 using System.Collections;
+using System.IO; 
+
 
 
 public class GameSounds : MonoBehaviour {
 
 	public AudioSource coin_Noise ;
-
-
+	public AudioSource background_Sound;
+	//public Path path = "G:\Music\Frostwire\AC.DC.The.Very.Of.Acdc.Mp3.2010.by.Doberman.{WwW.CantabriaTorrenT.NeT}";
+	public AudioClip clip = Resources.Load(path);
 
 	public void playCoinAudio(){
 		coin_Noise = gameObject.AddComponent("coin_earn") as AudioSource;
 		coin_Noise.Play();
-
-
 	}
 
+	public void playBackgroundAudio(){
+		background_Sound = gameObject.AddComponent("background_sound") as AudioSource;
+		background_Sound.clip = clip;
+		clip.Play();
+	}
 
 }
