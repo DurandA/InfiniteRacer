@@ -5,7 +5,6 @@ public class HUD : MonoBehaviour {
 
 	// Variables.
 	public TextMesh coinNumber;
-	public TextMesh totalTime;
 	public TextMesh score;
 	public bool running;
 
@@ -36,7 +35,6 @@ public class HUD : MonoBehaviour {
 			// Update the fields.
 			coinNumber.text = playerScript.coins.ToString() ;
 			score.text = scoreScript.score.ToString(); 
-			totalTime.text = Time.time.ToString("F2");
 		}
 	}
 }
