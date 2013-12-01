@@ -1,12 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Scene\Loader.cs">
     <Files>
-      <File FileName="Assets\Scripts\Scene\Loader.cs" Line="29" Column="98" />
+      <File FileName="Assets\Scripts\Scene\Loader.cs" Line="25" Column="27" />
       <File FileName="Assets\Scripts\Menu\CreditsController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Menu\NewGameController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Menu\OptionsController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Scene\PauseMenu.cs" Line="49" Column="4" />
+      <File FileName="Assets\Scripts\Scene\PauseMenu.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
