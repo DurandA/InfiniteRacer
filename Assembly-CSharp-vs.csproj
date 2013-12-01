@@ -59,8 +59,13 @@
      <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSound.cs" />
      <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSparks.cs" />
      <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSpray.cs" />
+     <Compile Include="Assets\GameMenu\NewGameTextController.cs" />
      <Compile Include="Assets\MenuAnimator.cs" />
+     <Compile Include="Assets\MenuButtonActions.cs" />
      <Compile Include="Assets\Scripts\CameraInterpolator.cs" />
+     <Compile Include="Assets\Scripts\Menu\CreditsController.cs" />
+     <Compile Include="Assets\Scripts\Menu\NewGameController.cs" />
+     <Compile Include="Assets\Scripts\Menu\OptionsController.cs" />
      <Compile Include="Assets\Scripts\Navigation\NavigationBehaviour.cs" />
      <Compile Include="Assets\Scripts\Navigation\NavigationController.cs" />
      <Compile Include="Assets\Scripts\Obstacles\BlowerAnimator.cs" />

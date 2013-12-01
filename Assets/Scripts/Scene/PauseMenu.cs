@@ -4,13 +4,12 @@ using System.Collections;
 public class PauseMenu : MonoBehaviour {
 	
 	// Variables.
-	public static bool paused = false;
+	public static bool paused;
 	
 	// GUI.
 	public GUISkin pauseBackground;
 	public GUISkin pauseResume;
-	public GUISkin pauseOptions;
-	public GUISkin pauseQuit;
+	public GUISkin pauseMainMenu;
 	
 	private int width = 0;
 	private int height = 0;
@@ -20,6 +19,7 @@ public class PauseMenu : MonoBehaviour {
 	{
 		width = (Screen.width / 6) * 4;
 		height = (Screen.height / 2);
+		paused = false;
 	}
 	
 	void Update () 
@@ -47,24 +47,17 @@ public class PauseMenu : MonoBehaviour {
 			
 			// Resume button.
 			GUI.skin = pauseResume;
-			if(GUI.Button(new Rect (width,height,250,30), "Resume"))
+			if(GUI.Button(new Rect (width,height,(Screen.width * 0.25f),(Screen.height * 0.1f)), "RESUME"))
 			{
 				Time.timeScale = 1;
 				paused = false;
 			}
 			
-			// Options button.
-			GUI.skin = pauseOptions;
-			if(GUI.Button (new Rect (width,height + 40,250,30), "Options"))
-			{
-				Debug.Log("Options requested from pause menu");
-			}
-			
 			// Quit button.
-			GUI.skin = pauseQuit;
-			if(GUI.Button (new Rect (width,height + 80,250,30), "Rage Quit"))
+			GUI.skin = pauseMainMenu;
+			if(GUI.Button(new Rect (width,height + (Screen.height * 0.1f),(Screen.width * 0.25f),(Screen.height * 0.1f)), "MAIN MENU"))
 			{
-				Application.Quit();
+				Application.LoadLevel(0);
 			}
 		}
 	}

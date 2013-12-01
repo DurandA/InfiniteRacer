@@ -1,18 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\GameSounds.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Scene\Loader.cs">
     <Files>
-<<<<<<< HEAD
-      <File FileName="Assets\Scripts\Player\GameSounds.cs" Line="20" Column="4" />
-      <File FileName="Assets\Scripts\Player\PlayerBehaviour.cs" Line="53" Column="3" />
-=======
-      <File FileName="Assets\Scripts\Player\PlayerBehaviour.cs" Line="56" Column="45" />
-      <File FileName="Assets\Scripts\Scene\HUD.cs" Line="25" Column="10" />
-      <File FileName="Assets\Scripts\Player\PlayerBehaviour.cs" Line="62" Column="30" />
->>>>>>> e840972e1aeee38ca1c44a844f2ad9ed3270b2b4
-      <File FileName="Assets\Scripts\Navigation\NavigationBehaviour.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Navigation\NavigationController.cs" Line="1" Column="1" />
-      <File FileName="Assets\SuperSplinesPro\SuperSplines\Editor\_CustomDrawers\CustomArrayDrawer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Scene\Loader.cs" Line="29" Column="98" />
+      <File FileName="Assets\Scripts\Menu\CreditsController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Menu\NewGameController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Menu\OptionsController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Scene\PauseMenu.cs" Line="49" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

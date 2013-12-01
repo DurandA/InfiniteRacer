@@ -10,7 +10,7 @@ public class LoadingScreen : MonoBehaviour {
 	
 	void Start() 
 	{
-        Application.LoadLevelAsync("MainScene");
+        Application.LoadLevel(2);
     }
 	
 	// Update is called once per frame
