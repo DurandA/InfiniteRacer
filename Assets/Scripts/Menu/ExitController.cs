@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NewGameController : MonoBehaviour {
+public class ExitController : MonoBehaviour {
 	
 	// Hover system.
 	void OnMouseOver() 
@@ -17,7 +17,6 @@ public class NewGameController : MonoBehaviour {
 	// Click system.
 	void OnMouseUp()
 	{
-		// Get the loading screen.
-		Application.LoadLevel(1);
+		Application.Quit();
 	}
 }

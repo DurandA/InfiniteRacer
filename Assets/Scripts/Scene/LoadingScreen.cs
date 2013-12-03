@@ -13,11 +13,6 @@ public class LoadingScreen : MonoBehaviour {
         Application.LoadLevel(2);
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-	
 	void OnGUI () 
 	{
 		// Put background image.

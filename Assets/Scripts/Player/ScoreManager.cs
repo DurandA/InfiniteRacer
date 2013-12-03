@@ -15,7 +15,7 @@ public class ScoreManager : MonoBehaviour {
 		score = 0;
 		currentScore = 0;
 		scoreCoefficient = 1.0f;
-		increment = 0.0f;
+		increment = 0.02f;
 	}
 	
 	// Update score.

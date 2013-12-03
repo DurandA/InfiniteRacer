@@ -5,20 +5,16 @@ using UnityEngine;
  */
 public class NavigationController : MonoBehaviour {
 	
-	public static float speed=90f;
-	public float speedIncrement = 0.05f;
+	public float speed = 90f;				// Check loader.cs as values are reset in there
+	public float speedIncrement = 0.05f;	// from a current game to a new game.
 	
 	private float splinePosition=0f;
-	//public static float acceleration=1f;
-	
 	private NavigationBehaviour[] pipes;
 	private int pipeIdx=0;
 
 	public NavigationBehaviour[] pipePrefabs;
 	
 	//could be static
-
-	
 	public Transform rotationAxis;
 	public PlayerBehaviour player;
 	
