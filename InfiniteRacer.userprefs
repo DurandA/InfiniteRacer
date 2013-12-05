@@ -1,7 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Navigation\NavigationController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Menu\LaunchController.cs">
     <Files>
+      <File FileName="Assets\Scripts\Menu\LaunchController.cs" Line="15" Column="2" />
       <File FileName="Assets\Scripts\Navigation\NavigationController.cs" Line="11" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
