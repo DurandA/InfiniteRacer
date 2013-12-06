@@ -1,0 +1,106 @@
+-debug
+-target:library
+-nowarn:0169
+-out:Temp/Assembly-CSharp.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll"
+-r:Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll
+-r:Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll"
+-define:UNITY_STANDALONE_WIN
+-define:ENABLE_MICROPHONE
+-define:ENABLE_TEXTUREID_MAP
+-define:ENABLE_AUDIO_FMOD
+-define:UNITY_STANDALONE
+-define:ENABLE_MONO
+-define:ENABLE_SPRITES
+-define:ENABLE_TERRAIN
+-define:ENABLE_GENERICS
+-define:ENABLE_SUBSTANCE
+-define:INCLUDE_WP8SUPPORT
+-define:ENABLE_MOVIES
+-define:ENABLE_WWW
+-define:ENABLE_IMAGEEFFECTS
+-define:ENABLE_WEBCAM
+-define:INCLUDE_METROSUPPORT
+-define:RENDER_SOFTWARE_CURSOR
+-define:ENABLE_NETWORK
+-define:ENABLE_PHYSICS
+-define:ENABLE_CACHING
+-define:ENABLE_CLOTH
+-define:ENABLE_2D_PHYSICS
+-define:ENABLE_SHADOWS
+-define:ENABLE_AUDIO
+-define:ENABLE_NAVMESH_CARVING
+-define:ENABLE_DUCK_TYPING
+-define:ENABLE_SINGLE_INSTANCE_BUILD_SETTING
+-define:UNITY_4_3_0
+-define:UNITY_4_3
+-define:UNITY_64
+-define:ENABLE_PROFILER
+-define:UNITY_EDITOR
+-define:UNITY_EDITOR_WIN
+"Assets/Detonator Explosion Framework/System/Detonator.cs"
+"Assets/Detonator Explosion Framework/System/DetonatorBurstEmitter.cs"
+"Assets/Detonator Explosion Framework/System/DetonatorCloudRing.cs"
+"Assets/Detonator Explosion Framework/System/DetonatorFireball.cs"
+"Assets/Detonator Explosion Framework/System/DetonatorForce.cs"
+"Assets/Detonator Explosion Framework/System/DetonatorGlow.cs"
+"Assets/Detonator Explosion Framework/System/DetonatorHeatwave.cs"
+"Assets/Detonator Explosion Framework/System/DetonatorLight.cs"
+"Assets/Detonator Explosion Framework/System/DetonatorShockwave.cs"
+"Assets/Detonator Explosion Framework/System/DetonatorSmoke.cs"
+"Assets/Detonator Explosion Framework/System/DetonatorSound.cs"
+"Assets/Detonator Explosion Framework/System/DetonatorSparks.cs"
+"Assets/Detonator Explosion Framework/System/DetonatorSpray.cs"
+Assets/GameMenu/NewGameTextController.cs
+Assets/MenuAnimator.cs
+Assets/MenuButtonActions.cs
+Assets/Scripts/CameraInterpolator.cs
+Assets/Scripts/Menu/CreditsController.cs
+Assets/Scripts/Menu/ExitController.cs
+Assets/Scripts/Menu/HighscoreController.cs
+Assets/Scripts/Menu/LaunchController.cs
+Assets/Scripts/Menu/NewGameController.cs
+Assets/Scripts/Menu/OptionsController.cs
+Assets/Scripts/Navigation/NavigationBehaviour.cs
+Assets/Scripts/Navigation/NavigationController.cs
+Assets/Scripts/Obstacles/BlowerAnimator.cs
+Assets/Scripts/Obstacles/CoinAnimator.cs
+Assets/Scripts/Pipes/OpenPipeGenerator.cs
+Assets/Scripts/Player/GameSounds.cs
+Assets/Scripts/Player/PlayerBehaviour.cs
+Assets/Scripts/Player/ScoreManager.cs
+Assets/Scripts/Player/ShipAnimator.cs
+Assets/Scripts/Scene/HUD.cs
+Assets/Scripts/Scene/HudRenderer.cs
+Assets/Scripts/Scene/Loader.cs
+Assets/Scripts/Scene/LoadingScreen.cs
+Assets/Scripts/Scene/PauseMenu.cs
+Assets/SuperSplinesPro/Scripts/Animation/SplineAnimator.cs
+Assets/SuperSplinesPro/Scripts/Animation/SplineAnimatorClosestPoint.cs
+Assets/SuperSplinesPro/Scripts/Animation/SplineAnimatorCustomValue.cs
+Assets/SuperSplinesPro/Scripts/Design/SplineAutoAlign.cs
+Assets/SuperSplinesPro/Scripts/MeshModifiers/SplineMeshModifierExample.cs
+Assets/SuperSplinesPro/Scripts/Physics/SplineGravitySimulator.cs
+Assets/SuperSplinesPro/SuperSplines/BranchingSpline/BranchingSpline.cs
+Assets/SuperSplinesPro/SuperSplines/Spline/Spline.cs
+Assets/SuperSplinesPro/SuperSplines/Spline/SplineDistanceFunctions.cs
+Assets/SuperSplinesPro/SuperSplines/Spline/SplineGizmos.cs
+Assets/SuperSplinesPro/SuperSplines/Spline/SplineInterpolator.cs
+Assets/SuperSplinesPro/SuperSplines/Spline/SplineLengthData.cs
+Assets/SuperSplinesPro/SuperSplines/Spline/SplineSegment.cs
+Assets/SuperSplinesPro/SuperSplines/SplineMesh/MeshModifiers/SplineCurveScaleModifier.cs
+Assets/SuperSplinesPro/SuperSplines/SplineMesh/MeshModifiers/SplineSineScaleModifier.cs
+Assets/SuperSplinesPro/SuperSplines/SplineMesh/MeshModifiers/SplineTwistModifier.cs
+Assets/SuperSplinesPro/SuperSplines/SplineMesh/SplineMesh.cs
+Assets/SuperSplinesPro/SuperSplines/SplineMesh/SplineMeshModifier.cs
+Assets/SuperSplinesPro/SuperSplines/SplineNode/SplineNode.cs
+Assets/SuperSplinesPro/SuperSplines/Utilities/QuaternionUtils.cs
+Assets/SuperSplinesPro/SuperSplinesSamples/SampleAssets/Scripts/AlterSineMeshModifier.cs
+Assets/SuperSplinesPro/SuperSplinesSamples/SampleAssets/Scripts/AlterTwistMeshModifier.cs
+Assets/SuperSplinesPro/SuperSplinesSamples/SampleAssets/Scripts/BranchingSplineDemo.cs
+Assets/SuperSplinesPro/SuperSplinesSamples/SampleAssets/Scripts/CarAnimator.cs
+Assets/SuperSplinesPro/SuperSplinesSamples/SampleAssets/Scripts/NodeCreator.cs
+Assets/SuperSplinesPro/SuperSplinesSamples/SampleAssets/Scripts/VectorArrayInterpolation.cs
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Runtime.Serialization.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Xml.Linq.dll"
