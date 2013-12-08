@@ -9,7 +9,5 @@ public class LaunchController : MonoBehaviour {
 	// Initialization.
 	void Start () {
 		Time.timeScale = 1;
-
-
 	}
 }
