@@ -8,14 +8,12 @@ public class ScoreManager : MonoBehaviour {
 	public float scoreCoefficient;
 	public float currentScore;
 	public float timer;
-	public float increment;
 
 	// Use this for initialization
 	void Start () {
 		score = 0;
 		currentScore = 0;
-		scoreCoefficient = 1.0f;
-		increment = 0.02f;
+		scoreCoefficient = 1.0f;;
 	}
 	
 	// Update score.
@@ -29,6 +27,5 @@ public class ScoreManager : MonoBehaviour {
 		}
 		
 		currentScore += ((long)((Time.time - timer)) * scoreCoefficient);
-		scoreCoefficient += increment;
 	}
 }

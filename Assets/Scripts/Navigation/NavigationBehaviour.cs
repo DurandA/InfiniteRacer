@@ -14,7 +14,6 @@ public class NavigationBehaviour : MonoBehaviour {
 	public Transform blowerObstacle;
 	public Transform coin;
 
-
 	public virtual void SpawnCoins(float positionOnSpline, int number, float shift){
 		float shiftAdd = shift;
 		Transform[] coins = new Transform[number];
@@ -75,13 +74,16 @@ public class NavigationBehaviour : MonoBehaviour {
 	private void createBlock(float newPosition){
 		Transform obs = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs.transform.parent=transform;
+		obs.transform.Rotate(new Vector3(180,0,0),Space.Self);
 	}
 
 	private void createTwoBlocks(float newPosition){
 		Transform obs = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs.transform.parent=transform;
+		obs.transform.Rotate(new Vector3(180,0,0),Space.Self);
+
 		Transform obs2 = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
-		obs2.transform.Rotate(new Vector3(0,0,180),Space.Self);
+		obs2.transform.Rotate(new Vector3(180,0,180),Space.Self);
 		obs2.transform.parent=transform;
 	}
 	

@@ -35,7 +35,6 @@ public class Loader : MonoBehaviour {
 			scoreScript.currentScore = 0;
 			scoreScript.score = 0;
 			scoreScript.scoreCoefficient = 1.0f;
-			scoreScript.increment = 0.02f;
 
 			navigationScript.speed = 90.0f;
 			navigationScript.speedIncrement = 0.005f;

@@ -8,36 +8,32 @@ public class NavigationController : MonoBehaviour {
 	public float speed = 90f;				// Check loader.cs as values are reset in there
 	public float speedIncrement = 0.05f;	// from a current game to a new game.
 	
-	private float splinePosition=0f;
+	private float splinePosition = 0f;
 	private NavigationBehaviour[] pipes;
-	private int pipeIdx=0;
+	private int pipeIdx = 0;
 
 	public NavigationBehaviour[] pipePrefabs;
-	
-	//could be static
+
 	public Transform rotationAxis;
 	public PlayerBehaviour player;
+	public GameObject occlusionLight;
 	
 	void RespawnBlocks(){
 		Destroy(pipes[pipeIdx].gameObject);
 		
-		int prvIdx=(pipeIdx+pipes.Length-1)%pipes.Length;
+		int prvIdx=(pipeIdx+pipes.Length-1) % pipes.Length;
 		Spline previousSpline=pipes[prvIdx].GetComponent<Spline>();
-		
 		
 		pipes[pipeIdx]=Instantiate(pipePrefabs[Random.Range(0,pipePrefabs.Length)], previousSpline.GetPositionOnSpline(1f), previousSpline.GetOrientationOnSpline(1f)) as NavigationBehaviour;
 		pipes[pipeIdx].transform.parent=transform;
 
-		float torque=Random.Range(0,12)*60f;
+		float torque=Random.Range(0,12) * 60f;
 		
 		pipes[pipeIdx].torque=torque;
 		pipes[pipeIdx].SpawnSpineContent();
 		pipes[pipeIdx].transform.Rotate(new Vector3(0,0,torque), Space.Self);
-		
-		
 		pipeIdx=(pipeIdx+1)%pipes.Length;
 	}
-	
 	
 	void Start(){
 		pipes=new NavigationBehaviour[5];
@@ -58,10 +54,10 @@ public class NavigationController : MonoBehaviour {
 	
 	void Update (){
 		Spline spline=pipes[pipeIdx].spline;
-		splinePosition+=(speed*Time.deltaTime)/spline.Length;
+		splinePosition+=(speed*Time.deltaTime) / spline.Length;
 		
 		if (splinePosition>1f)/*Change current tube*/{
-			float exceedingDistance=(splinePosition%1)*spline.Length;
+			float exceedingDistance=(splinePosition%1) * spline.Length;
 			Vector3 sOffset=-spline.GetPositionOnSpline(1f);
 			foreach (NavigationBehaviour tube in pipes){
       	      tube.transform.position+=sOffset;
@@ -76,10 +72,7 @@ public class NavigationController : MonoBehaviour {
 		foreach (NavigationBehaviour tube in pipes){
             tube.transform.position+=offset;
         }
-		rotationAxis.rotation=spline.GetOrientationOnSpline(splinePosition);
 
-		// Increment speed.
-		speed += speedIncrement;
+		rotationAxis.rotation=spline.GetOrientationOnSpline(splinePosition);
 	}
-	
 }

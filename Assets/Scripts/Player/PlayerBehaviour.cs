@@ -3,7 +3,7 @@ using System.Collections;
 	
 public class PlayerBehaviour : MonoBehaviour {
 	// Variables.
-	public float radius=18f;
+	public float radius=20f;
 	public float depth=12;
 	public float cameraRadius=6f;
 	private float speed=0f;
