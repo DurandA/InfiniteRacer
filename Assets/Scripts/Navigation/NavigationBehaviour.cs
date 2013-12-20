@@ -31,8 +31,15 @@ public class NavigationBehaviour : MonoBehaviour {
 	/*
 	 * TODO: Spawn obstacles as blocks children
 	 */
-	public virtual void SpawnSpineContent() {
-		for (float i = 0.0f; i < 1.0f; i = i + 0.5f)
+	public virtual void SpawnSpineContent(float speed) {
+		Debug.Log(speed);
+		float start = 0.0f;
+		float incremet = 0.5f;
+		if(speed > 170.0){
+			start = 0.3f;
+			incremet = 0.6f;
+		} 
+		for (float i = start; i < 1.0f; i = i + incremet)
 		{
 			int obstacleType = Random.Range(1,4);
 			if(i>0.4)
@@ -52,7 +59,7 @@ public class NavigationBehaviour : MonoBehaviour {
 					break;
 				}
 			}
-				
+			
 			//obstacle type
 			switch (obstacleType)
 			{

@@ -17,8 +17,10 @@ public class NavigationController : MonoBehaviour {
 	public Transform rotationAxis;
 	public PlayerBehaviour player;
 	public GameObject occlusionLight;
+	private GameObject navigation;
+	private NavigationController navigationScript;
 	
-	void RespawnBlocks(){
+	void RespawnBlocks(float speed){
 		Destroy(pipes[pipeIdx].gameObject);
 		
 		int prvIdx=(pipeIdx+pipes.Length-1) % pipes.Length;
@@ -30,14 +32,17 @@ public class NavigationController : MonoBehaviour {
 		float torque=Random.Range(0,12) * 60f;
 		
 		pipes[pipeIdx].torque=torque;
-		pipes[pipeIdx].SpawnSpineContent();
+		pipes[pipeIdx].SpawnSpineContent(speed);
 		pipes[pipeIdx].transform.Rotate(new Vector3(0,0,torque), Space.Self);
 		pipeIdx=(pipeIdx+1)%pipes.Length;
 	}
 	
 	void Start(){
 		pipes=new NavigationBehaviour[5];
+		navigation = GameObject.Find("Navigation");
+		navigationScript= navigation.GetComponent<NavigationController>();
 		
+
 		Vector3 nextPosition=Vector3.zero;
 		Quaternion nextOrientation=Quaternion.identity;
 		Spline nextSpline=null;
@@ -62,7 +67,7 @@ public class NavigationController : MonoBehaviour {
 			foreach (NavigationBehaviour tube in pipes){
       	      tube.transform.position+=sOffset;
        		 }
-			RespawnBlocks(); //Warning: change tubeIdx
+			RespawnBlocks(navigationScript.speed); //Warning: change tubeIdx
 			spline=pipes[pipeIdx].spline;
 			splinePosition=exceedingDistance/spline.Length;
 			player.Shift(-pipes[pipeIdx].torque/360);
