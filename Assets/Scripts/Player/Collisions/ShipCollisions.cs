@@ -18,6 +18,7 @@ public class ShipCollisions : MonoBehaviour {
 	public GameObject sparksRight;
 	public AudioSource coinNoise;
 
+	private ParticleEmitter leftSparks;
 	private ParticleEmitter rightSparks;
 
 	// Scripts references.
@@ -43,6 +44,7 @@ public class ShipCollisions : MonoBehaviour {
 		playerScript = ship.GetComponent<PlayerBehaviour>();
 
 		// Get particle systems.
+		leftSparks = sparksLeft.GetComponent<ParticleEmitter>();
 		rightSparks = sparksRight.GetComponent<ParticleEmitter>();
 	}
 
@@ -85,11 +87,11 @@ public class ShipCollisions : MonoBehaviour {
 	// Wings collisions detection.
 	public void OnHitLeft()
 	{
-		Debug.Log("COLLISION LEFT WING");
+		leftSparks.Emit ();
 	}
 
 	public void OnHitRight()
 	{
-		Debug.Log("COLLISION RIGHT WING");
+		rightSparks.Emit ();
 	}
 }

@@ -1,18 +1,31 @@
 using UnityEngine;
 using System.Collections;
 
+
 [RequireComponent(typeof (Spline))]
 public class NavigationBehaviour : MonoBehaviour {
 	
-	public Spline spline
-	{
-		get {return GetComponent<Spline>();}
-	}
+	// --------------------------------------------------------------------------------------
+	// Variables.
+	// --------------------------------------------------------------------------------------
 	
 	public float torque=0f;
 	public Transform blockObstacle;
 	public Transform blowerObstacle;
 	public Transform coin;
+
+	// --------------------------------------------------------------------------------------
+	// Getter/Setter.
+	// --------------------------------------------------------------------------------------
+
+	public Spline spline
+	{
+		get {return GetComponent<Spline>();}
+	}
+
+	// --------------------------------------------------------------------------------------
+	// Coin spawn.
+	// --------------------------------------------------------------------------------------
 
 	public virtual void SpawnCoins(float positionOnSpline, int number, float shift){
 		float shiftAdd = shift;
@@ -27,9 +40,9 @@ public class NavigationBehaviour : MonoBehaviour {
 		}
 	}
 
-	/*
-	 * TODO: Spawn obstacles as blocks children
-	 */
+	// --------------------------------------------------------------------------------------
+	// Spawn obstacles.
+	// --------------------------------------------------------------------------------------
 	public virtual void SpawnSpineContent(float speed) {
 		float start = 0.0f;
 		float incremet = 0.5f;

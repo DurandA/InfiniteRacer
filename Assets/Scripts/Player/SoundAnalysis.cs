@@ -5,8 +5,8 @@ public class SoundAnalysis : MonoBehaviour {
 	public AudioClip background_sound;
 	
 	void Start () {
-		audio.PlayOneShot(background_sound);
-		
+		//audio.PlayOneShot(background_sound);
+		// Causes 2 musics at the same time ...
 	}
 	
 	// Update is called once per frame
