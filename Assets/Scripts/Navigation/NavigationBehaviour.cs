@@ -43,6 +43,7 @@ public class NavigationBehaviour : MonoBehaviour {
 	// --------------------------------------------------------------------------------------
 	// Spawn obstacles.
 	// --------------------------------------------------------------------------------------
+
 	public virtual void SpawnSpineContent(float speed) {
 		float start = 0.0f;
 		float incremet = 0.5f;

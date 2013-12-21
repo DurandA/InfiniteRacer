@@ -19,9 +19,10 @@ public class PlayerBehaviour : MonoBehaviour {
 	public bool onCollision=false;
 	public Transform rotationAxis;
 
-	private bool ft = false;
+	private bool ft = false;	// FAFUK with variable's name ???
 	private float positionOnOrbit=0f;
 	private float shiftAmount=0f;
+	private bool inputEnabled = false;
 
 	// Scripts references.
 	public GameObject navigation;
@@ -36,7 +37,15 @@ public class PlayerBehaviour : MonoBehaviour {
 	// ----------------------------------------------------------------------------
 
 	public void Shift(float shiftAmount){
-		this.shiftAmount=shiftAmount;
+		this.shiftAmount = shiftAmount;
+	}
+
+	public void InputEnabled(bool enabled){
+		this.inputEnabled = enabled;
+	}
+
+	public bool InputEnabled(){
+		return inputEnabled;
 	}
 
 	// ----------------------------------------------------------------------------
@@ -56,10 +65,12 @@ public class PlayerBehaviour : MonoBehaviour {
 
 	// User input management.
 	void LateUpdate () {
-		if ((Input.GetKey ("left")||(Input.GetMouseButton(0)&&Input.mousePosition.x<Screen.width/2))&&(speed > -maxSpeed))
+		if ((inputEnabled==true && (Input.GetKey ("left")||(Input.GetMouseButton(0)&&Input.mousePosition.x<Screen.width/2))&&(speed > -maxSpeed)))
        		speed = speed - acceleration * Time.deltaTime;
-     	else if( (Input.GetKey ("right")||(Input.GetMouseButton(0)&&Input.mousePosition.x>Screen.width/2))&&(speed < maxSpeed))
+
+		else if( (inputEnabled==true && (Input.GetKey ("right")||(Input.GetMouseButton(0)&&Input.mousePosition.x>Screen.width/2))&&(speed < maxSpeed)))
        		speed = speed + acceleration * Time.deltaTime;
+
      	else {
        		if(speed > deceleration * Time.deltaTime)
          		speed = speed - deceleration * Time.deltaTime;

@@ -26,6 +26,9 @@ public class ShipAnimator : MonoBehaviour {
 	private Vector3 posRight0;
 	private Vector3 rotWingLeft;
 	private Vector3 rotWingRight;
+
+	// Scripts.
+	private PlayerBehaviour playerScript;
 	
 	// --------------------------------------------------------------
 	// Update.
@@ -46,6 +49,9 @@ public class ShipAnimator : MonoBehaviour {
 		posLeft0 = wingLeft.transform.localPosition;
 		rotRight0 = wingRight.transform.localRotation;
 		posRight0 = wingRight.transform.localPosition;
+
+		// Scripts.
+		playerScript = GetComponent<PlayerBehaviour> ();
 	}
 	
 	// Update is called once per frame.
@@ -81,7 +87,7 @@ public class ShipAnimator : MonoBehaviour {
 		rotWingRight.y = 0f;
 		
 		//If statement of the lateral movement
-		if (Input.GetKey ("left"))
+		if (playerScript.InputEnabled() == true && Input.GetKey ("left"))
 		{
 			//Rotate wings for left lateral movement
 			rotWingLeft.z +=  speedDeltaAngle;
@@ -91,7 +97,7 @@ public class ShipAnimator : MonoBehaviour {
 			wingLeft.transform.localEulerAngles = rotWingLeft;
 			wingRight.transform.localEulerAngles = rotWingRight;
 		}
-		else if (Input.GetKey("right"))
+		else if (playerScript.InputEnabled() == true && Input.GetKey("right"))
 		{
 			//Rotate wings for right lateral movement
 			rotWingLeft.z -=  speedDeltaAngle;

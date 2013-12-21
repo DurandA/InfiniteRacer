@@ -54,7 +54,6 @@ public class NavigationController : MonoBehaviour {
 		pipes=new NavigationBehaviour[5];
 		navigation = GameObject.Find("Navigation");
 		navigationScript= navigation.GetComponent<NavigationController>();
-		
 
 		Vector3 nextPosition=Vector3.zero;
 		Quaternion nextOrientation=Quaternion.identity;

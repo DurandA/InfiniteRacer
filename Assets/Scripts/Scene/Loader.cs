@@ -7,6 +7,7 @@ public class Loader : MonoBehaviour {
 	public Texture loadingTexture;
 	public GUISkin skin;
 	public GameObject navigation;
+	public AudioSource music;
 	private ScoreManager scoreScript;
 	private NavigationController navigationScript;
 
@@ -29,7 +30,8 @@ public class Loader : MonoBehaviour {
 
 		// Create the "START" button when loading is complete.
 		GUI.skin = skin;
-		if(GUI.Button (new Rect ((Screen.width/2) - ((Screen.width * 0.25f)/2) , (Screen.height * 0.85f),(Screen.width * 0.25f),(Screen.height * 0.1f)), "START"))
+		if(GUI.Button (new Rect ((Screen.width/2) - ((Screen.width * 0.25f)/2) , (Screen.height * 0.85f),(Screen.width * 0.25f),(Screen.height * 0.1f)), "START")
+		   || Input.GetKeyDown(KeyCode.Return))
 		{
 			// Reset values of the game.
 			scoreScript.currentScore = 0;
@@ -38,6 +40,10 @@ public class Loader : MonoBehaviour {
 
 			navigationScript.speed = 100.0f;
 			navigationScript.speedIncrement = 0.005f;
+
+			// Start the music.
+			music.audio.Play();
+
 
 			// Start game.
 			Time.timeScale = 1;

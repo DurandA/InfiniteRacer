@@ -75,6 +75,7 @@
      <Compile Include="Assets\Scripts\Obstacles\BlowerAnimator.cs" />
      <Compile Include="Assets\Scripts\Obstacles\CoinAnimator.cs" />
      <Compile Include="Assets\Scripts\Pipes\OpenPipeGenerator.cs" />
+     <Compile Include="Assets\Scripts\Player\CameraIntro.cs" />
      <Compile Include="Assets\Scripts\Player\Collisions\LeftWingCollisions.cs" />
      <Compile Include="Assets\Scripts\Player\Collisions\RightWingCollisions.cs" />
      <Compile Include="Assets\Scripts\Player\Collisions\ShipCollisions.cs" />
