@@ -46,8 +46,6 @@ public class ShipAnimator : MonoBehaviour {
 		posLeft0 = wingLeft.transform.localPosition;
 		rotRight0 = wingRight.transform.localRotation;
 		posRight0 = wingRight.transform.localPosition;
-		
-		
 	}
 	
 	// Update is called once per frame.
@@ -106,11 +104,11 @@ public class ShipAnimator : MonoBehaviour {
 		else
 		{
 			//Rotate back to initial rotation state (also for position)
-			wingRight.transform.localRotation = Quaternion.Slerp(wingRight.transform.localRotation, rotRight0, Time.time / 50);
-			wingRight.transform.localPosition = Vector3.Lerp(wingRight.transform.localPosition, posRight0, Time.time / 50);
+			wingRight.transform.localRotation = Quaternion.Slerp(wingRight.transform.localRotation, rotRight0, Time.time / 90);
+			wingRight.transform.localPosition = Vector3.Lerp(wingRight.transform.localPosition, posRight0, Time.time / 90);
 			
-			wingLeft.transform.localRotation = Quaternion.Slerp(wingLeft.transform.localRotation, rotLeft0, Time.time / 50);
-			wingLeft.transform.localPosition = Vector3.Lerp(wingLeft.transform.localPosition, posLeft0, Time.time / 50);
+			wingLeft.transform.localRotation = Quaternion.Slerp(wingLeft.transform.localRotation, rotLeft0, Time.time / 90);
+			wingLeft.transform.localPosition = Vector3.Lerp(wingLeft.transform.localPosition, posLeft0, Time.time / 90);
 			
 			rotWingLeft.z =  0f;
 			rotWingRight.z = 270f;

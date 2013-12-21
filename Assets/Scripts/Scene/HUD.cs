@@ -1,9 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+ * Author : Thomas Rouvinez
+ * Description : class to handle HUD information and displayal.
+ */
+
 public class HUD : MonoBehaviour {
 
+	// ----------------------------------------------------------------------------
 	// Variables.
+	// ----------------------------------------------------------------------------
+
 	public TextMesh coinNumber;
 	public TextMesh score;
 	public bool running;
@@ -13,7 +21,10 @@ public class HUD : MonoBehaviour {
 	private ScoreManager scoreScript;
 	private PlayerBehaviour playerScript;
 
+	// ----------------------------------------------------------------------------
 	// Get the required script references for the information displayed in the HUD.
+	// ----------------------------------------------------------------------------
+
 	void Start () {
 		running = true;
 
@@ -33,7 +44,7 @@ public class HUD : MonoBehaviour {
 		if(running == true)
 		{
 			// Update the fields.
-			coinNumber.text = playerScript.coins.ToString() ;
+			coinNumber.text = scoreScript.coins.ToString() ;
 			score.text = scoreScript.score.ToString(); 
 		}
 	}

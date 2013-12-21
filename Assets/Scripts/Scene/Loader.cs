@@ -36,7 +36,7 @@ public class Loader : MonoBehaviour {
 			scoreScript.score = 0;
 			scoreScript.scoreCoefficient = 1.0f;
 
-			navigationScript.speed = 90.0f;
+			navigationScript.speed = 100.0f;
 			navigationScript.speedIncrement = 0.005f;
 
 			// Start game.

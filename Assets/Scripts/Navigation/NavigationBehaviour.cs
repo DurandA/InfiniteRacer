@@ -23,7 +23,6 @@ public class NavigationBehaviour : MonoBehaviour {
 			positionOnSpline = positionOnSpline + 0.03f;
 			coins[i].transform.parent=transform;
 			coins[i].transform.Rotate(new Vector3(0,0,shiftAdd),Space.Self);
-			Debug.Log(shiftAdd);
 			shiftAdd += shift;
 		}
 	}
@@ -32,7 +31,6 @@ public class NavigationBehaviour : MonoBehaviour {
 	 * TODO: Spawn obstacles as blocks children
 	 */
 	public virtual void SpawnSpineContent(float speed) {
-		Debug.Log(speed);
 		float start = 0.0f;
 		float incremet = 0.5f;
 		if(speed > 170.0){

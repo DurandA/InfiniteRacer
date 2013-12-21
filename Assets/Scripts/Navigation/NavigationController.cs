@@ -3,9 +3,14 @@ using UnityEngine;
 /*
  * Author: Arnaud Durand
  */
+
 public class NavigationController : MonoBehaviour {
-	
-	public float speed = 90f;				// Check loader.cs as values are reset in there
+
+	// --------------------------------------------------------------------------------------
+	// Variables.
+	// --------------------------------------------------------------------------------------
+
+	public float speed = 100f;				// Check loader.cs as values are reset in there
 	public float speedIncrement = 0.05f;	// from a current game to a new game.
 	
 	private float splinePosition = 0f;
@@ -19,7 +24,11 @@ public class NavigationController : MonoBehaviour {
 	public GameObject occlusionLight;
 	private GameObject navigation;
 	private NavigationController navigationScript;
-	
+
+	// --------------------------------------------------------------------------------------
+	// Block creation.
+	// --------------------------------------------------------------------------------------
+
 	void RespawnBlocks(float speed){
 		Destroy(pipes[pipeIdx].gameObject);
 		
@@ -36,7 +45,11 @@ public class NavigationController : MonoBehaviour {
 		pipes[pipeIdx].transform.Rotate(new Vector3(0,0,torque), Space.Self);
 		pipeIdx=(pipeIdx+1)%pipes.Length;
 	}
-	
+
+	// --------------------------------------------------------------------------------------
+	// Start && Update.
+	// --------------------------------------------------------------------------------------
+
 	void Start(){
 		pipes=new NavigationBehaviour[5];
 		navigation = GameObject.Find("Navigation");
