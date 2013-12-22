@@ -110,11 +110,11 @@ public class ShipAnimator : MonoBehaviour {
 		else
 		{
 			//Rotate back to initial rotation state (also for position)
-			wingRight.transform.localRotation = Quaternion.Slerp(wingRight.transform.localRotation, rotRight0, Time.deltaTime / 90);
-			wingRight.transform.localPosition = Vector3.Lerp(wingRight.transform.localPosition, posRight0, Time.deltaTime / 90);
+			wingRight.transform.localRotation = Quaternion.Slerp(wingRight.transform.localRotation, rotRight0, Time.deltaTime * 4);
+			wingRight.transform.localPosition = Vector3.Lerp(wingRight.transform.localPosition, posRight0, Time.deltaTime * 4);
 			
-			wingLeft.transform.localRotation = Quaternion.Slerp(wingLeft.transform.localRotation, rotLeft0, Time.deltaTime / 90);
-			wingLeft.transform.localPosition = Vector3.Lerp(wingLeft.transform.localPosition, posLeft0, Time.deltaTime / 90);
+			wingLeft.transform.localRotation = Quaternion.Slerp(wingLeft.transform.localRotation, rotLeft0, Time.deltaTime * 4);
+			wingLeft.transform.localPosition = Vector3.Lerp(wingLeft.transform.localPosition, posLeft0, Time.deltaTime * 4);
 			
 			rotWingLeft.z =  0f;
 			rotWingRight.z = 270f;
