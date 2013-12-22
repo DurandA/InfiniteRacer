@@ -8,19 +8,21 @@ using System.Collections;
 public class CreditsNavController : MonoBehaviour {
 
 	// -----------------------------------------------------------------------------------
-	// Variables.
+	// Start && Update.
 	// -----------------------------------------------------------------------------------
 
-	private int state = 0;
+	public GameObject directionalLight;
+	
+	private float targetAngle = 90.0f;
+	private bool token = true;
+	private float startTime;
+	private float resetTime = 1.2f;
+	private byte direction = 1;
 
 	// -----------------------------------------------------------------------------------
 	// Start && Update.
 	// -----------------------------------------------------------------------------------
 
-	void Start () {
-	
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		// Get back to main menu.
@@ -30,32 +32,31 @@ public class CreditsNavController : MonoBehaviour {
 		}
 
 		// Get user input for directions.
-		else if((Input.GetKey ("left")||(Input.GetMouseButton(0) && Input.mousePosition.x<Screen.width/2)))
+		else if((Input.GetKey ("left")||(Input.GetMouseButton(0) && Input.mousePosition.x < Screen.width/2)) && token == true)
 		{
-			// Switch to the previous credits.
-			stateAnimator(state,-1);
+			startTime = Time.time;
+			token = false;
+
+			targetAngle = targetAngle - 90f;
 		}
 
-		else if((Input.GetKey ("right")||(Input.GetMouseButton(0) && Input.mousePosition.x>Screen.width/2)))
+		else if((Input.GetKey ("right")||(Input.GetMouseButton(0) && Input.mousePosition.x > Screen.width/2)) && token == true)
 		{
-			// Switch to the next credits.
-			stateAnimator(state, 1);
+			startTime = Time.time;
+			token = false;
+
+			targetAngle = targetAngle + 90f;
 		}
 
-		else
+		else if(Time.time - startTime > resetTime)
 		{
-			// Resume idle animations.
-
+			token = true;
 		}
+
+		// Execute animations.
+		Vector3 end = new Vector3(0f, targetAngle, 0f);
+
+		transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(end), Time.deltaTime * 8f); 
+		directionalLight.transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(end), Time.deltaTime * 5.5f);
 	}
-
-	// -----------------------------------------------------------------------------------
-	// State management.
-	// -----------------------------------------------------------------------------------
-
-	private void stateAnimator(int state, int direction)
-	{
-		
-	}
-
 }
