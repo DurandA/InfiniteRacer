@@ -35,7 +35,7 @@ public class NavigationController : MonoBehaviour {
 		int prvIdx=(pipeIdx+pipes.Length-1) % pipes.Length;
 		Spline previousSpline=pipes[prvIdx].GetComponent<Spline>();
 		
-		pipes[pipeIdx]=Instantiate(pipePrefabs[Random.Range(0,pipePrefabs.Length)], previousSpline.GetPositionOnSpline(1f), previousSpline.GetOrientationOnSpline(1f)) as NavigationBehaviour;
+		pipes[pipeIdx]=Instantiate(pipePrefabs[Random.Range(1,pipePrefabs.Length)], previousSpline.GetPositionOnSpline(1f), previousSpline.GetOrientationOnSpline(1f)) as NavigationBehaviour;
 		pipes[pipeIdx].transform.parent=transform;
 
 		float torque=Random.Range(0,12) * 60f;
@@ -58,9 +58,24 @@ public class NavigationController : MonoBehaviour {
 		Vector3 nextPosition=Vector3.zero;
 		Quaternion nextOrientation=Quaternion.identity;
 		Spline nextSpline=null;
-		
-		for(int i=0; i<pipes.Length; i++){
-			pipes[i]=Instantiate (pipePrefabs[0], nextPosition, nextOrientation) as NavigationBehaviour;
+
+		// Spawn first tube (for animation).
+		pipes[0]=Instantiate (pipePrefabs[0], nextPosition, nextOrientation) as NavigationBehaviour;
+		nextSpline=pipes[0].spline;
+		nextPosition=nextSpline.GetPositionOnSpline(1f);
+		nextOrientation=nextSpline.GetOrientationOnSpline(1f);
+		pipes[0].transform.parent=transform;
+
+		// Spawn second tube (for animation).
+		pipes[1]=Instantiate (pipePrefabs[2], nextPosition, nextOrientation) as NavigationBehaviour;
+		nextSpline=pipes[1].spline;
+		nextPosition=nextSpline.GetPositionOnSpline(1f);
+		nextOrientation=nextSpline.GetOrientationOnSpline(1f);
+		pipes[1].transform.parent=transform;
+
+		// Spawn the rest of the initial tubes.
+		for(int i=2; i<pipes.Length; i++){
+			pipes[i]=Instantiate (pipePrefabs[Random.Range(1,pipePrefabs.Length)], nextPosition, nextOrientation) as NavigationBehaviour;
 
 			nextSpline=pipes[i].spline;
 			nextPosition=nextSpline.GetPositionOnSpline(1f);
