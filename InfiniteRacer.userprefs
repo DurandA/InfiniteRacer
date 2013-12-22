@@ -1,10 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Navigation\NavigationController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Menu\Credits\CreditsNavController.cs">
     <Files>
-      <File FileName="Assets\Scripts\Player\CameraIntro.cs" Line="23" Column="56" />
-      <File FileName="Assets\Scripts\Navigation\NavigationController.cs" Line="61" Column="1" />
-      <File FileName="Assets\Scripts\Player\ScoreManager.cs" Line="25" Column="13" />
+      <File FileName="Assets\Scripts\Menu\Credits\CreditsNavController.cs" Line="18" Column="29" />
+      <File FileName="Assets\Scripts\Player\PlayerBehaviour.cs" Line="69" Column="56" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

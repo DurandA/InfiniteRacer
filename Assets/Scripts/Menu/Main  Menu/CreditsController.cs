@@ -28,5 +28,8 @@ public class CreditsController : MonoBehaviour {
 	void OnMouseUp()
 	{
 		click.audio.Play();
+	
+		// Get the loading screen.
+		Application.LoadLevel(3);
 	}
 }
