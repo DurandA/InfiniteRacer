@@ -11,7 +11,7 @@ public class CreditsNavController : MonoBehaviour {
 	// Variables.
 	// -----------------------------------------------------------------------------------
 
-
+	private int state = 0;
 
 	// -----------------------------------------------------------------------------------
 	// Start && Update.
@@ -33,13 +33,13 @@ public class CreditsNavController : MonoBehaviour {
 		else if((Input.GetKey ("left")||(Input.GetMouseButton(0) && Input.mousePosition.x<Screen.width/2)))
 		{
 			// Switch to the previous credits.
-
+			stateAnimator(state,-1);
 		}
 
 		else if((Input.GetKey ("right")||(Input.GetMouseButton(0) && Input.mousePosition.x>Screen.width/2)))
 		{
 			// Switch to the next credits.
-
+			stateAnimator(state, 1);
 		}
 
 		else
@@ -48,4 +48,14 @@ public class CreditsNavController : MonoBehaviour {
 
 		}
 	}
+
+	// -----------------------------------------------------------------------------------
+	// State management.
+	// -----------------------------------------------------------------------------------
+
+	private void stateAnimator(int state, int direction)
+	{
+		
+	}
+
 }
