@@ -13,7 +13,7 @@ public class CreditsNavController : MonoBehaviour {
 
 	public GameObject directionalLight;
 	
-	private float targetAngle = 90.0f;
+	private float targetAngle = 180.0f;
 	private bool token = true;
 	private float startTime;
 	private float resetTime = 1.2f;
@@ -57,6 +57,6 @@ public class CreditsNavController : MonoBehaviour {
 		Vector3 end = new Vector3(0f, targetAngle, 0f);
 
 		transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(end), Time.deltaTime * 8f); 
-		directionalLight.transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(end), Time.deltaTime * 5.5f);
+		directionalLight.transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(end), Time.deltaTime);
 	}
 }
