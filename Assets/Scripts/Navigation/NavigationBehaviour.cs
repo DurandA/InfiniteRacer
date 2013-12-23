@@ -8,10 +8,13 @@ public class NavigationBehaviour : MonoBehaviour {
 	// --------------------------------------------------------------------------------------
 	// Variables.
 	// --------------------------------------------------------------------------------------
-	
+
 	public float torque=0f;
+
 	public Transform blockObstacle;
 	public Transform blowerObstacle;
+	public Transform cannonObstacle;
+
 	public Transform coin;
 
 	// --------------------------------------------------------------------------------------
@@ -46,14 +49,17 @@ public class NavigationBehaviour : MonoBehaviour {
 
 	public virtual void SpawnSpineContent(float speed) {
 		float start = 0.0f;
-		float incremet = 0.5f;
+		float increment = 0.5f;
+
 		if(speed > 170.0){
 			start = 0.3f;
-			incremet = 0.6f;
+			increment = 0.6f;
 		} 
-		for (float i = start; i < 1.0f; i = i + incremet)
+
+		for (float i = start; i < 1.0f; i = i + increment)
 		{
-			int obstacleType = Random.Range(1,4);
+			int obstacleType = Random.Range(1,5);
+
 			if(i>0.4)
 			{
 				switch (obstacleType)
@@ -84,6 +90,9 @@ public class NavigationBehaviour : MonoBehaviour {
 			case 3:
 				createBlower(i);
 				break;
+			case 4:
+				createCannon();
+				break;
 			default:
 				break;
 			}
@@ -109,5 +118,17 @@ public class NavigationBehaviour : MonoBehaviour {
 	private void createBlower(float newPosition){
 		Transform obs = Instantiate(blowerObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs.transform.parent=transform;
+	}
+
+	private void createCannon(){
+		// No lazer for 90° tubes.
+		if (cannonObstacle != null)
+		{
+			Transform cannon = Instantiate (cannonObstacle, spline.GetPositionOnSpline (0.85f), spline.GetOrientationOnSpline (0.85f)) as Transform;
+			cannon.transform.Rotate (new Vector3 (180, 0, 0), Space.Self);
+			cannon.transform.Translate (new Vector3 (0, -15, 0), Space.Self);
+
+			cannon.transform.parent = transform;
+		}
 	}
 }
