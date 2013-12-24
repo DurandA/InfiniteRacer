@@ -12,6 +12,7 @@ public class NavigationBehaviour : MonoBehaviour {
 	public float torque=0f;
 
 	public Transform blockObstacle;
+	public Transform hexaObstacle;
 	public Transform blowerObstacle;
 	public Transform cannonObstacle;
 
@@ -48,7 +49,7 @@ public class NavigationBehaviour : MonoBehaviour {
 	// --------------------------------------------------------------------------------------
 
 	public virtual void SpawnSpineContent(float speed) {
-		float start = 0.0f;
+		float start = 0.1f;
 		float increment = 0.5f;
 
 		if(speed > 170.0){
@@ -58,7 +59,7 @@ public class NavigationBehaviour : MonoBehaviour {
 
 		for (float i = start; i < 1.0f; i = i + increment)
 		{
-			int obstacleType = Random.Range(1,5);
+			int obstacleType = Random.Range(1,6);
 
 			if(i>0.4)
 			{
@@ -93,6 +94,9 @@ public class NavigationBehaviour : MonoBehaviour {
 			case 4:
 				createCannon();
 				break;
+			case 5:
+				createHexa(i);
+				break;
 			default:
 				break;
 			}
@@ -113,6 +117,13 @@ public class NavigationBehaviour : MonoBehaviour {
 		Transform obs2 = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs2.transform.Rotate(new Vector3(180,0,180),Space.Self);
 		obs2.transform.parent=transform;
+	}
+
+	private void createHexa(float newPosition){
+		if (hexaObstacle != null) {
+			Transform hexa = Instantiate (hexaObstacle, spline.GetPositionOnSpline (newPosition), spline.GetOrientationOnSpline (newPosition)) as Transform;
+			hexa.transform.parent = transform;
+		}
 	}
 	
 	private void createBlower(float newPosition){
