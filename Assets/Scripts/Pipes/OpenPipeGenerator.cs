@@ -34,16 +34,17 @@ public class OpenPipeGenerator : MonoBehaviour{
 	private Vector3 RotateAroundPoint(Vector3 point, Vector3 pivot, Quaternion angle){
     	return angle * ( point - pivot) + pivot;
     }
-	
-	// Use this for initialization
-	void Start () {
+
+	void Awake () {
 		splineParent = new GameObject("Spline").transform;
 		splineParent.parent=transform;
 		splineParent.localPosition=Vector3.zero;
 		splineParent.localRotation=Quaternion.identity;
 		
 		GenerateSplineNodes();
-		
+	}
+	// Use this for initialization
+	void Start () {
 		for(int i=0;i<(segments-1)/ringDistanceFactor+1;i++){
 			SplineNode node=GetComponent<NavigationBehaviour>().spline.SplineNodes[i*ringDistanceFactor];
 			((Transform)Instantiate(ringPrefab,node.Position,node.Rotation)).parent=transform;

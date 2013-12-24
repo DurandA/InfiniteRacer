@@ -18,7 +18,6 @@ public class HUD : MonoBehaviour {
 
 	private GameObject nav;
 	private GameObject ship;
-	private ScoreManager scoreScript;
 	private PlayerBehaviour playerScript;
 
 	// ----------------------------------------------------------------------------
@@ -27,15 +26,6 @@ public class HUD : MonoBehaviour {
 
 	void Start () {
 		running = true;
-
-		// Get score script.
-		nav = GameObject.Find("Navigation");
-		scoreScript = nav.GetComponent<ScoreManager>();
-
-		// Get player management script.
-		ship = GameObject.Find("Ship");
-		playerScript = ship.GetComponent<PlayerBehaviour>();
-
 	}
 	
 	// Update fields in the HUD
@@ -44,8 +34,8 @@ public class HUD : MonoBehaviour {
 		if(running == true)
 		{
 			// Update the fields.
-			coinNumber.text = scoreScript.coins.ToString() ;
-			score.text = scoreScript.score.ToString(); 
+			coinNumber.text = GameConfiguration.Instance.coins.ToString() ;
+			score.text = GameConfiguration.Instance.score.ToString(); 
 		}
 	}
 }

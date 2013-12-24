@@ -26,10 +26,8 @@ public class ShipCollisions : MonoBehaviour {
 	public GameObject camera;
 	public GameObject ship;
 
-	private HUD hudScript;
-	private ScoreManager scoreScript;
-	private NavigationController navigationScript;
-	private PlayerBehaviour playerScript;
+	private HUD hud;
+	private PlayerBehaviour player;
 
 	// ------------------------------------------------------------------------
 	// Start.
@@ -37,11 +35,8 @@ public class ShipCollisions : MonoBehaviour {
 
 	void Start () 
 	{
-		// Get scripts.
-		scoreScript = navigation.GetComponent<ScoreManager>();
-		hudScript = camera.GetComponent<HUD>();
-		navigationScript = navigation.GetComponent<NavigationController>();
-		playerScript = ship.GetComponent<PlayerBehaviour>();
+		hud = camera.GetComponent<HUD>();
+		player = ship.GetComponent<PlayerBehaviour>();
 
 		// Get particle systems.
 		leftSparks = sparksLeft.GetComponent<ParticleEmitter>();
@@ -60,8 +55,8 @@ public class ShipCollisions : MonoBehaviour {
 		{
 			coinNoise.audio.Play();
 			Destroy(collision.gameObject);
-			scoreScript.coins++;
-			scoreScript.currentScore += 25.0f;
+			GameConfiguration.Instance.coins++;
+			GameConfiguration.Instance.score += 25;
 		}
 
 		// Void detection (falling from half pipes).
@@ -74,12 +69,12 @@ public class ShipCollisions : MonoBehaviour {
 		else
 		{
 			//Notify the score manager the game is over.
-			hudScript.running = false;
+			hud.running = false;
 			
 			// Destroy the ship.
-			playerScript.onCollision = true;
-			navigationScript.speed = 0f;
-			playerScript.motion = 0f;
+			player.onCollision = true;
+			GameConfiguration.Instance.speed = 0f;
+			player.motion = 0f;
 			GetComponent<Detonator>().Explode();
 		}  
 	}
