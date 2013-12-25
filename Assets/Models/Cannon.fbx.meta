@@ -1,40 +1,42 @@
 fileFormatVersion: 2
-guid: 86ac6533b7402764f85285bb11375eaf
+guid: 1969b4afa235bf34ca9c36962df6df5e
 ModelImporter:
   serializedVersion: 15
   fileIDToRecycleName:
-    100000: Cannon
-    100002: Holder
-    100004: //RootNode
-    100006: Plates
-    100008: Receiver
-    100010: Tech 1
-    100012: Tech 2
-    400000: Cannon
-    400002: Holder
-    400004: //RootNode
-    400006: Plates
-    400008: Receiver
-    400010: Tech 1
-    400012: Tech 2
-    2300000: Cannon
-    2300002: Holder
-    2300004: Plates
-    2300006: Receiver
-    2300008: Tech 1
-    2300010: Tech 2
-    3300000: Cannon
-    3300002: Holder
-    3300004: Plates
-    3300006: Receiver
-    3300008: Tech 1
-    3300010: Tech 2
-    4300000: Plates
-    4300002: Holder
-    4300004: Cannon
-    4300006: Tech 1
-    4300008: Tech 2
-    4300010: Receiver
+    100000: Caches
+    100002: Canons
+    100004: Capsule
+    100006: Foot
+    100008: Holder
+    100010: Lazer
+    100012: //RootNode
+    100014: Sphere
+    400000: Caches
+    400002: Canons
+    400004: Capsule
+    400006: Foot
+    400008: Holder
+    400010: Lazer
+    400012: //RootNode
+    400014: Sphere
+    2300000: Caches
+    2300002: Canons
+    2300004: Capsule
+    2300006: Foot
+    2300008: Holder
+    2300010: Sphere
+    3300000: Caches
+    3300002: Canons
+    3300004: Capsule
+    3300006: Foot
+    3300008: Holder
+    3300010: Sphere
+    4300000: Caches
+    4300002: Capsule
+    4300004: Sphere
+    4300006: Holder
+    4300008: Canons
+    4300010: Foot
     9500000: //RootNode
   materials:
     importMaterials: 0
@@ -54,7 +56,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .5
+    globalScale: .00999999978
     meshCompression: 3
     addColliders: 0
     importBlendShapes: 1
