@@ -11,17 +11,12 @@ public class CannonController : MonoBehaviour {
 	void Start () {
 		fireShot = GetComponent<AudioSource>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 	// Sound effects.
 	public void fire()
 	{
-		fireShot.audio.Play();
-		//muzzleBig.Emit ();
-		//muzzleLong.Emit ();
+		fireShot.audio.Play ();
+		muzzleBig.Emit ();
+		muzzleLong.Emit ();
 	}
 }

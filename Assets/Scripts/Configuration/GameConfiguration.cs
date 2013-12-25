@@ -32,5 +32,4 @@ public class GameConfiguration {
 	public float speed;
 	public int coins;
 	public long score;
-
 }

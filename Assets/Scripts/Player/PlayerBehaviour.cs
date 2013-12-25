@@ -29,7 +29,6 @@ public class PlayerBehaviour : MonoBehaviour {
 	public GameObject camera;
 
 	private HUD hudScript;
-	private ScoreManager scoreScript;
 	private NavigationController navigationScript;
 
 	// ----------------------------------------------------------------------------

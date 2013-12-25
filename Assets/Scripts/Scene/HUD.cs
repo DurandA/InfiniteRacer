@@ -15,10 +15,7 @@ public class HUD : MonoBehaviour {
 	public TextMesh coinNumber;
 	public TextMesh score;
 	public bool running;
-
-	private GameObject nav;
-	private GameObject ship;
-	private PlayerBehaviour playerScript;
+	private long tempScore = 0;
 
 	// ----------------------------------------------------------------------------
 	// Get the required script references for the information displayed in the HUD.
@@ -26,6 +23,7 @@ public class HUD : MonoBehaviour {
 
 	void Start () {
 		running = true;
+		tempScore = 0;
 	}
 	
 	// Update fields in the HUD
@@ -35,7 +33,11 @@ public class HUD : MonoBehaviour {
 		{
 			// Update the fields.
 			coinNumber.text = GameConfiguration.Instance.coins.ToString() ;
-			score.text = GameConfiguration.Instance.score.ToString(); 
+
+			if(GameConfiguration.Instance.score > tempScore){
+				tempScore += 1;
+				score.text = tempScore.ToString(); 
+			}
 		}
 	}
 }

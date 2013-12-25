@@ -34,7 +34,7 @@ public class Loader : MonoBehaviour {
 
 			// Start game.
 			Time.timeScale = 1;
-			Destroy (gameObject);
+			Destroy (this);
 		}
 	}
 }

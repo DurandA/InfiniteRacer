@@ -87,7 +87,6 @@ public class ShipCollisions : MonoBehaviour {
 			GameConfiguration.Instance.speed = 0f;
 			player.motion = 0f;
 			StartCoroutine(WaitAndExplode(0f));
-
 		}  
 	}
 

@@ -6,13 +6,10 @@ using System.Collections;
  * Description : handle speed and score.
  */
 public class GameManager : MonoBehaviour {
-		
-	public float speed=100f;
-	private int coins=0;
-	private long score=0;
 
-	public float scoreCoefficient=1.0f;
-	private float currentScore = 0f;
+	public float speed = 100f;
+	private int coins = 0;
+	private long score = 0;
 	private float timer;
 		
 	// ----------------------------------------------------------------------
@@ -24,22 +21,22 @@ public class GameManager : MonoBehaviour {
 		ResetConfiguration();
 	}
 
+	void Start() {
+		timer = Time.time;
+	}
+
 	void Update () {
-		
 		// Update and detect each second.
-		if(score < currentScore)
+		if(Time.time - timer >= 1f)
 		{
-			score += 1;
 			timer = Time.time;
+			GameConfiguration.Instance.score += 1;
 		}
-		
-		currentScore += ((long)((Time.time - timer)) * scoreCoefficient);
 	}
 
 	public void ResetConfiguration () {
-		GameConfiguration.Instance.speed=speed;
-		GameConfiguration.Instance.coins=coins;
-		GameConfiguration.Instance.score=score;
+		GameConfiguration.Instance.speed = 100;
+		GameConfiguration.Instance.coins = 0;
+		GameConfiguration.Instance.score = 0;
 	}
-
 }
