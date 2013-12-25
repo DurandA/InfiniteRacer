@@ -63,6 +63,10 @@
      <Compile Include="Assets\GameMenu\NewGameTextController.cs" />
      <Compile Include="Assets\MenuAnimator.cs" />
      <Compile Include="Assets\MenuButtonActions.cs" />
+     <Compile Include="Assets\Scripts\Audio FX\AudioFXController.cs" />
+     <Compile Include="Assets\Scripts\Audio FX\AudioFXHandler.cs" />
+     <Compile Include="Assets\Scripts\Audio FX\ObstacleFXHandler.cs" />
+     <Compile Include="Assets\Scripts\Audio FX\PipeFXHandler.cs" />
      <Compile Include="Assets\Scripts\CameraInterpolator.cs" />
      <Compile Include="Assets\Scripts\Configuration\GameConfiguration.cs" />
      <Compile Include="Assets\Scripts\Configuration\GameManager.cs" />
@@ -74,9 +78,9 @@
      <Compile Include="Assets\Scripts\Menu\Main  Menu\LaunchController.cs" />
      <Compile Include="Assets\Scripts\Menu\Main  Menu\NewGameController.cs" />
      <Compile Include="Assets\Scripts\Menu\Main  Menu\OptionsController.cs" />
-     <Compile Include="Assets\Scripts\Navigation\GenericPipeBehaviour.cs" />
      <Compile Include="Assets\Scripts\Navigation\NavigationBehaviour.cs" />
      <Compile Include="Assets\Scripts\Navigation\NavigationController.cs" />
+     <Compile Include="Assets\Scripts\Navigation\PipeBehaviour.cs" />
      <Compile Include="Assets\Scripts\Obstacles\BlowerAnimator.cs" />
      <Compile Include="Assets\Scripts\Obstacles\CannonController.cs" />
      <Compile Include="Assets\Scripts\Obstacles\CoinAnimator.cs" />

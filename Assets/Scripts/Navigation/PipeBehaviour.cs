@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GenericPipeBehaviour : NavigationBehaviour {
+public class PipeBehaviour : NavigationBehaviour {
 		
 	public Transform blockObstacle;
 	public Transform hexaObstacle;

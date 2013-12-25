@@ -1,4 +1,8 @@
-﻿public class GameConfiguration {
+﻿/*
+ * Author: Arnaud Durand
+ * Do NOT modify this script without author acknowledgement
+ */
+public class GameConfiguration {
 	
 	static GameConfiguration instance=null;
 	static readonly object padlock = new object();

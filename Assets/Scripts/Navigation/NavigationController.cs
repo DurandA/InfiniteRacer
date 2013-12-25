@@ -4,7 +4,6 @@ using UnityEngine;
  * Author: Arnaud Durand
  * Do NOT modify this script without author acknowledgement
  */
-
 public class NavigationController : MonoBehaviour {
 
 	// --------------------------------------------------------------------------------------

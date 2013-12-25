@@ -26,6 +26,8 @@ public class ShipCollisions : MonoBehaviour {
 	public GameObject camera;
 	public GameObject ship;
 
+	public Detonator smokePrefab;
+
 	private HUD hud;
 	private PlayerBehaviour player;
 
@@ -59,7 +61,7 @@ public class ShipCollisions : MonoBehaviour {
 			GameConfiguration.Instance.score += 25;
 		}
 
-		// Void detection (falling from half pipes).
+		// Falling from half pipes detection.
 		else if(collision.gameObject.name == "ColliderHalfPipe")
 		{
 			player.enabled=false;
@@ -67,12 +69,11 @@ public class ShipCollisions : MonoBehaviour {
 			Rigidbody rigidBody=GetComponent<Rigidbody>();
 			rigidbody.isKinematic=false;
 			rigidbody.AddForce(transform.localPosition*5000f+transform.forward*10000f*GameConfiguration.Instance.speed);
+
 			foreach(Collider collider in GetComponents<Collider>())
 				Destroy(collider);
-				//collider.isTrigger=false;
+
 			StartCoroutine(WaitAndExplode(0.3f));
-			//enabled=false;
-			Debug.Log("COLLISION FALLING OUT");
 		}
 
 		// Lost the game.
@@ -107,7 +108,7 @@ public class ShipCollisions : MonoBehaviour {
 
 			part.gameObject.AddComponent<Rigidbody>();
 			part.transform.parent=null;
-			part.rigidbody.AddExplosionForce(200f,transform.position,20f);
+			part.rigidbody.AddExplosionForce(200f,transform.position-transform.forward*10,20f);
 		}
 
 		GetComponent<Detonator>().Explode();
@@ -117,13 +118,20 @@ public class ShipCollisions : MonoBehaviour {
 			part.Explode();
 		}
 
-		yield return new WaitForSeconds(3.2f);
-		foreach(Renderer renderer in GetComponentsInChildren<Renderer>())
-			renderer.enabled=false;
+		// Instantiate a detonator game object where the bomb is  
+
+		Instantiate (smokePrefab, transform.position-transform.forward*5, Quaternion.identity);  
+		// Destroy the bomb (because it exploded lol)
+
+		yield return new WaitForSeconds(3f);
+		Destroy(gameObject);
 	}
 
-
-
+	void OnDestroy() {
+		Debug.Log("End of game, score : "+GameConfiguration.Instance.score);
+	}
+	
+	
 	// Wings collisions detection.
 	public void OnHitLeft()
 	{

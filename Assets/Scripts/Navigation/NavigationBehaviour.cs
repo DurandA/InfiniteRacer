@@ -1,7 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
-
+/*
+ * Author: Arnaud Durand
+ * Do NOT modify this script without author acknowledgement
+ */
 [RequireComponent(typeof (Spline))]
 public class NavigationBehaviour : MonoBehaviour {
 	
