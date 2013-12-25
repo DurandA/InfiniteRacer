@@ -62,6 +62,16 @@ public class ShipCollisions : MonoBehaviour {
 		// Void detection (falling from half pipes).
 		else if(collision.gameObject.name == "ColliderHalfPipe")
 		{
+			player.enabled=false;
+			GameConfiguration.Instance.speed=0;
+			Rigidbody rigidBody=GetComponent<Rigidbody>();
+			rigidbody.isKinematic=false;
+			rigidbody.AddForce(transform.localPosition*5000f+transform.forward*10000f*GameConfiguration.Instance.speed);
+			foreach(Collider collider in GetComponents<Collider>())
+				Destroy(collider);
+				//collider.isTrigger=false;
+			StartCoroutine(WaitAndExplode(0.3f));
+			//enabled=false;
 			Debug.Log("COLLISION FALLING OUT");
 		}
 
@@ -76,8 +86,45 @@ public class ShipCollisions : MonoBehaviour {
 			GameConfiguration.Instance.speed = 0f;
 			player.motion = 0f;
 			GetComponent<Detonator>().Explode();
+
 		}  
 	}
+
+	/*
+	 * Author : Arnaud Durand
+	 */
+	IEnumerator WaitAndExplode(float waitTime) {
+		yield return new WaitForSeconds(waitTime);
+		Destroy(rigidbody);
+		Destroy(GetComponent<ShipAnimator>());
+
+		Detonator[] parts=GetComponentsInChildren<Detonator>();
+
+		foreach (Detonator part in parts){
+			if (part.gameObject == gameObject)
+				continue;
+
+			part.gameObject.AddComponent<Rigidbody>();
+			part.transform.parent=null;
+			part.rigidbody.AddExplosionForce(200f,transform.position,20f);
+		}
+
+		GetComponent<Detonator>().Explode();
+
+		yield return new WaitForSeconds(0.25f);
+		foreach (Detonator part in parts){
+			part.Explode();
+		}
+		yield return new WaitForSeconds(0.35f);
+		GetComponent<Detonator>().Explode();
+
+		yield return new WaitForSeconds(1.2f);
+		//Should kill player but player still has dependancies
+		foreach(Renderer renderer in GetComponentsInChildren<Renderer>())
+			renderer.enabled=false;
+	}
+
+
 
 	// Wings collisions detection.
 	public void OnHitLeft()
