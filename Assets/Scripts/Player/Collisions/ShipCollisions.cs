@@ -85,7 +85,7 @@ public class ShipCollisions : MonoBehaviour {
 			player.onCollision = true;
 			GameConfiguration.Instance.speed = 0f;
 			player.motion = 0f;
-			GetComponent<Detonator>().Explode();
+			StartCoroutine(WaitAndExplode(0f));
 
 		}  
 	}
@@ -95,6 +95,7 @@ public class ShipCollisions : MonoBehaviour {
 	 */
 	IEnumerator WaitAndExplode(float waitTime) {
 		yield return new WaitForSeconds(waitTime);
+
 		Destroy(rigidbody);
 		Destroy(GetComponent<ShipAnimator>());
 
@@ -115,11 +116,8 @@ public class ShipCollisions : MonoBehaviour {
 		foreach (Detonator part in parts){
 			part.Explode();
 		}
-		yield return new WaitForSeconds(0.35f);
-		GetComponent<Detonator>().Explode();
 
-		yield return new WaitForSeconds(1.2f);
-		//Should kill player but player still has dependancies
+		yield return new WaitForSeconds(3.2f);
 		foreach(Renderer renderer in GetComponentsInChildren<Renderer>())
 			renderer.enabled=false;
 	}
