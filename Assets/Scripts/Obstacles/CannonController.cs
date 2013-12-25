@@ -21,7 +21,7 @@ public class CannonController : MonoBehaviour {
 	public void fire()
 	{
 		fireShot.audio.Play();
-		muzzleBig.Emit ();
-		muzzleLong.Emit ();
+		//muzzleBig.Emit ();
+		//muzzleLong.Emit ();
 	}
 }
