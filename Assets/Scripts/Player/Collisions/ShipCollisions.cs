@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
 /*
  * Author : Thomas Rouvinez
  * Description : class to handle the collisions on the ship.
@@ -74,6 +76,7 @@ public class ShipCollisions : MonoBehaviour {
 				Destroy(collider);
 
 			StartCoroutine(WaitAndExplode(0.3f));
+			OnDestroy();
 		}
 
 		// Lost the game.
@@ -81,7 +84,8 @@ public class ShipCollisions : MonoBehaviour {
 		{
 			//Notify the score manager the game is over.
 			hud.running = false;
-			
+			HighscoreSaver.postScore("UserName","2333",this);
+
 			// Destroy the ship.
 			player.onCollision = true;
 			GameConfiguration.Instance.speed = 0f;
@@ -129,6 +133,24 @@ public class ShipCollisions : MonoBehaviour {
 	void OnDestroy() {
 		Debug.Log("End of game, score : "+GameConfiguration.Instance.score);
 	}
+
+	
+	
+	public void OnHighscoreLoaded(List<HighscoreSaver.Highscore> highscores)
+	{
+		Debug.Log("Updating highscores!");
+		string text = "";
+		foreach (HighscoreSaver.Highscore hs in highscores)
+		{
+			Debug.Log(hs.name + "\t\t" + hs.score + "\n");
+		}
+		
+	}
+	
+	public void OnHighscorePosted(){
+		HighscoreSaver.loadScores(this);
+	}
+
 	
 	
 	// Wings collisions detection.
