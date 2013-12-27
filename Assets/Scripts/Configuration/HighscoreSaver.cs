@@ -43,10 +43,10 @@ public static class HighscoreSaver {
         string hash = GetMd5Hash(MD5.Create(), (name + score + SECRET_KEY));
         string highscore_url = ADD_SCORE_URL + "name=" + WWW.EscapeURL(name) + "&score=" + score + "&hash=" + hash + "&table=" + SQL_SCORE_TABLE;
         WWW hs_post = new WWW(highscore_url);
-        yield return hs_post; // Wait until the download is done
+        yield return hs_post;
         if (hs_post.error != null)
         {
-            Debug.Log("There was an error posting the high score: " + hs_post.error + " | ");
+            Debug.Log("Post error: " + hs_post.error + " | ");
         }
         if (hs_post.isDone)
         {
@@ -68,16 +68,13 @@ public static class HighscoreSaver {
         }
         if (hs_get.error != null)
         {
-            Debug.Log("There was an error getting the high score: " + hs_get.error);
+            Debug.Log("Post error: " + hs_get.error);
         }
         if (hs_get.isDone)
         {
             IDictionary o = (IDictionary)Json.Deserialize(hs_get.text);
-            Debug.Log(hs_get.text + " - wtext");
-            Debug.Log("Size: " + o.Count);
             foreach (IDictionary user in o.Values)
             {
-                Debug.Log("Adding data: " + (string)user["name"] + " " + (string)user["score"]);
                 hslist.Add(new Highscore((string)user["name"], (string)user["score"]));
             }
 

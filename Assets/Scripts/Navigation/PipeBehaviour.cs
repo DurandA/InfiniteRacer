@@ -7,6 +7,7 @@ public class PipeBehaviour : NavigationBehaviour {
 	public Transform hexaObstacle;
 	public Transform blowerObstacle;
 	public Transform cannonObstacle;
+	public Transform lazer;
 
 	public Transform coin;
 
@@ -28,6 +29,47 @@ public class PipeBehaviour : NavigationBehaviour {
 	// --------------------------------------------------------------------------------------
 	
 	public virtual void Awake() {
+		float newPosition = 0.2f;
+		Transform obs = Instantiate(lazer,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
+		obs.transform.parent=transform;
+		float spineType = 0;
+		if(spline.gameObject.name == "Pipe 0 full(Clone)")
+		{
+			createTwoBlocks(0f);
+			createTwoBlocks(0.2f);
+			createTwoBlocks(0.4f);
+			createTwoBlocks(0.6f);
+			createTwoBlocks(0.8f);
+			createTwoBlocks(0.99f);
+		}
+		if(spline.gameObject.name == "Pipe 90 full(Clone)")
+		{
+			createTwoBlocks(0f);
+			createTwoBlocks(0.2f);
+			createTwoBlocks(0.4f);
+			createTwoBlocks(0.6f);
+			createTwoBlocks(0.8f);
+			createTwoBlocks(0.99f);
+		}
+		if(spline.gameObject.name == "Pipe 90 half(Clone)")
+		{
+			createTwoBlocks(0f);
+			createTwoBlocks(0.2f);
+			createTwoBlocks(0.4f);
+			createTwoBlocks(0.6f);
+			createTwoBlocks(0.8f);
+			createTwoBlocks(0.99f);
+		}
+		if(spline.gameObject.name == "Pipe 90 half+s(Clone)")
+		{
+			createTwoBlocks(0f);
+			createTwoBlocks(0.2f);
+			createTwoBlocks(0.4f);
+			createTwoBlocks(0.6f);
+			createTwoBlocks(0.8f);
+			createTwoBlocks(0.99f);
+		}
+	
 		float start = 0.1f;
 		float increment = 0.5f;
 		
@@ -36,10 +78,10 @@ public class PipeBehaviour : NavigationBehaviour {
 			increment = 0.6f;
 		} 
 		
-		for (float i = start; i < 1.0f; i = i + increment)
+		/*for (float i = start; i < 1.0f; i = i + increment)
 		{
 			int obstacleType = Random.Range(1,6);
-			
+
 			if(i>0.4)
 			{
 				switch (obstacleType)
@@ -79,7 +121,23 @@ public class PipeBehaviour : NavigationBehaviour {
 			default:
 				break;
 			}
-		}
+		}*/
+	}
+
+	private void spawnForFullPipe(){
+
+	}
+
+	private void spawnForFullPipe90(){
+
+	}
+
+	private void spawnForHalfPipe90(){
+
+	}
+
+	private void spawnForHalfPipe90s(){
+
 	}
 	
 	private void createBlock(float newPosition){
@@ -89,15 +147,16 @@ public class PipeBehaviour : NavigationBehaviour {
 	}
 	
 	private void createTwoBlocks(float newPosition){
+		float x = 	Random.Range(0,180);
 		Transform obs = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs.transform.parent=transform;
-		obs.transform.Rotate(new Vector3(180,0,0),Space.Self);
-		
+		obs.transform.Rotate(new Vector3(180,0,x),Space.Self);
+
 		Transform obs2 = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
-		obs2.transform.Rotate(new Vector3(180,0,180),Space.Self);
+		obs2.transform.Rotate(new Vector3(180,0,x+180),Space.Self);
 		obs2.transform.parent=transform;
 	}
-	
+
 	private void createHexa(float newPosition){
 		if (hexaObstacle != null) {
 			Transform hexa = Instantiate (hexaObstacle, spline.GetPositionOnSpline (newPosition), spline.GetOrientationOnSpline (newPosition)) as Transform;
