@@ -32,4 +32,6 @@ public class GameConfiguration {
 	public float speed;
 	public int coins;
 	public long score;
+	public bool paused;
+	public bool ended;
 }

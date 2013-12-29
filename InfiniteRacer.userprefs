@@ -1,11 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Navigation\PipeBehaviour.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Scene\EndGameMenu.cs">
     <Files>
-      <File FileName="Assets\Scripts\Navigation\PipeBehaviour.cs" Line="55" Column="19" />
-      <File FileName="Assets\Scripts\Navigation\PipeBehaviour.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Navigation\NavigationController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\Collisions\ShipCollisions.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Scene\PauseMenu.cs" Line="17" Column="3" />
+      <File FileName="Assets\Scripts\Scene\EndGameMenu.cs" Line="44" Column="51" />
+      <File FileName="Assets\Scripts\Player\Collisions\ShipCollisions.cs" Line="136" Column="22" />
+      <File FileName="Assets\Scripts\Configuration\GameConfiguration.cs" Line="37" Column="2" />
+      <File FileName="Assets\Scripts\Configuration\GameManager.cs" Line="42" Column="44" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

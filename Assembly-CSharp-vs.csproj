@@ -95,6 +95,7 @@
      <Compile Include="Assets\Scripts\Player\PlayerBehaviour.cs" />
      <Compile Include="Assets\Scripts\Player\ShipAnimator.cs" />
      <Compile Include="Assets\Scripts\Player\SoundAnalysis.cs" />
+     <Compile Include="Assets\Scripts\Scene\EndGameMenu.cs" />
      <Compile Include="Assets\Scripts\Scene\HUD.cs" />
      <Compile Include="Assets\Scripts\Scene\HudRenderer.cs" />
      <Compile Include="Assets\Scripts\Scene\Loader.cs" />

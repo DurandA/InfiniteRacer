@@ -90,6 +90,8 @@ public class ShipCollisions : MonoBehaviour {
 			player.onCollision = true;
 			GameConfiguration.Instance.speed = 0f;
 			player.motion = 0f;
+
+			// Explode the ship.
 			StartCoroutine(WaitAndExplode(0f));
 		}  
 	}
@@ -128,6 +130,10 @@ public class ShipCollisions : MonoBehaviour {
 
 		yield return new WaitForSeconds(3f);
 		Destroy(gameObject);
+
+		// Get ended game screen.
+		GameConfiguration.Instance.ended = true;
+		Time.timeScale = 0;
 	}
 
 	void OnDestroy() {

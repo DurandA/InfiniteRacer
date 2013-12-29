@@ -3,9 +3,6 @@ using System.Collections;
 
 public class PauseMenu : MonoBehaviour {
 	
-	// Variables.
-	public static bool paused;
-	
 	// GUI.
 	public GUISkin pauseBackground;
 	public GUISkin pauseResume;
@@ -19,27 +16,27 @@ public class PauseMenu : MonoBehaviour {
 	{
 		width = (Screen.width / 6) * 4;
 		height = (Screen.height / 2);
-		paused = false;
+		GameConfiguration.Instance.paused = false;
 	}
 	
 	void Update () 
 	{
-		if(Input.GetKeyDown(KeyCode.Escape) && paused == false)
+		if(Input.GetKeyDown(KeyCode.Escape) && GameConfiguration.Instance.paused == false)
 		{
-			paused = true;
+			GameConfiguration.Instance.paused = true;
 			Time.timeScale = 0;
 		}
 		
-		else if(Input.GetKeyDown(KeyCode.Escape) && paused == true)
+		else if(Input.GetKeyDown(KeyCode.Escape) && GameConfiguration.Instance.paused == true)
 		{
-			paused = false;
+			GameConfiguration.Instance.paused = false;
 			Time.timeScale = 1;
 		}
 	}
 	
 	void OnGUI () 
 	{
-		if(paused)
+		if(GameConfiguration.Instance.paused)
 		{
 			// Put background image.
 			GUI.skin = pauseBackground;
@@ -50,7 +47,7 @@ public class PauseMenu : MonoBehaviour {
 			if(GUI.Button(new Rect (width,height,(Screen.width * 0.25f),(Screen.height * 0.1f)), "RESUME"))
 			{
 				Time.timeScale = 1;
-				paused = false;
+				GameConfiguration.Instance.paused = false;
 			}
 			
 			// Quit button.

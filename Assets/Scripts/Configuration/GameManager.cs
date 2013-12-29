@@ -38,5 +38,7 @@ public class GameManager : MonoBehaviour {
 		GameConfiguration.Instance.speed = 100;
 		GameConfiguration.Instance.coins = 0;
 		GameConfiguration.Instance.score = 0;
+		GameConfiguration.Instance.paused = false;
+		GameConfiguration.Instance.ended = false;
 	}
 }
