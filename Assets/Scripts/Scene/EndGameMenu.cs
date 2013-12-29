@@ -39,13 +39,20 @@ public class EndGameMenu : MonoBehaviour {
 			GUI.skin = endedBackground;
 			GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
 
-			// Resume button.
+			// Game Over.
 			GUI.skin = button;
-			GUI.Label(new Rect ((Screen.width / 2) - 300, 0, 600, 200), "GAME OVER");
+			GUI.Label(new Rect ((Screen.width / 2) - 300, 0, 600, 150), "GAME OVER");
 
-			if(GUI.Button(new Rect (width-((Screen.width * 0.25f)/2), height * 2.5f,(Screen.width * 0.25f),(Screen.height * 0.1f)), "RESTART"))
+			// Restart button.
+			if(GUI.Button(new Rect (width-((Screen.width * 0.25f)/2), height * 2.27f,(Screen.width * 0.25f),(Screen.height * 0.1f)), "RESTART"))
 			{
 				Application.LoadLevel(1);
+			}
+
+			// Main menu button.
+			if(GUI.Button(new Rect (width-((Screen.width * 0.25f)/2), height * 2.28f + (Screen.height * 0.1f),(Screen.width * 0.25f),(Screen.height * 0.1f)), "EXIT"))
+			{
+				Application.LoadLevel(0);
 			}
 		}
 	}
