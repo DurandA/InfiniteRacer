@@ -19,6 +19,7 @@ public class ShipCollisions : MonoBehaviour {
 	public GameObject sparksLeft;
 	public GameObject sparksRight;
 	public AudioSource coinNoise;
+	public AudioSource music;
 
 	private ParticleEmitter leftSparks;
 	private ParticleEmitter rightSparks;
@@ -60,7 +61,7 @@ public class ShipCollisions : MonoBehaviour {
 			coinNoise.audio.Play();
 			Destroy(collision.gameObject);
 			GameConfiguration.Instance.coins++;
-			GameConfiguration.Instance.score += 25;
+			GameConfiguration.Instance.score += 10;
 		}
 
 		// Falling from half pipes detection.
@@ -84,7 +85,6 @@ public class ShipCollisions : MonoBehaviour {
 		{
 			//Notify the score manager the game is over.
 			hud.running = false;
-			HighscoreSaver.postScore("UserName","2333",this);
 
 			// Destroy the ship.
 			player.onCollision = true;
@@ -93,6 +93,7 @@ public class ShipCollisions : MonoBehaviour {
 
 			// Explode the ship.
 			StartCoroutine(WaitAndExplode(0f));
+			music.audio.Stop();
 		}  
 	}
 
@@ -123,11 +124,10 @@ public class ShipCollisions : MonoBehaviour {
 			part.Explode();
 		}
 
-		// Instantiate a detonator game object where the bomb is  
-
+		// Instantiate a detonator game object where the bomb is.
 		Instantiate (smokePrefab, transform.position-transform.forward*5, Quaternion.identity);  
-		// Destroy the bomb (because it exploded lol)
 
+		// Destroy the bomb (because it exploded lol).
 		yield return new WaitForSeconds(3f);
 		Destroy(gameObject);
 
@@ -137,10 +137,8 @@ public class ShipCollisions : MonoBehaviour {
 	}
 
 	void OnDestroy() {
-		Debug.Log("End of game, score : "+GameConfiguration.Instance.score);
+		Debug.Log("End of game, score : " + GameConfiguration.Instance.score);
 	}
-
-	
 	
 	public void OnHighscoreLoaded(List<HighscoreSaver.Highscore> highscores)
 	{
@@ -150,14 +148,11 @@ public class ShipCollisions : MonoBehaviour {
 		{
 			Debug.Log(hs.name + "\t\t" + hs.score + "\n");
 		}
-		
 	}
 	
 	public void OnHighscorePosted(){
 		HighscoreSaver.loadScores(this);
 	}
-
-	
 	
 	// Wings collisions detection.
 	public void OnHitLeft()

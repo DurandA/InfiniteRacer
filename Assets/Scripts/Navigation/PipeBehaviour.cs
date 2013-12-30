@@ -36,27 +36,23 @@ public class PipeBehaviour : NavigationBehaviour {
 		if(spline.gameObject.name == "Pipe 90 full(Clone)")
 		{
 			createTwoBlocks(0.1f);
-			createTwoBlocks(0.2f);
+			createTwoBlocks(0.1f);
 			createTwoBlocks(0.3f);
-			createTwoBlocks(0.4f);
-			createTwoBlocks(0.5f);
-;
+			createTwoBlocks(0.3f);
 		}
 		if(spline.gameObject.name == "Pipe 90 half(Clone)")
 		{
 			createTwoBlocks(0.1f);
-			createTwoBlocks(0.2f);
+			createTwoBlocks(0.1f);
 			createTwoBlocks(0.3f);
-			createTwoBlocks(0.4f);
-			createTwoBlocks(0.5f);
+			createTwoBlocks(0.3f);
 		}
 		if(spline.gameObject.name == "Pipe 90 half+s(Clone)")
 		{
 			createTwoBlocks(0.1f);
-			createTwoBlocks(0.2f);
+			createTwoBlocks(0.1f);
 			createTwoBlocks(0.3f);
-			createTwoBlocks(0.4f);
-			createTwoBlocks(0.5f);
+			createTwoBlocks(0.3f);
 		}
 	
 		float start = 0.1f;
@@ -66,8 +62,9 @@ public class PipeBehaviour : NavigationBehaviour {
 			start = 0.3f;
 			increment = 0.6f;
 		} 
-		
-		/*for (float i = start; i < 1.0f; i = i + increment)
+		/*
+
+		for (float i = start; i < 1.0f; i = i + increment)
 		{
 			int obstacleType = Random.Range(1,6);
 
@@ -88,7 +85,8 @@ public class PipeBehaviour : NavigationBehaviour {
 					break;
 				}
 			}
-			
+
+
 			//obstacle type
 			switch (obstacleType)
 			{

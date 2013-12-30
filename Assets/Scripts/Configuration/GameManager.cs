@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour {
 
 	void Update () {
 		// Update and detect each second.
-		if(Time.time - timer >= 1f)
+		if(Time.time - timer >= 1f && GameConfiguration.Instance.ended == false)
 		{
 			timer = Time.time;
 			GameConfiguration.Instance.score += 1;

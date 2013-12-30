@@ -21,7 +21,6 @@ public static class HighscoreSaver {
         public string name;
         public string score;
     }
-   
 
     private static string GetMd5Hash(MD5 md5Hash, string input)
     {
@@ -38,6 +37,7 @@ public static class HighscoreSaver {
     {
         script.StartCoroutine(serverPostRequest(name, score, script));
     }
+
     private static IEnumerator serverPostRequest(string name, string score, MonoBehaviour script)
     {
         string hash = GetMd5Hash(MD5.Create(), (name + score + SECRET_KEY));
