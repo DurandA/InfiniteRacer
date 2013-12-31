@@ -1,145 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.20506</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{710E79A8-9FF6-3A91-83A9-B9C4BA1148ED}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <BaseDirectory>Assets</BaseDirectory>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{710E79A8-9FF6-3A91-83A9-B9C4BA1148ED}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>True</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>False</Optimize>
-    <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_WEBPLAYER;WEBPLUG;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_2;UNITY_4_3;DEVELOPMENT_BUILD;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>0169</NoWarn>
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_WEBPLAYER;WEBPLUG;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_0;UNITY_4_3;DEVELOPMENT_BUILD;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>True</Optimize>
-    <OutputPath>Temp\bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>0169</NoWarn>
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="UnityEngine">
-      <HintPath>C:\Program Files %28x86%29\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor">
-      <HintPath>C:\Program Files %28x86%29\Unity\Editor\Data\Managed\UnityEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml" />
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AnimSoundTrigger.cs" />
-    <Compile Include="Assets\Detonator Explosion Framework\System\Detonator.cs" />
-    <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorBurstEmitter.cs" />
-    <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorCloudRing.cs" />
-    <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorFireball.cs" />
-    <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorForce.cs" />
-    <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorGlow.cs" />
-    <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorHeatwave.cs" />
-    <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorLight.cs" />
-    <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorShockwave.cs" />
-    <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSmoke.cs" />
-    <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSound.cs" />
-    <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSparks.cs" />
-    <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSpray.cs" />
-    <Compile Include="Assets\GameMenu\NewGameTextController.cs" />
-    <Compile Include="Assets\MenuAnimator.cs" />
-    <Compile Include="Assets\MenuButtonActions.cs" />
-    <Compile Include="Assets\Scripts\Audio FX\AudioFXController.cs" />
-    <Compile Include="Assets\Scripts\Audio FX\AudioFXHandler.cs" />
-    <Compile Include="Assets\Scripts\Audio FX\ObstacleFXHandler.cs" />
-    <Compile Include="Assets\Scripts\Audio FX\PipeFXHandler.cs" />
-    <Compile Include="Assets\Scripts\CameraInterpolator.cs" />
-    <Compile Include="Assets\Scripts\Configuration\GameConfiguration.cs" />
-    <Compile Include="Assets\Scripts\Configuration\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Configuration\HighscoreSaver.cs" />
-    <Compile Include="Assets\Scripts\Configuration\MiniJSON.cs" />
-    <Compile Include="Assets\Scripts\Menu\Credits\CreditsNavController.cs" />
-    <Compile Include="Assets\Scripts\Menu\Main  Menu\CreditsController.cs" />
-    <Compile Include="Assets\Scripts\Menu\Main  Menu\ExitController.cs" />
-    <Compile Include="Assets\Scripts\Menu\Main  Menu\HighscoreController.cs" />
-    <Compile Include="Assets\Scripts\Menu\Main  Menu\LaunchController.cs" />
-    <Compile Include="Assets\Scripts\Menu\Main  Menu\NewGameController.cs" />
-    <Compile Include="Assets\Scripts\Menu\Main  Menu\OptionsController.cs" />
-    <Compile Include="Assets\Scripts\Navigation\NavigationBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Navigation\NavigationController.cs" />
-    <Compile Include="Assets\Scripts\Navigation\PipeBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Obstacles\BlowerAnimator.cs" />
-    <Compile Include="Assets\Scripts\Obstacles\CannonController.cs" />
-    <Compile Include="Assets\Scripts\Obstacles\CoinAnimator.cs" />
-    <Compile Include="Assets\Scripts\Pipes\OpenPipeGenerator.cs" />
-    <Compile Include="Assets\Scripts\Player\CameraIntro.cs" />
-    <Compile Include="Assets\Scripts\Player\Collisions\LeftWingCollisions.cs" />
-    <Compile Include="Assets\Scripts\Player\Collisions\RightWingCollisions.cs" />
-    <Compile Include="Assets\Scripts\Player\Collisions\ShipCollisions.cs" />
-    <Compile Include="Assets\Scripts\Player\EndGameController.cs" />
-    <Compile Include="Assets\Scripts\Player\GameSounds.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Player\ShipAnimator.cs" />
-    <Compile Include="Assets\Scripts\Player\SoundAnalysis.cs" />
-    <Compile Include="Assets\Scripts\Scene\EndGameMenu.cs" />
-    <Compile Include="Assets\Scripts\Scene\HUD.cs" />
-    <Compile Include="Assets\Scripts\Scene\Loader.cs" />
-    <Compile Include="Assets\Scripts\Scene\LoadingScreen.cs" />
-    <Compile Include="Assets\Scripts\Scene\ParticleSpeedController.cs" />
-    <Compile Include="Assets\Scripts\Scene\PauseMenu.cs" />
-    <Compile Include="Assets\SuperSplinesPro\Scripts\Animation\SplineAnimator.cs" />
-    <Compile Include="Assets\SuperSplinesPro\Scripts\Animation\SplineAnimatorClosestPoint.cs" />
-    <Compile Include="Assets\SuperSplinesPro\Scripts\Animation\SplineAnimatorCustomValue.cs" />
-    <Compile Include="Assets\SuperSplinesPro\Scripts\Design\SplineAutoAlign.cs" />
-    <Compile Include="Assets\SuperSplinesPro\Scripts\MeshModifiers\SplineMeshModifierExample.cs" />
-    <Compile Include="Assets\SuperSplinesPro\Scripts\Physics\SplineGravitySimulator.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplines\BranchingSpline\BranchingSpline.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplines\Spline\Spline.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplines\Spline\SplineDistanceFunctions.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplines\Spline\SplineGizmos.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplines\Spline\SplineInterpolator.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplines\Spline\SplineLengthData.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplines\Spline\SplineSegment.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplines\SplineMesh\MeshModifiers\SplineCurveScaleModifier.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplines\SplineMesh\MeshModifiers\SplineSineScaleModifier.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplines\SplineMesh\MeshModifiers\SplineTwistModifier.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplines\SplineMesh\SplineMesh.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplines\SplineMesh\SplineMeshModifier.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplines\SplineNode\SplineNode.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplines\Utilities\QuaternionUtils.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplinesSamples\SampleAssets\Scripts\AlterSineMeshModifier.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplinesSamples\SampleAssets\Scripts\AlterTwistMeshModifier.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplinesSamples\SampleAssets\Scripts\BranchingSplineDemo.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplinesSamples\SampleAssets\Scripts\CarAnimator.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplinesSamples\SampleAssets\Scripts\NodeCreator.cs" />
-    <Compile Include="Assets\SuperSplinesPro\SuperSplinesSamples\SampleAssets\Scripts\VectorArrayInterpolation.cs" />
-    <None Include="Assets\Shaders\UnlitColorOnly.shader" />
-    <None Include="Assets\Detonator Explosion Framework\Resources\Detonator\Textures\HeatDistort.shader" />
-    <None Include="Assets\SuperSplinesPro\ReadMe.txt" />
-    <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend %28Queue +100%29.shader" />
+     <Compile Include="Assets\AnimSoundTrigger.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\Detonator.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorBurstEmitter.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorCloudRing.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorFireball.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorForce.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorGlow.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorHeatwave.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorLight.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorShockwave.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSmoke.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSound.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSparks.cs" />
+     <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSpray.cs" />
+     <Compile Include="Assets\GameMenu\NewGameTextController.cs" />
+     <Compile Include="Assets\MenuAnimator.cs" />
+     <Compile Include="Assets\MenuButtonActions.cs" />
+     <Compile Include="Assets\Scripts\Audio FX\AudioFXController.cs" />
+     <Compile Include="Assets\Scripts\Audio FX\AudioFXHandler.cs" />
+     <Compile Include="Assets\Scripts\Audio FX\ObstacleFXHandler.cs" />
+     <Compile Include="Assets\Scripts\Audio FX\PipeFXHandler.cs" />
+     <Compile Include="Assets\Scripts\CameraInterpolator.cs" />
+     <Compile Include="Assets\Scripts\Configuration\GameConfiguration.cs" />
+     <Compile Include="Assets\Scripts\Configuration\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Configuration\HighscoreSaver.cs" />
+     <Compile Include="Assets\Scripts\Configuration\MiniJSON.cs" />
+     <Compile Include="Assets\Scripts\Menu\Credits\CreditsNavController.cs" />
+     <Compile Include="Assets\Scripts\Menu\Main  Menu\CreditsController.cs" />
+     <Compile Include="Assets\Scripts\Menu\Main  Menu\ExitController.cs" />
+     <Compile Include="Assets\Scripts\Menu\Main  Menu\HighscoreController.cs" />
+     <Compile Include="Assets\Scripts\Menu\Main  Menu\LaunchController.cs" />
+     <Compile Include="Assets\Scripts\Menu\Main  Menu\NewGameController.cs" />
+     <Compile Include="Assets\Scripts\Menu\Main  Menu\OptionsController.cs" />
+     <Compile Include="Assets\Scripts\Navigation\NavigationBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Navigation\NavigationController.cs" />
+     <Compile Include="Assets\Scripts\Navigation\PipeBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Obstacles\BlowerAnimator.cs" />
+     <Compile Include="Assets\Scripts\Obstacles\CannonController.cs" />
+     <Compile Include="Assets\Scripts\Obstacles\CoinAnimator.cs" />
+     <Compile Include="Assets\Scripts\Pipes\OpenPipeGenerator.cs" />
+     <Compile Include="Assets\Scripts\Player\CameraIntro.cs" />
+     <Compile Include="Assets\Scripts\Player\Collisions\LeftWingCollisions.cs" />
+     <Compile Include="Assets\Scripts\Player\Collisions\RightWingCollisions.cs" />
+     <Compile Include="Assets\Scripts\Player\Collisions\ShipCollisions.cs" />
+     <Compile Include="Assets\Scripts\Player\EndGameController.cs" />
+     <Compile Include="Assets\Scripts\Player\GameSounds.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Player\ShipAnimator.cs" />
+     <Compile Include="Assets\Scripts\Player\SoundAnalysis.cs" />
+     <Compile Include="Assets\Scripts\Scene\EndGameMenu.cs" />
+     <Compile Include="Assets\Scripts\Scene\HUD.cs" />
+     <Compile Include="Assets\Scripts\Scene\HudRenderer.cs" />
+     <Compile Include="Assets\Scripts\Scene\Loader.cs" />
+     <Compile Include="Assets\Scripts\Scene\LoadingScreen.cs" />
+     <Compile Include="Assets\Scripts\Scene\ParticleSpeedController.cs" />
+     <Compile Include="Assets\Scripts\Scene\PauseMenu.cs" />
+     <Compile Include="Assets\SuperSplinesPro\Scripts\Animation\SplineAnimator.cs" />
+     <Compile Include="Assets\SuperSplinesPro\Scripts\Animation\SplineAnimatorClosestPoint.cs" />
+     <Compile Include="Assets\SuperSplinesPro\Scripts\Animation\SplineAnimatorCustomValue.cs" />
+     <Compile Include="Assets\SuperSplinesPro\Scripts\Design\SplineAutoAlign.cs" />
+     <Compile Include="Assets\SuperSplinesPro\Scripts\MeshModifiers\SplineMeshModifierExample.cs" />
+     <Compile Include="Assets\SuperSplinesPro\Scripts\Physics\SplineGravitySimulator.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplines\BranchingSpline\BranchingSpline.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplines\Spline\Spline.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplines\Spline\SplineDistanceFunctions.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplines\Spline\SplineGizmos.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplines\Spline\SplineInterpolator.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplines\Spline\SplineLengthData.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplines\Spline\SplineSegment.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplines\SplineMesh\MeshModifiers\SplineCurveScaleModifier.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplines\SplineMesh\MeshModifiers\SplineSineScaleModifier.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplines\SplineMesh\MeshModifiers\SplineTwistModifier.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplines\SplineMesh\SplineMesh.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplines\SplineMesh\SplineMeshModifier.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplines\SplineNode\SplineNode.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplines\Utilities\QuaternionUtils.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplinesSamples\SampleAssets\Scripts\AlterSineMeshModifier.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplinesSamples\SampleAssets\Scripts\AlterTwistMeshModifier.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplinesSamples\SampleAssets\Scripts\BranchingSplineDemo.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplinesSamples\SampleAssets\Scripts\CarAnimator.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplinesSamples\SampleAssets\Scripts\NodeCreator.cs" />
+     <Compile Include="Assets\SuperSplinesPro\SuperSplinesSamples\SampleAssets\Scripts\VectorArrayInterpolation.cs" />
+     <None Include="Assets\Shaders\UnlitColorOnly.shader" />
+     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+     <None Include="Assets\Detonator Explosion Framework\Resources\Detonator\Textures\HeatDistort.shader" />
+     <None Include="Assets\SuperSplinesPro\ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{D8C43AD0-E9E4-FD3A-019E-9D6FA7BC5214}</Project>
-      <Name>Assembly-CSharp-firstpass</Name>
-    </ProjectReference>
+      <Project>{D8C43AD0-E9E4-FD3A-019E-9D6FA7BC5214}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
-      <Project>{BE8922B9-F675-5F93-B021-B75A3FA935C6}</Project>
-      <Name>Assembly-UnityScript-firstpass</Name>
-    </ProjectReference>
+      <Project>{BE8922B9-F675-5F93-B021-B75A3FA935C6}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -149,4 +147,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  
 </Project>

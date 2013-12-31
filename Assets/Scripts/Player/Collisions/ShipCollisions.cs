@@ -140,19 +140,7 @@ public class ShipCollisions : MonoBehaviour {
 		Debug.Log("End of game, score : " + GameConfiguration.Instance.score);
 	}
 	
-	public void OnHighscoreLoaded(List<HighscoreSaver.Highscore> highscores)
-	{
-		Debug.Log("Updating highscores!");
-		string text = "";
-		foreach (HighscoreSaver.Highscore hs in highscores)
-		{
-			Debug.Log(hs.name + "\t\t" + hs.score + "\n");
-		}
-	}
-	
-	public void OnHighscorePosted(){
-		HighscoreSaver.loadScores(this);
-	}
+
 	
 	// Wings collisions detection.
 	public void OnHitLeft()

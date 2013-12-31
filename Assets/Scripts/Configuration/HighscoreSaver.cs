@@ -5,7 +5,10 @@ using System.Security.Cryptography;
 using System.Text;
 using MiniJSON;
 
-
+/*
+ * Author : Stalder
+ * Description : class to handle the posting of the highscores.
+ */
 public static class HighscoreSaver {
     private const string SECRET_KEY         = "infinite2013"; 
     private const string ADD_SCORE_URL      = "http://randonnazbike.ch/savehighscores.php?"; 
@@ -14,10 +17,11 @@ public static class HighscoreSaver {
 
     public struct Highscore
     {
-        public Highscore(string name, string score)
+        public Highscore(string position,string name, string score)
         {
-            this.name = name; this.score = score;
+			this.name = name; this.score = score; this.position = position;
         }
+		public string position;
         public string name;
         public string score;
     }
@@ -75,7 +79,7 @@ public static class HighscoreSaver {
             IDictionary o = (IDictionary)Json.Deserialize(hs_get.text);
             foreach (IDictionary user in o.Values)
             {
-                hslist.Add(new Highscore((string)user["name"], (string)user["score"]));
+				hslist.Add(new Highscore((string)user["pos"],(string)user["name"], (string)user["score"]));
             }
 
             script.SendMessage("OnHighscoreLoaded", hslist);

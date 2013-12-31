@@ -1,12 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Scene\EndGameMenu.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Configuration\HighscoreSaver.cs">
     <Files>
-      <File FileName="Assets\Scripts\Scene\EndGameMenu.cs" Line="60" Column="8" />
-      <File FileName="Assets\Scripts\Scene\PauseMenu.cs" Line="17" Column="3" />
-      <File FileName="Assets\Scripts\Player\Collisions\ShipCollisions.cs" Line="153" Column="34" />
-      <File FileName="Assets\Scripts\Configuration\GameManager.cs" Line="39" Column="3" />
-      <File FileName="Assets\Scripts\Player\PlayerBehaviour.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Scene\EndGameMenu.cs" Line="13" Column="32" />
+      <File FileName="Assets\Scripts\Configuration\HighscoreSaver.cs" Line="74" Column="10" />
+      <File FileName="Assets\Scripts\Player\EndGameController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Scene\EndGameMenu.cs" Line="13" Column="32" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

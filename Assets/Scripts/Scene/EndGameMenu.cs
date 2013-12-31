@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
+using System.Security.Cryptography;
 /*
  * Author : Thomas Rouvinez
  * Description : class to handle the endgame menu.
@@ -57,7 +58,8 @@ public class EndGameMenu : MonoBehaviour {
 			{
 				if(sent == false)
 				{
-					//HighscoreSaver.postScore(playerName, GameConfiguration.Instance.score.ToString(), this);
+					// manque : tester s'il y a une connexion internet
+					HighscoreSaver.postScore(playerName, GameConfiguration.Instance.score.ToString(), this);
 					sent = true;
 				}
 			}
@@ -74,5 +76,25 @@ public class EndGameMenu : MonoBehaviour {
 				Application.LoadLevel(0);
 			}
 		}
+	}
+	// ------------------------------------------------------------------
+	// OnHighscoreLoaded.
+	// callback method, called if the higscores are loaded correctly
+	// ------------------------------------------------------------------
+	public void OnHighscoreLoaded(List<HighscoreSaver.Highscore> highscores)
+	{
+		Debug.Log("The last highscores:");
+		foreach (HighscoreSaver.Highscore hs in highscores)
+		{
+			Debug.Log(hs.position + "\t\t" + hs.name + "\t\t" + hs.score + "\n");
+		}
+	}
+	// ------------------------------------------------------------------
+	// OnHighscorePosted.
+	// callback method, called if the Rest-request is sucessful
+	// ------------------------------------------------------------------
+	public void OnHighscorePosted(){
+		HighscoreSaver.loadScores(this);
+		Debug.Log("Scores published with success.");
 	}
 }
