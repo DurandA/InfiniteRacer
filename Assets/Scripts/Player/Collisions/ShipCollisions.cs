@@ -140,8 +140,6 @@ public class ShipCollisions : MonoBehaviour {
 		Debug.Log("End of game, score : " + GameConfiguration.Instance.score);
 	}
 	
-
-	
 	// Wings collisions detection.
 	public void OnHitLeft()
 	{
