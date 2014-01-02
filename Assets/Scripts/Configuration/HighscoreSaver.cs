@@ -14,7 +14,7 @@ public static class HighscoreSaver {
     private const string ADD_SCORE_URL      = "http://randonnazbike.ch/savehighscores.php?"; 
 	private const string GET_SCORE_URL      = "http://randonnazbike.ch/gethighscores.php?";
     private const string SQL_SCORE_TABLE    = "scores";
-
+	public enum ScoreTypes {all, top3, top10, top3withlastscore};
     public struct Highscore
     {
         public Highscore(string position,string name, string score)
@@ -24,6 +24,7 @@ public static class HighscoreSaver {
 		public string position;
         public string name;
         public string score;
+
     }
 
     private static string GetMd5Hash(MD5 md5Hash, string input)
@@ -58,11 +59,11 @@ public static class HighscoreSaver {
         }
 
     }
-    private static IEnumerator serverGetRequest(MonoBehaviour script)
+    private static IEnumerator serverGetRequest(MonoBehaviour script, ScoreTypes st)
     {
         List<Highscore> hslist = new List<Highscore>();
         Debug.Log("starting request");
-        WWW hs_get = new WWW(GET_SCORE_URL + "table=" + SQL_SCORE_TABLE);
+        WWW hs_get = new WWW(GET_SCORE_URL + "table=" + SQL_SCORE_TABLE +"&scoreType="+st);
         float timeelapsed = 0;
         while (!hs_get.isDone)
         {
@@ -86,8 +87,8 @@ public static class HighscoreSaver {
         }
     }
 
-    public static void loadScores(MonoBehaviour script)
+	public static void loadScores(MonoBehaviour script,  ScoreTypes st)
     {
-        script.StartCoroutine(serverGetRequest(script));
+        script.StartCoroutine(serverGetRequest(script,st));
     }
 }

@@ -79,8 +79,8 @@ public class EndGameMenu : MonoBehaviour {
 					}
 
 					// Own score.
-					heightHS += 0.5f;
-					GUI.Label(new Rect(width-250, height * heightHS,500, 60), "NEW SCORE    " + GameConfiguration.Instance.score);
+					//heightHS += 0.5f;
+					//GUI.Label(new Rect(width-250, height * heightHS,500, 60), "NEW SCORE    " + GameConfiguration.Instance.score);
 				}
 			}
 
@@ -114,6 +114,6 @@ public class EndGameMenu : MonoBehaviour {
 	// ------------------------------------------------------------------
 
 	public void OnHighscorePosted(){
-		HighscoreSaver.loadScores(this);
+		HighscoreSaver.loadScores(this,HighscoreSaver.ScoreTypes.top3withlastscore);
 	}
 }
