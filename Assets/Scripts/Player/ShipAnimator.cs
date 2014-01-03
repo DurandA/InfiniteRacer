@@ -87,7 +87,7 @@ public class ShipAnimator : MonoBehaviour {
 		rotWingRight.y = 0f;
 		
 		//If statement of the lateral movement
-		if (playerScript.InputEnabled() == true && Input.GetKey ("left"))
+		if (playerScript.InputEnabled() == true && (Input.GetKey("left") || (Input.GetMouseButton(0) && Input.mousePosition.x < Screen.width/2)))
 		{
 			//Rotate wings for left lateral movement
 			rotWingLeft.z +=  speedDeltaAngle;
@@ -97,7 +97,7 @@ public class ShipAnimator : MonoBehaviour {
 			wingLeft.transform.localEulerAngles = rotWingLeft;
 			wingRight.transform.localEulerAngles = rotWingRight;
 		}
-		else if (playerScript.InputEnabled() == true && Input.GetKey("right"))
+		else if (playerScript.InputEnabled() == true && (Input.GetKey("right") || (Input.GetMouseButton(0) && Input.mousePosition.x > Screen.width/2)))
 		{
 			//Rotate wings for right lateral movement
 			rotWingLeft.z -=  speedDeltaAngle;
