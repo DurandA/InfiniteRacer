@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour {
 		{
 			timer = Time.time;
 			GameConfiguration.Instance.score += 1;
+
+			GameConfiguration.Instance.speed = Mathf.Clamp(GameConfiguration.Instance.speed +0.2f, 100f, 180f);
 		}
 	}
 

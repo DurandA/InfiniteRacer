@@ -14,6 +14,7 @@ public class HUD : MonoBehaviour {
 
 	public TextMesh coinNumber;
 	public TextMesh score;
+	public TextMesh speed;
 	public bool running;
 	private long tempScore = 0;
 
@@ -33,6 +34,7 @@ public class HUD : MonoBehaviour {
 		{
 			// Update the fields.
 			coinNumber.text = GameConfiguration.Instance.coins.ToString() ;
+			speed.text = ((short) (GameConfiguration.Instance.speed)).ToString() ;
 
 			if(GameConfiguration.Instance.score > tempScore){
 				tempScore += 1;

@@ -1,13 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Pipes\OpenPipeGenerator.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Configuration\GameManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\Pipes\OpenPipeGenerator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Scene\EndGameMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Configuration\HighscoreSaver.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Obstacles\VFXFan.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\ShipAnimator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Menu\Credits\CreditsNavController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Configuration\GameManager.cs" Line="35" Column="88" />
+      <File FileName="Assets\Scripts\Scene\HUD.cs" Line="37" Column="18" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
