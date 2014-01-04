@@ -8,7 +8,6 @@ public class PipeBehaviour : NavigationBehaviour {
 	public Transform blowerObstacle;
 	public Transform cannonObstacle;
 	public Transform lazer;
-
 	public Transform coin;
 
 	public virtual void SpawnCoins(float positionOnSpline, int number, float shift){
@@ -23,136 +22,16 @@ public class PipeBehaviour : NavigationBehaviour {
 			shiftAdd += shift;
 		}
 	}
+
 	
-	// --------------------------------------------------------------------------------------
-	// Spawn obstacles.
-	// --------------------------------------------------------------------------------------
-	
-	public virtual void Awake() {
-		if(spline.gameObject.name == "Pipe 0 full(Clone)")
-		{
-			spawnForFullPipe();
-		}
-		if(spline.gameObject.name == "Pipe 90 full(Clone)")
-		{
-			createTwoBlocks(0.1f);
-			createTwoBlocks(0.1f);
-			createTwoBlocks(0.3f);
-			createTwoBlocks(0.3f);
-		}
-		if(spline.gameObject.name == "Pipe 90 half(Clone)")
-		{
-			createTwoBlocks(0.1f);
-			createTwoBlocks(0.1f);
-			createTwoBlocks(0.3f);
-			createTwoBlocks(0.3f);
-		}
-		if(spline.gameObject.name == "Pipe 90 half+s(Clone)")
-		{
-			createTwoBlocks(0.1f);
-			createTwoBlocks(0.1f);
-			createTwoBlocks(0.3f);
-			createTwoBlocks(0.3f);
-		}
-	
-		float start = 0.1f;
-		float increment = 0.5f;
-		
-		if(GameConfiguration.Instance.speed > 170.0){
-			start = 0.3f;
-			increment = 0.6f;
-		} 
-		/*
-
-		for (float i = start; i < 1.0f; i = i + increment)
-		{
-			int obstacleType = Random.Range(1,6);
-
-			if(i>0.4)
-			{
-				switch (obstacleType)
-				{
-				case 1:
-					SpawnCoins(i+0.3f,7,8.0f);
-					break;
-				case 2:
-					SpawnCoins(i+0.3f,10,0.0f);
-					break;
-				case 3:
-					SpawnCoins(i+0.3f,15,0.0f);
-					break;
-				default:
-					break;
-				}
-			}
-
-
-			//obstacle type
-			switch (obstacleType)
-			{
-			case 1:
-				createBlock(i);
-				break;
-			case 2:
-				createTwoBlocks(i);
-				break;
-			case 3:
-				createBlower(i);
-				break;
-			case 4:
-				createCannon();
-				break;
-			case 5:
-				createHexa(i);
-				break;
-			default:
-				break;
-			}
-		}*/
-	}
-
-	private void spawnForFullPipe(){
-		for (float i = 0.2f; i < 1.0f; i = i + 0.2f){
-			int obstacleType = Random.Range(1,4);
-			switch (obstacleType)
-			{
-			case 1:
-				createBlock(i);
-				break;
-			case 2:
-				createTwoBlocks(i);
-				break;
-			case 3:
-				createBlower(i);
-				break;
-			default:
-				createTwoBlocks(i);
-				break;
-			}
-		}
-
-	}
-
-	private void spawnForFullPipe90(){
-
-	}
-
-	private void spawnForHalfPipe90(){
-
-	}
-
-	private void spawnForHalfPipe90s(){
-
-	}
-	
-	private void createBlock(float newPosition){
+	public void createBlock(float newPosition){
 		float x = 	Random.Range(0,360);
 		Transform obs = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(x)) as Transform;
 		obs.transform.parent=transform;
 		obs.transform.Rotate(new Vector3(180,0,0),Space.Self);
 	}
 	
-	private void createTwoBlocks(float newPosition){
+	public void createTwoBlocks(float newPosition){
 		float x = 	Random.Range(0,360);
 		Transform obs = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs.transform.parent=transform;
@@ -163,19 +42,19 @@ public class PipeBehaviour : NavigationBehaviour {
 		obs2.transform.parent=transform;
 	}
 
-	private void createHexa(float newPosition){
+	public void createHexa(float newPosition){
 		if (hexaObstacle != null) {
 			Transform hexa = Instantiate (hexaObstacle, spline.GetPositionOnSpline (newPosition), spline.GetOrientationOnSpline (newPosition)) as Transform;
 			hexa.transform.parent = transform;
 		}
 	}
 	
-	private void createBlower(float newPosition){
+	public void createBlower(float newPosition){
 		Transform obs = Instantiate(blowerObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs.transform.parent=transform;
 	}
 	
-	private void createCannon(){
+	public void createCannon(){
 		// No lazer for 90° tubes.
 		if (cannonObstacle != null)
 		{
