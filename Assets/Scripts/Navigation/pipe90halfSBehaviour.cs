@@ -5,13 +5,11 @@ public class pipe90halfSBehaviour : PipeBehaviour {
 
 	public virtual void Awake() {
 
+	createTwoBlocks(0.1f);
+	createTwoBlocks(0.3f);
+		
+		SpawnCoins(0.3f,7,8.0f);
 
-			createTwoBlocks(0.1f);
-			createTwoBlocks(0.1f);
-			createTwoBlocks(0.3f);
-			createTwoBlocks(0.3f);
-		
-		
 		float start = 0.1f;
 		float increment = 0.5f;
 		
@@ -51,7 +49,6 @@ public class pipe90halfSBehaviour : PipeBehaviour {
 				createBlock(i);
 				break;
 			case 2:
-				createTwoBlocks(i);
 				break;
 			case 3:
 				createBlower(i);
