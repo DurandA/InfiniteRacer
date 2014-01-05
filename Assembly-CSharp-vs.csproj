@@ -81,8 +81,10 @@
      <Compile Include="Assets\Scripts\Menu\Main  Menu\OptionsController.cs" />
      <Compile Include="Assets\Scripts\Navigation\NavigationBehaviour.cs" />
      <Compile Include="Assets\Scripts\Navigation\NavigationController.cs" />
+     <Compile Include="Assets\Scripts\Navigation\Pipe0Behaviour.cs" />
      <Compile Include="Assets\Scripts\Navigation\Pipe0WinBehaviour.cs" />
      <Compile Include="Assets\Scripts\Navigation\Pipe90Behaviour.cs" />
+     <Compile Include="Assets\Scripts\Navigation\Pipe90VHalfBehaviour.cs" />
      <Compile Include="Assets\Scripts\Navigation\PipeBehaviour.cs" />
      <Compile Include="Assets\Scripts\Navigation\pipe90halfSBehaviour.cs" />
      <Compile Include="Assets\Scripts\Obstacles\BlowerAnimator.cs" />
