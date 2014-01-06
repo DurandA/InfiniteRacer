@@ -10,7 +10,6 @@ public abstract class AudioFXHandler : MonoBehaviour {
 		yield return AudioFXController.Instance;
 
 		AudioFXController.RegisterListener(this);
-		
 	}
 
 	void OnDestroy () {

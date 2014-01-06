@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AnimSoundTrigger.cs" />
      <Compile Include="Assets\Detonator Explosion Framework\System\Detonator.cs" />
      <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorBurstEmitter.cs" />
      <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorCloudRing.cs" />
@@ -62,7 +61,7 @@
      <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSpray.cs" />
      <Compile Include="Assets\GameMenu\NewGameTextController.cs" />
      <Compile Include="Assets\MenuAnimator.cs" />
-     <Compile Include="Assets\MenuButtonActions.cs" />
+     <Compile Include="Assets\Scripts\AnimSoundTrigger.cs" />
      <Compile Include="Assets\Scripts\Audio FX\AudioFXController.cs" />
      <Compile Include="Assets\Scripts\Audio FX\AudioFXHandler.cs" />
      <Compile Include="Assets\Scripts\Audio FX\ObstacleFXHandler.cs" />
