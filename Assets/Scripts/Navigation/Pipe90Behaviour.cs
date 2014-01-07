@@ -9,13 +9,13 @@ public class Pipe90Behaviour : PipeBehaviour {
 		switch (rand)
 		{
 		case 1:
-			createHexa(minPos);
+			createHexa(minpos);
 			break;
 		case 2:
-			createBlower(minPos);
+			createBlower(minpos);
 			break;
 		default:
-			createBlower(minPos);
+			createBlower(minpos);
 			break;
 		}
 		createTwoBlocks(0.4f);
