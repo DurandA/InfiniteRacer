@@ -26,9 +26,9 @@ public class PipeBehaviour : NavigationBehaviour {
 	
 	public void createBlock(float newPosition){
 		float x = 	Random.Range(0,360);
-		Transform obs = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(x)) as Transform;
+		Transform obs = Instantiate(blockObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs.transform.parent=transform;
-		obs.transform.Rotate(new Vector3(180,0,0),Space.Self);
+		obs.transform.Rotate(new Vector3(180,0,x),Space.Self);
 	}
 	
 	public void createTwoBlocks(float newPosition){
