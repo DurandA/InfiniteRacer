@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class pipe90halfSBehaviour : PipeBehaviour {
+public class Pipe90HalfSBehaviour : PipeBehaviour {
 
 	public virtual void Awake() {
 
