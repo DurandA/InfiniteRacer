@@ -19,7 +19,7 @@ public class Pipe0WinBehaviour : PipeBehaviour {
 			createBlower(minPos);
 			break;
 		default:
-			createBlower(minPos);
+			createLaser(minPos);
 			break;
 		}
 		switch(rand2)

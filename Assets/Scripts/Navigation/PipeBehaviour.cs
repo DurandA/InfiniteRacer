@@ -7,7 +7,7 @@ public class PipeBehaviour : NavigationBehaviour {
 	public Transform hexaObstacle;
 	public Transform blowerObstacle;
 	public Transform cannonObstacle;
-	public Transform lazer;
+	public Transform laserObstacle;
 	public Transform coin;
 
 	public virtual void SpawnCoins(float positionOnSpline, int number, float shift){
@@ -51,6 +51,11 @@ public class PipeBehaviour : NavigationBehaviour {
 	
 	public void createBlower(float newPosition){
 		Transform obs = Instantiate(blowerObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
+		obs.transform.parent=transform;
+	}
+
+	public void createLaser(float newPosition){
+		Transform obs = Instantiate(laserObstacle,spline.GetPositionOnSpline(newPosition),spline.GetOrientationOnSpline(newPosition)) as Transform;
 		obs.transform.parent=transform;
 	}
 	

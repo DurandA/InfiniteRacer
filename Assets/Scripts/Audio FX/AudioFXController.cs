@@ -17,8 +17,8 @@ public class AudioFXController : MonoBehaviour {
 	public static AudioFXController Instance
 	{
 		get {
-			if (applicationIsQuitting)
-				return null;
+			/*if (applicationIsQuitting)
+				return null;*/
 
 			if (instance == null)
 			{
@@ -70,7 +70,8 @@ public class AudioFXController : MonoBehaviour {
 	}
 
 	public static void UnregisterListener(AudioFXHandler listener){
-		Instance.listeners.Remove(listener);
+		if (Instance!=null)
+			Instance.listeners.Remove(listener);
 	}
 
 

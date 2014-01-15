@@ -15,7 +15,7 @@ public class Pipe90Behaviour : PipeBehaviour {
 			createBlower(minpos);
 			break;
 		default:
-			createBlower(minpos);
+			createLaser(minpos);
 			break;
 		}
 		createTwoBlocks(0.4f);
