@@ -15,6 +15,6 @@ public class VFXFan : MonoBehaviour {
 	}
 
 	void Update () {
-		transform.Rotate(Vector3.up, Time.deltaTime * random);
+		transform.Rotate(Vector3.up, Time.deltaTime * -1 * random);
 	}
 }

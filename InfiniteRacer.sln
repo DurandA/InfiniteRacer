@@ -11,6 +11,8 @@ Project("{687943E8-9490-2599-2A28-0F16578D7993}") = "InfiniteRacer", "Assembly-U
 EndProject
 Project("{687943E8-9490-2599-2A28-0F16578D7993}") = "InfiniteRacer", "Assembly-UnityScript.unityproj", "{78B3EE57-0A5F-2C4B-7D48-CD6269AC1484}"
 EndProject
+Project("{687943E8-9490-2599-2A28-0F16578D7993}") = "InfiniteRacer", "Assembly-UnityScript-Editor.unityproj", "{9B70FF57-3EB3-0CB7-B60D-138681242CC7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,11 +39,15 @@ Global
 		{78B3EE57-0A5F-2C4B-7D48-CD6269AC1484}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78B3EE57-0A5F-2C4B-7D48-CD6269AC1484}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78B3EE57-0A5F-2C4B-7D48-CD6269AC1484}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B70FF57-3EB3-0CB7-B60D-138681242CC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B70FF57-3EB3-0CB7-B60D-138681242CC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B70FF57-3EB3-0CB7-B60D-138681242CC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B70FF57-3EB3-0CB7-B60D-138681242CC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																																																																																																																																																																																	GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																																																																																																																																																																									GlobalSection(MonoDevelopProperties) = preSolution
 																																																																																																					GlobalSection(MonoDevelopProperties) = preSolution
 																												GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
