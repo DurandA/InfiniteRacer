@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour {
 	public float speed = 100f;
 	private int coins = 0;
 	private long score = 0;
+
+	private float startTimer;
 	private float timer;
 		
 	// ----------------------------------------------------------------------
@@ -22,7 +24,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Start() {
-		timer = Time.time;
+		startTimer = timer = Time.time;
 	}
 
 	void Update () {
@@ -31,13 +33,13 @@ public class GameManager : MonoBehaviour {
 		{
 			timer = Time.time;
 			GameConfiguration.Instance.score += 1;
-
-			GameConfiguration.Instance.speed = Mathf.Clamp(GameConfiguration.Instance.speed +0.2f, 100f, 180f);
+			
+			GameConfiguration.Instance.speed = Mathf.Sqrt(Time.time - startTimer)*8 + 80;
 		}
 	}
 
 	public void ResetConfiguration () {
-		GameConfiguration.Instance.speed = 100;
+		GameConfiguration.Instance.speed = 80;
 		GameConfiguration.Instance.coins = 0;
 		GameConfiguration.Instance.score = 0;
 		GameConfiguration.Instance.paused = false;

@@ -17,8 +17,8 @@ public class AudioFXController : MonoBehaviour {
 	public static AudioFXController Instance
 	{
 		get {
-			/*if (applicationIsQuitting)
-				return null;*/
+			if (applicationIsQuitting)
+				return null;
 
 			if (instance == null)
 			{
