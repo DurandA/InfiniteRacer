@@ -41,9 +41,7 @@ public class EndGameMenu : MonoBehaviour {
 			GUI.skin = endedBackground;
 			GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
 
-			// Game Over.
 			GUI.skin = button;
-			GUI.Label(new Rect ((Screen.width / 2) - 300, 0, 600, 150), "GAME OVER");
 
 			// Submit score.
 			if(sent == false)

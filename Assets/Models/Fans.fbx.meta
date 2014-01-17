@@ -27,6 +27,8 @@ ModelImporter:
     100042: Yellow.4
     100044: Yellow.5
     100046: Yellow.6
+    100048: Decals
+    100050: Propeller
     400000: Black
     400002: Black.2
     400004: Black.3
@@ -51,6 +53,8 @@ ModelImporter:
     400042: Yellow.4
     400044: Yellow.5
     400046: Yellow.6
+    400048: Decals
+    400050: Propeller
     2300000: Black
     2300002: Black.2
     2300004: Black.3
@@ -67,6 +71,9 @@ ModelImporter:
     2300026: Yellow.4
     2300028: Yellow.5
     2300030: Yellow.6
+    2300032: Decals
+    2300034: //RootNode
+    2300036: Propeller
     3300000: Black
     3300002: Black.2
     3300004: Black.3
@@ -83,6 +90,9 @@ ModelImporter:
     3300026: Yellow.4
     3300028: Yellow.5
     3300030: Yellow.6
+    3300032: Decals
+    3300034: //RootNode
+    3300036: Propeller
     4300000: Fan
     4300002: Mask
     4300004: Propellers
@@ -99,6 +109,8 @@ ModelImporter:
     4300026: Yellow.6
     4300028: Black.6
     4300030: Face 1
+    4300032: Propeller
+    4300034: Decals
     9500000: //RootNode
   materials:
     importMaterials: 0
