@@ -29,9 +29,9 @@ public class Pipe0Behaviour : PipeBehaviour {
 				createTwoBlocks(0.7f);
 				break;
 			case 2:
-				createTwoBlocks(0.4f);
-				createBlock(0.5f);
-				createTwoBlocks(0.6f);
+				createTwoBlocks(0.5f);
+				createBlock(0.6f);
+				createTwoBlocks(0.7f);
 				break;
 			default:
 				SpawnCoins(0.4f,4+rand+rand2,8.0f);

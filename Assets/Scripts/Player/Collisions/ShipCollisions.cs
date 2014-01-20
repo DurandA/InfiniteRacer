@@ -70,13 +70,14 @@ public class ShipCollisions : MonoBehaviour {
 			player.enabled=false;
 			GameConfiguration.Instance.speed=0;
 			Rigidbody rigidBody=GetComponent<Rigidbody>();
+
 			rigidbody.isKinematic=false;
-			rigidbody.AddForce(transform.localPosition*5000f+transform.forward*10000f*GameConfiguration.Instance.speed);
+			rigidbody.AddForce(transform.localPosition*50000f+transform.forward*10000f*GameConfiguration.Instance.speed);
 
 			foreach(Collider collider in GetComponents<Collider>())
 				Destroy(collider);
 
-			StartCoroutine(WaitAndExplode(0.3f));
+			StartCoroutine(WaitAndFall(0.3f));
 			OnDestroy();
 		}
 
@@ -92,11 +93,26 @@ public class ShipCollisions : MonoBehaviour {
 			player.motion = 0f;
 
 			// Explode the ship.
-			StartCoroutine(WaitAndExplode(0f));
+			StartCoroutine(WaitAndExplode(0.3f));
 			music.audio.Stop();
 		}  
 	}
-
+	/*
+	 * Author : Arnaud Durand
+	 */
+	IEnumerator WaitAndFall(float waitTime) {
+		yield return new WaitForSeconds(waitTime);
+		
+		Destroy(rigidbody);
+		Destroy(GetComponent<ShipAnimator>());
+		
+		yield return new WaitForSeconds(5f);
+		Destroy(gameObject);
+		
+		// Get ended game screen.
+		GameConfiguration.Instance.ended = true;
+		Time.timeScale = 0;
+	}
 	/*
 	 * Author : Arnaud Durand
 	 */
@@ -135,6 +151,7 @@ public class ShipCollisions : MonoBehaviour {
 		GameConfiguration.Instance.ended = true;
 		Time.timeScale = 0;
 	}
+
 
 	void OnDestroy() {
 		Debug.Log("End of game, score : " + GameConfiguration.Instance.score);

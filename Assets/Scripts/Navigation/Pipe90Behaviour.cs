@@ -18,7 +18,8 @@ public class Pipe90Behaviour : PipeBehaviour {
 			createLaser(minpos);
 			break;
 		}
-		createTwoBlocks(0.4f);
+		createTwoBlocks(minpos+ 0.4f);
+		SpawnCoins(minpos+0.1f, 15,0.0f);
 
 	}
 }

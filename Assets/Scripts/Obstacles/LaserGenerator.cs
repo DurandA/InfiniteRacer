@@ -23,8 +23,8 @@ public class LaserGenerator : MonoBehaviour {
 		{
 			Vector3 pos = Vector3.Lerp(source.position,target.position,i/4.0f);
 
-			pos.x += Random.Range(-0.4f,0.4f);
-			pos.y += Random.Range(-0.4f,0.4f);
+			pos.x += Random.Range(-5.0f,5.0f);
+			pos.y += Random.Range(-5f,5.0f);
 			
 			lineRenderer.SetPosition(i,pos);
 		}
