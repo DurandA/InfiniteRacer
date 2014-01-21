@@ -4,6 +4,7 @@ using System.Collections;
 /*
  * Author : Thomas Rouvinez
  * Description : class to handle HUD information and displayal.
+ * 
  */
 
 public class HUD : MonoBehaviour {
@@ -15,7 +16,6 @@ public class HUD : MonoBehaviour {
 	public TextMesh coinNumber;
 	public TextMesh score;
 	public TextMesh speed;
-	public bool running;
 	private long tempScore = 0;
 
 	// ----------------------------------------------------------------------------
@@ -23,23 +23,22 @@ public class HUD : MonoBehaviour {
 	// ----------------------------------------------------------------------------
 
 	void Start () {
-		running = true;
 		tempScore = 0;
 	}
 	
 	// Update fields in the HUD
 	void Update () {
 		// As long as we are not dead.
-		if(running == true)
+		if(!GameConfiguration.Instance.ended)
 		{
 			// Update the fields.
 			coinNumber.text = GameConfiguration.Instance.coins.ToString() ;
 			speed.text = ((short) (GameConfiguration.Instance.speed)).ToString() ;
-
+			/*
 			if(GameConfiguration.Instance.score > tempScore){
 				tempScore += 1;
 				score.text = tempScore.ToString(); 
-			}
+			}*/
 		}
 	}
 }

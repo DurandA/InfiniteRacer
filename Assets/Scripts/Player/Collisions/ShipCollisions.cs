@@ -31,7 +31,7 @@ public class ShipCollisions : MonoBehaviour {
 
 	public Detonator smokePrefab;
 
-	private HUD hud;
+	//private HUD hud;
 	private PlayerBehaviour player;
 
 	// ------------------------------------------------------------------------
@@ -40,7 +40,7 @@ public class ShipCollisions : MonoBehaviour {
 
 	void Start () 
 	{
-		hud = camera.GetComponent<HUD>();
+		//hud = camera.GetComponent<HUD>();
 		player = ship.GetComponent<PlayerBehaviour>();
 
 		// Get particle systems.
@@ -78,14 +78,13 @@ public class ShipCollisions : MonoBehaviour {
 				Destroy(collider);
 
 			StartCoroutine(WaitAndFall(0.3f));
-			OnDestroy();
 		}
 
 		// Lost the game.
 		else
 		{
 			//Notify the score manager the game is over.
-			hud.running = false;
+			//hud.running = false;
 
 			// Destroy the ship.
 			player.onCollision = true;
@@ -93,13 +92,11 @@ public class ShipCollisions : MonoBehaviour {
 			player.motion = 0f;
 
 			// Explode the ship.
-			StartCoroutine(WaitAndExplode(0.3f));
+			StartCoroutine(WaitAndExplode(0f));
 			music.audio.Stop();
 		}  
 	}
-	/*
-	 * Author : Arnaud Durand
-	 */
+
 	IEnumerator WaitAndFall(float waitTime) {
 		yield return new WaitForSeconds(waitTime);
 		

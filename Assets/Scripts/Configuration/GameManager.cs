@@ -1,18 +1,48 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 /*
- * Author : Thomas Rouvinez
+ * Author : Arnaud Durand
  * Description : handle speed and score.
  */
 public class GameManager : MonoBehaviour {
-
-	public float speed = 100f;
-	private int coins = 0;
-	private long score = 0;
-
 	private float startTimer;
 	private float timer;
+
+	private PowerupStacker powerups = new PowerupStacker();
+
+	/*
+	 * Author : Arnaud Durand
+	 * Description : handle powerup stacking and triggering.
+	 */
+	class PowerupStacker {
+		public const int size = 3;
+
+		private List<Powerup> items = new List<Powerup>();
+
+		public Texture2D[] icons = new Texture2D[0];
+
+		private void BufferIcons(){
+			icons = items.Select(p => p.icon).ToArray();
+		}
+
+		public void Push(Powerup item)
+		{
+			if (items.Count <= size){
+				items.Add(item);
+				BufferIcons();
+			}
+		}
+
+		public void Pop(int itemAtPosition)
+		{
+			items[itemAtPosition].Trigger();
+			items.RemoveAt(itemAtPosition);
+			BufferIcons();
+		}
+	}
 		
 	// ----------------------------------------------------------------------
 	// Update score.
@@ -36,6 +66,12 @@ public class GameManager : MonoBehaviour {
 			
 			GameConfiguration.Instance.speed = Mathf.Sqrt(Time.time - startTimer)*8 + 80;
 		}
+	}
+
+	void OnGUI(){
+		for (int i=0; i<powerups.icons.Length; i++)
+			if (GUI.Button(new Rect(10, 10, 50, 50+i), powerups.icons[i]))
+				powerups.Pop(i);
 	}
 
 	public void ResetConfiguration () {
