@@ -25,11 +25,12 @@ public class ShipCollisions : MonoBehaviour {
 	private ParticleEmitter rightSparks;
 
 	// Scripts references.
-	public GameObject navigation;
+	//public GameObject navigation;
 	public GameObject camera;
 	public GameObject ship;
 
 	public Detonator smokePrefab;
+	public GameManager gameManager;
 
 	//private HUD hud;
 	private PlayerBehaviour player;
@@ -79,7 +80,11 @@ public class ShipCollisions : MonoBehaviour {
 
 			StartCoroutine(WaitAndFall(0.3f));
 		}
-
+		else if(collision.gameObject.tag == "Powerup"){
+			collision.gameObject.transform.parent = gameObject.transform;
+			collision.gameObject.renderer.enabled = false;
+			gameManager.addPowerup((Powerup) collision.GetComponent(typeof(Powerup)));
+		}
 		// Lost the game.
 		else
 		{

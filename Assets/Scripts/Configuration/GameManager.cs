@@ -30,7 +30,8 @@ public class GameManager : MonoBehaviour {
 
 		public void Push(Powerup item)
 		{
-			if (items.Count <= size){
+			if (items.Count < size){
+				Debug.Log(item);
 				items.Add(item);
 				BufferIcons();
 			}
@@ -69,9 +70,14 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void OnGUI(){
+
 		for (int i=0; i<powerups.icons.Length; i++)
-			if (GUI.Button(new Rect(10, 10, 50, 50+i), powerups.icons[i]))
+			if (GUI.Button(new Rect(Screen.width-90-i*70, Screen.height-90, 60, 60), powerups.icons[i]))
 				powerups.Pop(i);
+	}
+
+	public void addPowerup(Powerup powerup){
+		powerups.Push(powerup);
 	}
 
 	public void ResetConfiguration () {
