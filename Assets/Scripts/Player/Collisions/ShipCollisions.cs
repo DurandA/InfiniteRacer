@@ -88,17 +88,19 @@ public class ShipCollisions : MonoBehaviour {
 		// Lost the game.
 		else
 		{
-			//Notify the score manager the game is over.
-			//hud.running = false;
+			foreach(Collider collider in GetComponents<Collider>())
+				collider.enabled = false;
 
+			GameConfiguration.Instance.speed = 0f;
 			// Destroy the ship.
 			player.onCollision = true;
-			GameConfiguration.Instance.speed = 0f;
 			player.motion = 0f;
 
-			// Explode the ship.
-			StartCoroutine(WaitAndExplode(0f));
 			music.audio.Stop();
+
+			StartCoroutine(WaitAndExplode(0f));
+
+			GameConfiguration.Instance.ended = true;
 		}  
 	}
 
@@ -109,11 +111,10 @@ public class ShipCollisions : MonoBehaviour {
 		Destroy(GetComponent<ShipAnimator>());
 		
 		yield return new WaitForSeconds(5f);
-		Destroy(gameObject);
+
 		
 		// Get ended game screen.
 		GameConfiguration.Instance.ended = true;
-		Time.timeScale = 0;
 	}
 	/*
 	 * Author : Arnaud Durand
@@ -147,11 +148,8 @@ public class ShipCollisions : MonoBehaviour {
 
 		// Destroy the bomb (because it exploded lol).
 		yield return new WaitForSeconds(3f);
-		Destroy(gameObject);
 
-		// Get ended game screen.
-		GameConfiguration.Instance.ended = true;
-		Time.timeScale = 0;
+		Destroy(gameObject);
 	}
 
 

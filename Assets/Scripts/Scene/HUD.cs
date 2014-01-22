@@ -33,12 +33,13 @@ public class HUD : MonoBehaviour {
 		{
 			// Update the fields.
 			coinNumber.text = GameConfiguration.Instance.coins.ToString() ;
+
 			speed.text = ((short) (GameConfiguration.Instance.speed)).ToString() ;
-			/*
+
 			if(GameConfiguration.Instance.score > tempScore){
 				tempScore += 1;
 				score.text = tempScore.ToString(); 
-			}*/
+			}
 		}
 	}
 }

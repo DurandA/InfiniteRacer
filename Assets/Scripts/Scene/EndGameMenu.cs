@@ -14,6 +14,8 @@ public class EndGameMenu : MonoBehaviour {
 	public GUISkin button;
 	public GUISkin scoresSkin;
 
+	private float delay=3f;
+
 	// Variables.
 	private int width;
 	private int height;
@@ -22,11 +24,17 @@ public class EndGameMenu : MonoBehaviour {
 	private bool received = false;
 	private List<HighscoreSaver.Highscore> highscores;
 
+
 	// Use this for initialization.
 	void Start () {
 		width = (Screen.width / 2);
 		height = (Screen.height / 3);
 		playerName = "Your Name";
+	}
+
+	void Update (){
+		if(GameConfiguration.Instance.ended&&delay>0f)
+			delay-=Time.deltaTime;
 	}
 
 	// ------------------------------------------------------------------
@@ -35,7 +43,7 @@ public class EndGameMenu : MonoBehaviour {
 
 	void OnGUI () 
 	{
-		if(GameConfiguration.Instance.ended)
+		if(delay<=0f)
 		{
 			// Put background image.
 			GUI.skin = endedBackground;
