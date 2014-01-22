@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PipeBehaviour : NavigationBehaviour {
+public class PipeBehaviour : NavigationBehaviour { 
 		
 	public Transform blockObstacle;
 	public Transform hexaObstacle;
@@ -9,6 +9,27 @@ public class PipeBehaviour : NavigationBehaviour {
 	public Transform cannonObstacle;
 	public Transform laserObstacle;
 	public Transform coin;
+	public Transform shield;
+	public Transform booster;
+	public Transform coinPack;
+	public Transform slowDown;
+
+	public virtual void SpawnShield(float positionOnSpline){
+		Transform obs = Instantiate(shield,spline.GetPositionOnSpline(positionOnSpline),spline.GetOrientationOnSpline(positionOnSpline)) as Transform;
+		obs.transform.parent=transform;
+	}
+	public virtual void SpawnBooster(float positionOnSpline){
+		Transform obs = Instantiate(booster,spline.GetPositionOnSpline(positionOnSpline),spline.GetOrientationOnSpline(positionOnSpline)) as Transform;
+		obs.transform.parent=transform;
+	}
+	public virtual void SpawnCoinPack(float positionOnSpline){
+		Transform obs = Instantiate(coinPack,spline.GetPositionOnSpline(positionOnSpline),spline.GetOrientationOnSpline(positionOnSpline)) as Transform;
+		obs.transform.parent=transform;
+	}
+	public virtual void SpawnSlowDown(float positionOnSpline){
+		Transform obs = Instantiate(slowDown,spline.GetPositionOnSpline(positionOnSpline),spline.GetOrientationOnSpline(positionOnSpline)) as Transform;
+		obs.transform.parent=transform;
+	}
 
 	public virtual void SpawnCoins(float positionOnSpline, int number, float shift){
 		float shiftAdd = shift;

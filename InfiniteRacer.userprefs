@@ -1,21 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\Collisions\ShipCollisions.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Navigation\PipeBehaviour.cs">
     <Files>
-      <File FileName="Assets\Scripts\Obstacles\CoinAnimator.cs" Line="19" Column="51" />
-      <File FileName="Assets\Scripts\Player\Collisions\ShipCollisions.cs" Line="61" Column="4" />
-      <File FileName="Assets\Scripts\Powerups\Powerup.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Powerups\ShieldHandler.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Configuration\GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Navigation\Pipe0Behaviour.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Scene\HUD.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Navigation\NavigationController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Configuration\HighscoreSaver.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Configuration\GameConfiguration.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Menu\Main Menu\HighscoreController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Menu\Main Menu\ExitController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Scene\EndGameMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Scene\PauseMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Navigation\PipeBehaviour.cs" Line="4" Column="51" />
+      <File FileName="Assets\Scripts\Navigation\Pipe90Behaviour.cs" Line="11" Column="21" />
+      <File FileName="Assets\Scripts\Configuration\GameManager.cs" Line="90" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
