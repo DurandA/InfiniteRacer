@@ -13,6 +13,27 @@ public class PipeBehaviour : NavigationBehaviour {
 	public Transform booster;
 	public Transform coinPack;
 	public Transform slowDown;
+	private int boosterProbability = 2; // 2/30 chances to appear
+	private int shieldProbability = 3; // 3/30 chances to appear
+	private int slowDownProbability = 2; // 2/30 chances to appear
+	private int coinPackProbability = 2; // 2/30 chances to appear
+
+	public virtual void SpawnPowerUp(float postionOnSpline){
+		// max 20/30 that a power up (each power up has max 5/30 to appear) appears and min 10/30 that no power ups appear
+		// min 4/40 that a power up (each power up has min 1/30 to appear) appears and max 26/30 that no power ups appear
+		int rand = Random.Range(0,30);
+		if(rand >= 0 && rand <= boosterProbability) {
+			SpawnBooster(postionOnSpline); Debug.Log("spawn booset " + rand);
+		} else if (rand > boosterProbability && rand <= (boosterProbability +shieldProbability)) {
+			SpawnShield(postionOnSpline); Debug.Log("spawn shield " + rand);
+		} else if (rand > (boosterProbability+shieldProbability) && rand <= (boosterProbability +shieldProbability+slowDownProbability)) {
+			SpawnSlowDown(postionOnSpline); Debug.Log("spawn slow down " + rand);
+		} else if(rand > (boosterProbability +shieldProbability+slowDownProbability) && rand <= (boosterProbability +shieldProbability+slowDownProbability+coinPackProbability)){
+			SpawnCoinPack(postionOnSpline);  Debug.Log("spawn coin pack " + rand);
+		} else{
+				Debug.Log("no power up on this tube " + rand);
+		}
+	}
 
 	public virtual void SpawnShield(float positionOnSpline){
 		Transform obs = Instantiate(shield,spline.GetPositionOnSpline(positionOnSpline),spline.GetOrientationOnSpline(positionOnSpline)) as Transform;

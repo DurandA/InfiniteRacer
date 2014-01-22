@@ -2,10 +2,12 @@
 using System.Collections;
 
 public class OpenPipeBehaviour : PipeBehaviour {
+
 	float minPos = 0.3f;
 
 
 	public void Awake(){
+		SpawnPowerUp(0.1f);
 		int rand = 	Random.Range(0,3);
 		int rand2 = 	Random.Range(0,3);
 		switch (rand)

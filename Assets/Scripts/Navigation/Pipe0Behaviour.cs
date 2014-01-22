@@ -7,9 +7,9 @@ public class Pipe0Behaviour : PipeBehaviour {
 	public float maxPos = 0.9f;
 
 	public void Awake(){
+		SpawnPowerUp(0.1f);
 		int rand = 	Random.Range(0,3);
 		int rand2 = 	Random.Range(0,3);
-		Debug.Log(rand + "  " + rand2);
 		switch (rand)
 		{
 			case 1:

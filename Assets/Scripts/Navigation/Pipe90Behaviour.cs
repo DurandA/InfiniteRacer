@@ -5,10 +5,7 @@ public class Pipe90Behaviour : PipeBehaviour {
 	float minpos = 0.3f;
 
 	void Awake(){
-		SpawnCoinPack(0.1f);
-		SpawnBooster(0.2f);
-		SpawnShield(0.3f);
-		SpawnSlowDown(0.4f);
+		SpawnPowerUp(0.1f);
 		int rand = 	Random.Range(0,3);
 		switch (rand)
 		{

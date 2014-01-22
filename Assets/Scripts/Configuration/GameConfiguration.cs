@@ -34,4 +34,5 @@ public class GameConfiguration {
 	public long score;
 	public bool paused;
 	public bool ended;
+
 }

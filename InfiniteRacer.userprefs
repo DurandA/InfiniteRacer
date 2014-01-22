@@ -1,10 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Navigation\PipeBehaviour.cs">
     <Files>
-      <File FileName="Assets\Scripts\Navigation\PipeBehaviour.cs" Line="4" Column="51" />
-      <File FileName="Assets\Scripts\Navigation\Pipe90Behaviour.cs" Line="11" Column="21" />
-      <File FileName="Assets\Scripts\Configuration\GameManager.cs" Line="90" Column="2" />
+      <File FileName="Assets\Scripts\Navigation\PipeBehaviour.cs" Line="35" Column="4" />
+      <File FileName="Assets\Scripts\Navigation\NavigationController.cs" Line="85" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
