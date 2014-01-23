@@ -24,5 +24,4 @@ public class NavigationBehaviour : MonoBehaviour {
 	}
 
 	public virtual void Awake() {}
-
 }

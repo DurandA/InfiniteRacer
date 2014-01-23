@@ -20,6 +20,7 @@ public class ShipCollisions : MonoBehaviour {
 	public GameObject sparksRight;
 	public AudioSource coinNoise;
 	public AudioSource music;
+	public Camera hud;
 
 	private ParticleEmitter leftSparks;
 	private ParticleEmitter rightSparks;
@@ -84,7 +85,8 @@ public class ShipCollisions : MonoBehaviour {
 
 			StartCoroutine(WaitAndFall(0.3f));
 		}
-		else if(collision.gameObject.tag == "Powerup"){
+		else if(collision.gameObject.tag == "Powerup")
+		{
 			collision.gameObject.transform.parent = gameObject.transform;
 			collision.gameObject.renderer.enabled = false;
 			collision.enabled=false;
@@ -101,6 +103,7 @@ public class ShipCollisions : MonoBehaviour {
 			player.onCollision = true;
 			player.motion = 0f;
 
+			hud.enabled = false;
 			music.audio.Stop();
 
 			StartCoroutine(WaitAndExplode(0f));
@@ -115,8 +118,7 @@ public class ShipCollisions : MonoBehaviour {
 		Destroy(rigidbody);
 		Destroy(GetComponent<ShipAnimator>());
 		
-		yield return new WaitForSeconds(5f);
-
+		yield return new WaitForSeconds(3f);
 		
 		// Get ended game screen.
 		GameConfiguration.Instance.ended = true;
@@ -155,11 +157,6 @@ public class ShipCollisions : MonoBehaviour {
 		yield return new WaitForSeconds(3f);
 
 		Destroy(gameObject);
-	}
-
-
-	void OnDestroy() {
-		Debug.Log("End of game, score : " + GameConfiguration.Instance.score);
 	}
 	
 	// Wings collisions detection.

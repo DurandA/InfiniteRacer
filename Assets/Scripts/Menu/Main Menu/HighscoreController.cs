@@ -28,5 +28,6 @@ public class HighscoreController : MonoBehaviour {
 	void OnMouseUp()
 	{
 		click.audio.Play();
+		Application.LoadLevel (4);
 	}
 }

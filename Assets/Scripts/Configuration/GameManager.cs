@@ -8,6 +8,7 @@ using System.Linq;
  * Description : handle speed and score.
  */
 public class GameManager : MonoBehaviour {
+	public GUISkin powerupSkins;
 	private float startTimer;
 	private float timer;
 
@@ -70,10 +71,13 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		if (!GameConfiguration.Instance.ended)
+		if (!GameConfiguration.Instance.ended) {
+			GUI.skin = powerupSkins;
+
 			for (int i=0; i<powerups.icons.Length; i++)
-				if (GUI.Button(new Rect(Screen.width-90-i*70, Screen.height-90, 60, 60), powerups.icons[i]))
-					powerups.Pop(i);
+					if (GUI.Button (new Rect (Screen.width - 90 - i * 70, Screen.height - 90, 60, 60), powerups.icons [i]))
+							powerups.Pop (i);
+		}
 	}
 
 	public void addPowerup(Powerup powerup){

@@ -2,11 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+
 /*
  * Author : Thomas Rouvinez
  * Description : class to handle the endgame menu.
  */
-
 public class EndGameMenu : MonoBehaviour {
 
 	// GUI.
@@ -33,7 +33,7 @@ public class EndGameMenu : MonoBehaviour {
 	}
 
 	void Update (){
-		if(GameConfiguration.Instance.ended&&invoked==false){
+		if(GameConfiguration.Instance.ended && invoked==false){
 			Invoke ("EnableGUI", 2.5f);
 			invoked=true;
 		}
@@ -64,7 +64,7 @@ public class EndGameMenu : MonoBehaviour {
 				playerName = GUI.TextField(new Rect(width - 200,height * 1.8f,400,50), playerName, 15);
 
 				// Score display.
-				GUI.Label(new Rect(0, height * 1.3f,width * 2,70), "SCORED " + GameConfiguration.Instance.score.ToString());
+				GUI.Label(new Rect(0, height * 1.3f,width * 2,70), "SCORED : " + GameConfiguration.Instance.score.ToString());
 
 				// Submit button.
 				if(GUI.Button(new Rect (width + 200,height * 1.8f,70,70), "GO"))
@@ -81,18 +81,23 @@ public class EndGameMenu : MonoBehaviour {
 				if(received == true)
 				{
 					GUI.skin = scoresSkin;
-
-					float heightHS = 0.6f;
+					float heightHS = 0.45f;
+					byte count = 0;
 					
 					foreach (HighscoreSaver.Highscore hs in this.highscores)
 					{
-						heightHS += 0.2f;
-						GUI.Label(new Rect(width-250, height * heightHS,500, 60), hs.position + "    " + hs.name + "    " + hs.score);
-					}
+						if(count < 3)
+						{ 
+							heightHS += 0.2f ;
+						}
+						else
+						{
+							heightHS += 0.6f;
+						}
 
-					// Own score.
-					//heightHS += 0.5f;
-					//GUI.Label(new Rect(width-250, height * heightHS,500, 60), "NEW SCORE    " + GameConfiguration.Instance.score);
+						GUI.Label(new Rect(width-250, height * heightHS,500, 60), hs.position + "    " + hs.name + "    " + hs.score);
+						count++;
+					}
 				}
 			}
 
