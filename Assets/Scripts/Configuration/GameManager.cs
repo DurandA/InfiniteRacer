@@ -70,10 +70,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void OnGUI(){
-
-		for (int i=0; i<powerups.icons.Length; i++)
-			if (GUI.Button(new Rect(Screen.width-90-i*70, Screen.height-90, 60, 60), powerups.icons[i]))
-				powerups.Pop(i);
+		if (!GameConfiguration.Instance.ended)
+			for (int i=0; i<powerups.icons.Length; i++)
+				if (GUI.Button(new Rect(Screen.width-90-i*70, Screen.height-90, 60, 60), powerups.icons[i]))
+					powerups.Pop(i);
 	}
 
 	public void addPowerup(Powerup powerup){

@@ -57,10 +57,12 @@ public class ShipCollisions : MonoBehaviour {
 	void OnTriggerEnter(Collider collision)
 	{
 		// Coins detection.
-		if(collision.gameObject.name == "Coin(Clone)")
+		if(collision.gameObject.tag == "Coin")
 		{
-			coinNoise.audio.Play();
 			Destroy(collision.gameObject);
+
+			coinNoise.audio.Play();
+
 			GameConfiguration.Instance.coins++;
 			GameConfiguration.Instance.score += 10;
 		}
@@ -68,21 +70,24 @@ public class ShipCollisions : MonoBehaviour {
 		// Falling from half pipes detection.
 		else if(collision.gameObject.name == "ColliderHalfPipe")
 		{
+			collision.enabled=false;
+			/*foreach(Collider collider in GetComponents<Collider>())
+				Destroy(collider);*/
 			player.enabled=false;
+
 			GameConfiguration.Instance.speed=0;
 			Rigidbody rigidBody=GetComponent<Rigidbody>();
 
 			rigidbody.isKinematic=false;
 			rigidbody.AddForce(transform.localPosition*50000f+transform.forward*10000f*GameConfiguration.Instance.speed);
 
-			foreach(Collider collider in GetComponents<Collider>())
-				Destroy(collider);
 
 			StartCoroutine(WaitAndFall(0.3f));
 		}
 		else if(collision.gameObject.tag == "Powerup"){
 			collision.gameObject.transform.parent = gameObject.transform;
 			collision.gameObject.renderer.enabled = false;
+			collision.enabled=false;
 			gameManager.addPowerup((Powerup) collision.GetComponent(typeof(Powerup)));
 		}
 		// Lost the game.

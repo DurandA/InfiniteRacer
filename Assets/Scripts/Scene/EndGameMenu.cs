@@ -14,14 +14,14 @@ public class EndGameMenu : MonoBehaviour {
 	public GUISkin button;
 	public GUISkin scoresSkin;
 
-	private float delay=3f;
-
 	// Variables.
 	private int width;
 	private int height;
 	private string playerName;
 	private bool sent = false;
 	private bool received = false;
+	private bool invoked = false;
+	private bool guiEnabled = false;
 	private List<HighscoreSaver.Highscore> highscores;
 
 
@@ -33,8 +33,14 @@ public class EndGameMenu : MonoBehaviour {
 	}
 
 	void Update (){
-		if(GameConfiguration.Instance.ended&&delay>0f)
-			delay-=Time.deltaTime;
+		if(GameConfiguration.Instance.ended&&invoked==false){
+			Invoke ("EnableGUI", 2.5f);
+			invoked=true;
+		}
+	}
+
+	void EnableGUI(){
+		guiEnabled=true;
 	}
 
 	// ------------------------------------------------------------------
@@ -43,7 +49,7 @@ public class EndGameMenu : MonoBehaviour {
 
 	void OnGUI () 
 	{
-		if(delay<=0f)
+		if(guiEnabled)
 		{
 			// Put background image.
 			GUI.skin = endedBackground;
