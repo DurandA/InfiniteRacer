@@ -13,9 +13,9 @@ public class PipeBehaviour : NavigationBehaviour {
 	public Transform booster;
 	public Transform coinPack;
 	public Transform slowDown;
-	private int boosterProbability = 2; // 2/30 chances to appear
-	private int shieldProbability = 3; // 3/30 chances to appear
-	private int slowDownProbability = 2; // 2/30 chances to appear
+	private int boosterProbability = 15; // 2/30 chances to appear
+	private int shieldProbability = 1; // 3/30 chances to appear
+	private int slowDownProbability = 1; // 2/30 chances to appear
 	private int coinPackProbability = 2; // 2/30 chances to appear
 
 	public virtual void SpawnPowerUp(float postionOnSpline){

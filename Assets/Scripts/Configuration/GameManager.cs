@@ -9,10 +9,12 @@ using System.Linq;
  */
 public class GameManager : MonoBehaviour {
 	public GUISkin powerupSkins;
-	private float startTimer;
-	private float timer;
+	public float startTimer;
+	public float timer;
 
 	private PowerupStacker powerups = new PowerupStacker();
+
+
 
 	/*
 	 * Author : Arnaud Durand
@@ -65,8 +67,7 @@ public class GameManager : MonoBehaviour {
 		{
 			timer = Time.time;
 			GameConfiguration.Instance.score += 1;
-			
-			GameConfiguration.Instance.speed = Mathf.Sqrt(Time.time - startTimer)*8 + 80;
+			GameConfiguration.Instance.speed = Mathf.Sqrt(Time.time - startTimer)*8 + GameConfiguration.Instance.startSpeed;
 		}
 	}
 

@@ -81,6 +81,8 @@ public class ShipCollisions : MonoBehaviour {
 		// Falling from half pipes detection.
 		else if(collision.gameObject.name == "ColliderHalfPipe")
 		{
+			if(GameConfiguration.Instance.boosterOn == false){
+
 			collision.enabled = false;
 			/*foreach(Collider collider in GetComponents<Collider>())
 				Destroy(collider);*/
@@ -92,8 +94,8 @@ public class ShipCollisions : MonoBehaviour {
 			rigidbody.isKinematic=false;
 			rigidbody.AddForce(transform.localPosition*50000f+transform.forward*10000f*GameConfiguration.Instance.speed);
 
-
 			StartCoroutine(WaitAndFall(0.3f));
+			}
 		}
 		else if(collision.gameObject.tag == "Powerup")
 		{
@@ -105,6 +107,8 @@ public class ShipCollisions : MonoBehaviour {
 		// Lost the game.
 		else
 		{
+			if(GameConfiguration.Instance.shieldOn == false && GameConfiguration.Instance.boosterOn  == false){
+
 			foreach(Collider collider in GetComponents<Collider>())
 				collider.enabled = false;
 
@@ -118,6 +122,7 @@ public class ShipCollisions : MonoBehaviour {
 			StartCoroutine(WaitAndExplode(0f));
 
 			GameConfiguration.Instance.ended = true;
+			}
 		}  
 	}
 
