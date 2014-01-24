@@ -65,7 +65,7 @@ public class ShieldHandler : MonoBehaviour, Powerup {
 	#region Powerup implementation
 	public void Trigger ()
 	{
-		StartCoroutine(enableShield(107.5f));
+		StartCoroutine(enableShield(7.5f));
 	}
 
 	public Texture2D icon {
