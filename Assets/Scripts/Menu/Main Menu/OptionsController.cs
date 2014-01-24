@@ -28,5 +28,7 @@ public class OptionsController : MonoBehaviour {
 	void OnMouseUp()
 	{
 		click.audio.Play();
+
+		Application.LoadLevel (5);
 	}
 }

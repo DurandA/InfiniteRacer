@@ -20,7 +20,6 @@ public class ShipCollisions : MonoBehaviour {
 	public GameObject sparksRight;
 	public AudioSource coinNoise;
 	public AudioSource music;
-	public Camera hud;
 
 	private ParticleEmitter leftSparks;
 	private ParticleEmitter rightSparks;
@@ -68,10 +67,21 @@ public class ShipCollisions : MonoBehaviour {
 			GameConfiguration.Instance.score += 10;
 		}
 
+		// Coins' pack detection.
+		else if(collision.gameObject.tag == "CoinPack")
+		{
+			Destroy(collision.gameObject);
+			
+			coinNoise.audio.Play();
+			
+			GameConfiguration.Instance.coins += 50;
+			GameConfiguration.Instance.score += 500;
+		}
+
 		// Falling from half pipes detection.
 		else if(collision.gameObject.name == "ColliderHalfPipe")
 		{
-			collision.enabled=false;
+			collision.enabled = false;
 			/*foreach(Collider collider in GetComponents<Collider>())
 				Destroy(collider);*/
 			player.enabled=false;
@@ -103,7 +113,6 @@ public class ShipCollisions : MonoBehaviour {
 			player.onCollision = true;
 			player.motion = 0f;
 
-			hud.enabled = false;
 			music.audio.Stop();
 
 			StartCoroutine(WaitAndExplode(0f));
@@ -118,7 +127,7 @@ public class ShipCollisions : MonoBehaviour {
 		Destroy(rigidbody);
 		Destroy(GetComponent<ShipAnimator>());
 		
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(2.5f);
 		
 		// Get ended game screen.
 		GameConfiguration.Instance.ended = true;

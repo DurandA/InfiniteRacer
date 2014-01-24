@@ -13,6 +13,7 @@ public class EndGameMenu : MonoBehaviour {
 	public GUISkin endedBackground;
 	public GUISkin button;
 	public GUISkin scoresSkin;
+	public Camera hudCamera;
 
 	// Variables.
 	private int width;
@@ -51,6 +52,8 @@ public class EndGameMenu : MonoBehaviour {
 	{
 		if(guiEnabled)
 		{
+			hudCamera.enabled = false;
+
 			// Put background image.
 			GUI.skin = endedBackground;
 			GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
