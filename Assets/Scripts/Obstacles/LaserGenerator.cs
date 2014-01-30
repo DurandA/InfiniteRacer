@@ -31,5 +31,4 @@ public class LaserGenerator : MonoBehaviour {
 
 		lineRenderer.SetPosition(4,target.position);
 	}
-
 }
