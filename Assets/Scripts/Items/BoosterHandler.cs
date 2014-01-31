@@ -14,6 +14,7 @@ public class BoosterHandler : MonoBehaviour, Powerup {
 		boosterField.enabled = true;
 		float startTimer = Time.time;
 		GameConfiguration.Instance.isShieldEnabled = true;
+		GameConfiguration.Instance.isOnPowerUp = true;
 		GameConfiguration.Instance.speed += 480;
 		GameObject.Find("Dust Particles").GetComponent<ParticleEmitter> ().localVelocity = new Vector3 (0,400,0);
 
@@ -25,7 +26,7 @@ public class BoosterHandler : MonoBehaviour, Powerup {
 			boosterField.enabled = false;
 			yield return null;
 		}
-		GameConfiguration.Instance.speed -= 100f;
+		GameConfiguration.Instance.speed -= 120f;
 		while(startTimer+duration-2.0f > Time.time){
 			boosterField.enabled = true;
 			yield return null;
@@ -95,7 +96,7 @@ public class BoosterHandler : MonoBehaviour, Powerup {
 			boosterField.enabled = false;
 			yield return null;
 		}		
-		GameConfiguration.Instance.speed -= 10f;
+		GameConfiguration.Instance.speed -= 8f;
 		while(startTimer+duration-0.1f > Time.time){
 			boosterField.enabled = true;
 			yield return null;
@@ -103,9 +104,9 @@ public class BoosterHandler : MonoBehaviour, Powerup {
 
 		GameObject.Find("Dust Particles").GetComponent<ParticleEmitter> ().localVelocity = new Vector3 (0,150,0);
 		boosterField.enabled=false;
-
+		
 		GameConfiguration.Instance.isShieldEnabled = false;
-	
+		GameConfiguration.Instance.isOnPowerUp = false;
 	}
 
 	#region Powerup implementation

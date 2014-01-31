@@ -8,6 +8,7 @@ public class Loader : MonoBehaviour {
 	public GUISkin skin;
 	public GameObject navigation;
 	public AudioSource music;
+	public AudioSource engine;
 	public GameManager gameManager;
 
 	// On resume.
@@ -29,8 +30,9 @@ public class Loader : MonoBehaviour {
 			// Reset values of the game.
 			gameManager.ResetConfiguration();
 
-			// Start the music.
+			// Start the music and engine sound.
 			music.audio.Play();
+			engine.audio.Play();
 
 			// Start game.
 			Time.timeScale = 1;

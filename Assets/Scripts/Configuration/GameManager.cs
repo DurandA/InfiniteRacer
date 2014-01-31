@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour {
 
 	private PowerupStacker powerups = new PowerupStacker();
 
-
-
 	/*
 	 * Author : Arnaud Durand
 	 * Description : handle powerup stacking and triggering.
@@ -76,8 +74,13 @@ public class GameManager : MonoBehaviour {
 			GUI.skin = powerupSkins;
 
 			for (int i=0; i<powerups.icons.Length; i++)
-					if (GUI.Button (new Rect (Screen.width - 90 - i * 70, Screen.height - 90, 60, 60), powerups.icons [i]))
-							powerups.Pop (i);
+			{
+				if (GUI.Button (new Rect (Screen.width - (Screen.width / 10) - i * (Screen.width / 10), Screen.height - (Screen.width / 10), (Screen.width / 12), (Screen.width / 12)), powerups.icons [i])
+				    || Input.GetKey (KeyCode.Space) && GameConfiguration.Instance.isOnPowerUp == false)
+				{
+					powerups.Pop (i);
+				}
+			}				
 		}
 	}
 
@@ -86,7 +89,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void ResetConfiguration () {
-		GameConfiguration.Instance.speed = 80;
+		GameConfiguration.Instance.speed = 90;
 		GameConfiguration.Instance.coins = 0;
 		GameConfiguration.Instance.score = 0;
 		GameConfiguration.Instance.paused = false;

@@ -10,15 +10,16 @@ public class SlowdownHandler : MonoBehaviour, Powerup {
 
 	public IEnumerator reduceSpeed(){
 		float startTimer = Time.time;
-
+		GameConfiguration.Instance.isOnPowerUp = true;
 
 		while(startTimer+1.0f > Time.time){
 			GameObject.Find("Dust Particles").GetComponent<ParticleEmitter> ().localVelocity = new Vector3 (0,10,0);
-			GameConfiguration.Instance.speed -= 80f;
+			GameConfiguration.Instance.speed -= (GameConfiguration.Instance.speed / 200f);
 			yield return null;
 		}
 
 		GameObject.Find("Dust Particles").GetComponent<ParticleEmitter> ().localVelocity = new Vector3 (0,150,0);
+		GameConfiguration.Instance.isOnPowerUp = false;
 	}
 
 	#region Powerup implementation

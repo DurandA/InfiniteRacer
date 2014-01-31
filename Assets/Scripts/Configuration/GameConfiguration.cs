@@ -29,13 +29,13 @@ public class GameConfiguration {
 		}
 	}
 
-	public float startSpeed = 80;
+	public float startSpeed = 90;
 	public bool isShieldEnabled = false;
+	public bool isOnPowerUp = false;
 	/*public bool boosterOn = false;*/
 	public float speed;
 	public int coins;
 	public long score;
 	public bool paused;
 	public bool ended;
-
 }

@@ -10,6 +10,7 @@ public class ShieldHandler : MonoBehaviour, Powerup {
 
 	public IEnumerator enableShield(float duration){
 		GameConfiguration.Instance.isShieldEnabled = true;
+		GameConfiguration.Instance.isOnPowerUp = true;
 		Renderer shieldField = GameObject.Find("/Player/Shield Field").renderer;
 		shieldField.enabled = true;
 		float startTimer = Time.time;
@@ -60,6 +61,7 @@ public class ShieldHandler : MonoBehaviour, Powerup {
 		shieldField.enabled = false;
 		Destroy(gameObject);
 		GameConfiguration.Instance.isShieldEnabled = false;
+		GameConfiguration.Instance.isOnPowerUp = false;
 	}
 
 	#region Powerup implementation

@@ -16,11 +16,11 @@ public class Pipe90Behaviour : PipeBehaviour {
 			createBlower(minpos);
 			break;
 		default:
-			createLaser(minpos);
+			//createLaser(minpos);
 			break;
 		}
+
 		createTwoBlocks(minpos+ 0.4f);
 		SpawnCoins(minpos+0.1f, 15,0.0f);
-
 	}
 }

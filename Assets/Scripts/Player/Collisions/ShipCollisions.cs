@@ -64,7 +64,7 @@ public class ShipCollisions : MonoBehaviour {
 			coinNoise.audio.Play();
 
 			GameConfiguration.Instance.coins++;
-			GameConfiguration.Instance.score += 10;
+			GameConfiguration.Instance.score += 5;
 		}
 
 		// Coins' pack detection.
@@ -74,8 +74,8 @@ public class ShipCollisions : MonoBehaviour {
 			
 			coinNoise.audio.Play();
 			
-			GameConfiguration.Instance.coins += 50;
-			GameConfiguration.Instance.score += 500;
+			GameConfiguration.Instance.coins += 25;
+			GameConfiguration.Instance.score += 250;
 		}
 
 		// Falling from half pipes detection.
@@ -90,10 +90,11 @@ public class ShipCollisions : MonoBehaviour {
 			Rigidbody rigidBody=GetComponent<Rigidbody>();
 
 			rigidbody.isKinematic=false;
-			rigidbody.AddForce(transform.localPosition*50000f+transform.forward*10000f*GameConfiguration.Instance.speed);
+			rigidbody.AddForce(transform.localPosition*50000f+transform.forward*20000f*GameConfiguration.Instance.speed);
 
 			StartCoroutine(WaitAndFall(0.3f));
 		}
+
 		else if(collision.gameObject.tag == "Powerup")
 		{
 			collision.gameObject.transform.parent = gameObject.transform;
@@ -101,6 +102,7 @@ public class ShipCollisions : MonoBehaviour {
 			collision.enabled=false;
 			gameManager.addPowerup((Powerup) collision.GetComponent(typeof(Powerup)));
 		}
+
 		// Lost the game.
 		else
 		{
@@ -129,11 +131,12 @@ public class ShipCollisions : MonoBehaviour {
 		Destroy(rigidbody);
 		Destroy(GetComponent<ShipAnimator>());
 		
-		yield return new WaitForSeconds(2.5f);
+		yield return new WaitForSeconds(1f);
 		
 		// Get ended game screen.
 		GameConfiguration.Instance.ended = true;
 	}
+
 	/*
 	 * Author : Arnaud Durand
 	 */
