@@ -28,9 +28,10 @@ public class GameConfiguration {
 			return instance;
 		}
 	}
+
 	public float startSpeed = 80;
-	public bool shieldOn = false;
-	public bool boosterOn = false;
+	public bool isShieldEnabled = false;
+	/*public bool boosterOn = false;*/
 	public float speed;
 	public int coins;
 	public long score;

@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour {
 		{
 			timer = Time.time;
 			GameConfiguration.Instance.score += 1;
-			GameConfiguration.Instance.speed = Mathf.Sqrt(Time.time - startTimer)*8 + GameConfiguration.Instance.startSpeed;
+			GameConfiguration.Instance.speed += Mathf.Sqrt(Time.deltaTime)*8;
 		}
 	}
 

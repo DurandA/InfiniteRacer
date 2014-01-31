@@ -9,7 +9,7 @@ public class ShieldHandler : MonoBehaviour, Powerup {
 	public Texture2D _icon;
 
 	public IEnumerator enableShield(float duration){
-		GameConfiguration.Instance.shieldOn = true;
+		GameConfiguration.Instance.isShieldEnabled = true;
 		Renderer shieldField = GameObject.Find("/Player/Shield Field").renderer;
 		shieldField.enabled = true;
 		float startTimer = Time.time;
@@ -59,7 +59,7 @@ public class ShieldHandler : MonoBehaviour, Powerup {
 		}
 		shieldField.enabled = false;
 		Destroy(gameObject);
-		GameConfiguration.Instance.shieldOn = false;
+		GameConfiguration.Instance.isShieldEnabled = false;
 	}
 
 	#region Powerup implementation
