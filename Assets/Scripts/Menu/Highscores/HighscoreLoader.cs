@@ -22,14 +22,6 @@ public class HighscoreLoader : MonoBehaviour {
 		LoadHighscores();
 	}
 
-	void Update () 
-	{
-		if (Input.GetKey (KeyCode.Escape)) 
-		{
-			Application.LoadLevel(0);
-		}
-	}
-
 	// ------------------------------------------------------------------
 	// OnHighscoreLoaded.
 	// ------------------------------------------------------------------
@@ -55,7 +47,7 @@ public class HighscoreLoader : MonoBehaviour {
 			name.transform.parent = this.transform;
 		}
 
-		this.transform.Rotate(new Vector3(32.69793f, 62.9713f, 13.55636f));
+		//this.transform.Rotate(new Vector3(32.69793f, 62.9713f, 13.55636f));
 	}
 
 	// ------------------------------------------------------------------

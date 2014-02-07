@@ -1,1 +1,0 @@
-Assets/Textures/Pipes/Pipe 90/Block_90_FullSurface_Color.png
