@@ -11,9 +11,9 @@ public class PlayerBehaviour : MonoBehaviour {
 	public float depth=12;
 	public float cameraRadius=6f;
 	public float speed=0f;
-	public float maxSpeed=1.2f;
-	public float acceleration=4f;
-	public float deceleration=2.5f;
+	public float maxSpeed=2f;
+	public float acceleration=2.0f;
+	public float deceleration=2.8f;
 
 	public float motion;
 	public bool onCollision=false;
@@ -30,6 +30,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
 	private HUD hudScript;
 	private NavigationController navigationScript;
+	private float relativeVelocity;
 
 	// ----------------------------------------------------------------------------
 	// Setter.
@@ -55,6 +56,18 @@ public class PlayerBehaviour : MonoBehaviour {
 	void Start () {
 		//transform.position=new Vector3(0,-radius,depth);
 		//Camera.main.transform.position=Vector3.down*cameraRadius;
+
+		maxSpeed=1.6f;
+		acceleration=2.1f;
+		deceleration=2.9f;
+	}
+
+	void Update() {
+		// Reactivity adaptation.
+		relativeVelocity = ((GameConfiguration.Instance.speed - 90) / 150);
+		
+		acceleration = 2.0f + relativeVelocity;
+		deceleration = 2.8f + relativeVelocity;
 	}
 
 	// Rotate arround.
@@ -79,8 +92,8 @@ public class PlayerBehaviour : MonoBehaviour {
         		speed = 0;
 		}
 		
-		motion=speed * Time.deltaTime;
-		motion+=shiftAmount;
+		motion = speed * Time.deltaTime;
+		motion += shiftAmount;
 
 		shiftAmount=0f;
 
@@ -91,6 +104,6 @@ public class PlayerBehaviour : MonoBehaviour {
 		if (!onCollision){
 			transform.position=RotateAroundPoint(new Vector3(0f, -radius, 0f), rotationAxis.transform.position, rotationAxis.transform.rotation*Quaternion.Euler(0f,0f,positionOnOrbit*360));
 			transform.rotation=rotationAxis.transform.rotation*Quaternion.Euler(0f,0f,positionOnOrbit*360);
-		}			
+		}		
 	}
 }
