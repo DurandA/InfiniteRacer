@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 /*
- * Author : Arnaud Durand
+ * Author : Arnaud Durand, adaptations by Thomas Rouvinez
  * Description : handle speed and score.
  */
 public class GameManager : MonoBehaviour {

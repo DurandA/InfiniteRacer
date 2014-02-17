@@ -4,8 +4,8 @@ using System.Collections;
 /*
  * Author : Thomas Rouvinez
  * Creation date : 02.07.2014
- * 
  * Description : class to handle the controls for the highscores menu.
+ * 
  */
 public class EscController : MonoBehaviour {
 

@@ -4,8 +4,8 @@ using System.Collections;
 /*
  * Author : Thomas Rouvinez
  * Description : class to adapt the speed of the starfield to the ship's speed.
+ * 
  */
-
 public class ParticleSpeedController : MonoBehaviour {
 
 	private ParticleEmitter starfield;

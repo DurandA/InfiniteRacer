@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+ * Author : Thomas Rouvinez
+ * Description : exit button controller.
+ * 
+ */
 public class ExitController : MonoBehaviour {
 
 	public AudioSource hover;

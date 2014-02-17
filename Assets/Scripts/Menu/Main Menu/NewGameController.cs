@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+ * Author : Thomas Rouvinez
+ * Description : new game button controller.
+ * 
+ */
 public class NewGameController : MonoBehaviour {
 
 	public AudioSource hover;

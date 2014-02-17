@@ -6,7 +6,6 @@ using System.Collections;
  * Description : class to handle HUD information and displayal.
  * 
  */
-
 public class HUD : MonoBehaviour {
 
 	// ----------------------------------------------------------------------------

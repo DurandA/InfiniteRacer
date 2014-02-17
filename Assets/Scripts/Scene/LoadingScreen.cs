@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+ * Author : Thomas Rouvinez
+ * Description : class to handle the loading screen itself.
+ * 
+ */
 public class LoadingScreen : MonoBehaviour {
 	
 	// Variables.

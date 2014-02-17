@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+ * Author : Thomas Rouvinez
+ * Description : class to handle user input on main menu.
+ * 
+ */
 public class ControlsController : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
 	
 	// Update is called once per frame
 	void Update () {

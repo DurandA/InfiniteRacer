@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+ * Author : Thomas Rouvinez
+ * Description : highscores button controller.
+ * 
+ */
 public class HighscoreController : MonoBehaviour {
 
 	public AudioSource hover;

@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+ * Author : Thomas Rouvinez
+ * Description : class to handle the ship's animations in the
+ * 				main menu (only the rotating props.)
+ * 
+ */
 public class MenuAnimator : MonoBehaviour {
 
 	// Required Gameobjects.
 	public GameObject propellerLeft;
 	public GameObject propellerRight;
-
-
-	// Use this for initialization
-	void Start () {
-	
-	}
 	
 	// Update is called once per frame
 	void Update () {

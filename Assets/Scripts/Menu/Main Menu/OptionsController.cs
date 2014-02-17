@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+ * Author : Thomas Rouvinez
+ * Description : options button controller.
+ * 
+ */
 public class OptionsController : MonoBehaviour {
 
 	public AudioSource hover;

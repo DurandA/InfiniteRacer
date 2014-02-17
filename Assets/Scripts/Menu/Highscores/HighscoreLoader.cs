@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 
+/*
+ * Author : Thomas Rouvinez
+ * Description : class to handles loading and displayal of the highscores.
+ * 
+ */
 public class HighscoreLoader : MonoBehaviour {
 	// Variables.
 	public TextMesh intanceScore;

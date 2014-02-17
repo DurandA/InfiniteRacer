@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+ * Author : Thomas Rouvinez
+ * Description : class to handle the management of the introduction
+ * 				animation and magages the controls.
+ * 
+ */
 public class CameraIntro : MonoBehaviour {
 
 	// -------------------------------------------------------------

@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+
 /*
  * Author : Thomas Rouvinez
  * Description : controller class for the credits menu.
+ * 
  */
-
 public class CreditsNavController : MonoBehaviour {
 
 	// -----------------------------------------------------------------------------------

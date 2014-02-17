@@ -1,6 +1,11 @@
 using UnityEngine;
 using System.Collections;
-	
+
+/*
+ * Author : Arnaud Durand
+ * Description : class to handle the ship's movement.
+ * 
+ */	
 public class PlayerBehaviour : MonoBehaviour {
 
 	// ----------------------------------------------------------------------------

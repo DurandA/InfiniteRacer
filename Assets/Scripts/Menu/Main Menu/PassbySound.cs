@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+ * Author : Thomas Rouvinez
+ * Description : animation linked functions to play the passby sounds
+ * 				according to the markers on the animation.
+ * 
+ */
 public class PassbySound : MonoBehaviour {
 
 	public AudioSource passby1;

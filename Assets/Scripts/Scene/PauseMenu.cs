@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+ * Author : Thomas Rouvinez
+ * Description : class to handle the in-game pause menu.
+ * 
+ */
 public class PauseMenu : MonoBehaviour {
 	
 	// GUI.

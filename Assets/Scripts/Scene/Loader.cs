@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+ * Author : Thomas Rouvinez
+ * Description : Class to handle the loading screen to launch
+ * 				a new game from the main menu.
+ * 
+ */
 public class Loader : MonoBehaviour {
 
 	// Variables.

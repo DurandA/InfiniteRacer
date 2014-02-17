@@ -2,7 +2,7 @@
 using System.Collections;
 
 /*
- * Author: Arnaud Durand
+ * Author: Arnaud Durand, Thomas Rouvinez, Léonard Stalder
  */
 public class SlowdownHandler : MonoBehaviour, Powerup {
 

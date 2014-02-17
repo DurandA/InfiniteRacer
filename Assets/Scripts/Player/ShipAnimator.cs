@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// ------------------------------------------------------------------
-// Author : Thomas Rouvinez
-// Creation date : 16.10.2013
-// Last Modified : 17.10.2013
-//
-// Description : class to handle all animations of the ship.
-// ------------------------------------------------------------------
-
+/*
+ * Authors : Tomas Rouvinez, Didier Aeberhard
+ * Creation date : 16.10.2013
+ * Last Modified : 17.10.2013
+ *
+ * Description : class to handle all animations of the ship.
+ */
 public class ShipAnimator : MonoBehaviour {
 	
 	// --------------------------------------------------------------

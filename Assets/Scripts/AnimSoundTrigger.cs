@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+ * Author : Thomas Rouvinez
+ * Description : class to handle main menu's animation
+ * 				sounds for the ships' flyby.
+ * 
+ */
 public class AnimSoundTrigger : MonoBehaviour {
 
 	public AudioSource flyby1;
