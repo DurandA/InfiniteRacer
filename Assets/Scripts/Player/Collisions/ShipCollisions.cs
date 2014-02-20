@@ -21,6 +21,8 @@ public class ShipCollisions : MonoBehaviour {
 	public AudioSource coinNoise;
 	public AudioSource music;
 
+	public Animation deathLeft;
+
 	private ParticleEmitter leftSparks;
 	private ParticleEmitter rightSparks;
 
@@ -176,11 +178,11 @@ public class ShipCollisions : MonoBehaviour {
 	// Wings collisions detection.
 	public void OnHitLeft()
 	{
-		leftSparks.Emit ();
+
 	}
 
 	public void OnHitRight()
 	{
-		rightSparks.Emit ();
+
 	}
 }
