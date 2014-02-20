@@ -15,16 +15,19 @@ public class ShipAnimator : MonoBehaviour {
 	// --------------------------------------------------------------
 	
 	// Game Objects.
-	private GameObject propellerLeft;
-	private GameObject propellerRight;
-	private GameObject wingLeft;
-	private GameObject wingRight;
+	public GameObject propellerLeft;
+	public GameObject propellerRight;
+	public GameObject wingLeft;
+	public GameObject wingRight;
+	public AudioSource engineSource;
+
 	private Quaternion rotLeft0;
 	private Quaternion rotRight0;
 	private Vector3 posLeft0;
 	private Vector3 posRight0;
 	private Vector3 rotWingLeft;
 	private Vector3 rotWingRight;
+	private float engineRate = 3.25f;
 
 	// Scripts.
 	private PlayerBehaviour playerScript;
@@ -36,14 +39,6 @@ public class ShipAnimator : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{		
-		// Get propeller objects.
-		propellerLeft = GameObject.Find("PropellerLeft");
-		propellerRight = GameObject.Find("PropellerRight");
-		
-		//Get wing objects
-		wingLeft = GameObject.Find ("Wing Left");
-		wingRight = GameObject.Find ("Wing Right");
-		
 		rotLeft0 = wingLeft.transform.localRotation;
 		posLeft0 = wingLeft.transform.localPosition;
 		rotRight0 = wingRight.transform.localRotation;
@@ -76,39 +71,45 @@ public class ShipAnimator : MonoBehaviour {
 	{
 		//Max and min angle between rotation of the wings during lateral movements
 		float wingDeltaAngle = 20.0f;
-		//Speed rotation of the wings during lateral movements
+		//Speed rotation of the wings during lateral movements.
 		float speedDeltaAngle = 2.5f;
 		
-		//Setting x and y Euler angle during lateral movements
+		//Setting x and y Euler angle during lateral movements.
 		rotWingLeft.x = 0f;
 		rotWingLeft.y = 0f;	
 		rotWingRight.x = 0f;
 		rotWingRight.y = 0f;
 		
-		//If statement of the lateral movement
+		//If statement of the lateral movement.
 		if (playerScript.InputEnabled() == true && (Input.GetKey("left") || (Input.GetMouseButton(0) && Input.mousePosition.x < Screen.width/2)))
 		{
-			//Rotate wings for left lateral movement
+			//Rotate wings for left lateral movement.
 			rotWingLeft.z +=  speedDeltaAngle;
 			rotWingRight.z +=  speedDeltaAngle;
 			rotWingLeft.z = Mathf.Clamp(rotWingLeft.z, -wingDeltaAngle, wingDeltaAngle);
 			rotWingRight.z = Mathf.Clamp(rotWingRight.z, 270f - wingDeltaAngle, 270f + wingDeltaAngle);
 			wingLeft.transform.localEulerAngles = rotWingLeft;
 			wingRight.transform.localEulerAngles = rotWingRight;
+
+			// Adapt engine pitch.
+			engineSource.pitch = Mathf.Lerp(engineSource.pitch, 1.8f, engineRate * Time.deltaTime);
 		}
 		else if (playerScript.InputEnabled() == true && (Input.GetKey("right") || (Input.GetMouseButton(0) && Input.mousePosition.x > Screen.width/2)))
 		{
-			//Rotate wings for right lateral movement
-			rotWingLeft.z -=  speedDeltaAngle;
-			rotWingRight.z -=  speedDeltaAngle;
+			//Rotate wings for right lateral movement.
+			rotWingLeft.z -= speedDeltaAngle;
+			rotWingRight.z -= speedDeltaAngle;
 			rotWingLeft.z = Mathf.Clamp(rotWingLeft.z, -wingDeltaAngle, wingDeltaAngle);
 			rotWingRight.z = Mathf.Clamp(rotWingRight.z, 270f - wingDeltaAngle, 270f + wingDeltaAngle);
 			wingLeft.transform.localEulerAngles = rotWingLeft;
-			wingRight.transform.localEulerAngles = rotWingRight;	
+			wingRight.transform.localEulerAngles = rotWingRight;
+
+			// Adapt engine pitch.
+			engineSource.pitch = Mathf.Lerp(engineSource.pitch, 1.8f, engineRate * Time.deltaTime);
 		}
 		else
 		{
-			//Rotate back to initial rotation state (also for position)
+			//Rotate back to initial rotation state (also for position).
 			wingRight.transform.localRotation = Quaternion.Slerp(wingRight.transform.localRotation, rotRight0, Time.deltaTime * 4);
 			wingRight.transform.localPosition = Vector3.Lerp(wingRight.transform.localPosition, posRight0, Time.deltaTime * 4);
 			
@@ -117,6 +118,9 @@ public class ShipAnimator : MonoBehaviour {
 			
 			rotWingLeft.z =  0f;
 			rotWingRight.z = 270f;
+
+			// Revert engine audio to normal pitch.
+			engineSource.pitch = Mathf.Lerp(engineSource.pitch, 1f, engineRate * Time.deltaTime);
 		}
 	}
 }

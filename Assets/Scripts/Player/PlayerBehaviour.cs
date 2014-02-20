@@ -69,7 +69,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
 	void Update() {
 		// Reactivity adaptation.
-		relativeVelocity = ((GameConfiguration.Instance.speed - 90) / 150);
+		relativeVelocity = ((GameConfiguration.Instance.speed - GameConfiguration.Instance.startSpeed) / 100);
 		
 		acceleration = 2.0f + relativeVelocity;
 		deceleration = 2.8f + relativeVelocity;
