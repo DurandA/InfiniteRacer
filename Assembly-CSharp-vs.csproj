@@ -60,7 +60,6 @@
      <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSparks.cs" />
      <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSpray.cs" />
      <Compile Include="Assets\GameMenu\MenuAnimator.cs" />
-     <Compile Include="Assets\GameMenu\MenuConfiguration.cs" />
      <Compile Include="Assets\LeanTween\Plugins\LeanTween.cs" />
      <Compile Include="Assets\Scripts\AnimSoundTrigger.cs" />
      <Compile Include="Assets\Scripts\Audio FX\AudioFXController.cs" />

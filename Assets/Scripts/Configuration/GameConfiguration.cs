@@ -7,9 +7,7 @@ public class GameConfiguration {
 	static GameConfiguration instance=null;
 	static readonly object padlock = new object();
 
-	GameConfiguration()
-	{
-	}
+	GameConfiguration(){}
 	
 	public static GameConfiguration Instance
 	{
@@ -29,12 +27,21 @@ public class GameConfiguration {
 		}
 	}
 
+	// Game init.
+	public float speed;
 	public float startSpeed = 90;
+
 	public bool isShieldEnabled = false;
 	public bool isOnPowerUp = false;
-	public float speed;
-	public int coins;
-	public long score;
-	public bool paused;
-	public bool ended;
+	public bool paused = false;
+	public bool ended = false;
+
+	public int coins = 0;
+	public long score = 0;
+	public long highestPersonalScore = 0;
+	
+	// Settings.
+	public bool menuMusicOn = true;
+	public bool gameMusicOn = true;
+	public short shipSelected = 0;
 }
