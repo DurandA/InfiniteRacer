@@ -28,6 +28,13 @@ public class MenuAnimator : MonoBehaviour {
 	public AudioSource menuBack;
 	public Camera camera;
 
+	public GUISkin skinMenu;
+	public GUISkin skinHangarButtons;
+	public GUISkin skinBackButton;
+	public GUISkin skinHighscoresList;
+	public GUISkin skinHighscoresButton;
+	public GUISkin skinExitButton;
+
 	private LTRect[] entries;
 	private LTRect[] menus;
 	private LTRect[] buttons;
@@ -46,21 +53,21 @@ public class MenuAnimator : MonoBehaviour {
 	// -------------------------------------------------------------------------------------
 
 	void Start(){
-		leftMargin = 0;
+		leftMargin = (int)(width * 0.04f);
 		topMargin = (int)(height / 3);
 		spacing = (int)((height * 0.1f));
 		selected = -1;
 		tempCount = -1;
 
 		entries = new LTRect[6];
-		entries[0] = new LTRect(leftMargin, topMargin,(width * 0.25f),(height * 0.1f));				// Race.
-		entries[1] = new LTRect(leftMargin,(topMargin+1*spacing),(width * 0.25f),(height * 0.1f));	// Settings.
-		entries[2] = new LTRect(leftMargin,(topMargin+2*spacing),(width * 0.25f),(height * 0.1f));	// Highscores.
-		entries[3] = new LTRect(leftMargin,(topMargin+3*spacing),(width * 0.25f),(height * 0.1f));	// Hangar.
-		entries[4] = new LTRect(leftMargin,(topMargin+4*spacing),(width * 0.25f),(height * 0.1f));	// Credits.
-		entries[5] = new LTRect(leftMargin,(topMargin+5*spacing),(width * 0.25f),(height * 0.1f));	// Exit.
+		entries[0] = new LTRect(leftMargin, topMargin,(width * 0.3f),(height * 0.1f));				// Race.
+		entries[1] = new LTRect(leftMargin,(topMargin+1*spacing),(width * 0.3f),(height * 0.1f));	// Settings.
+		entries[2] = new LTRect(leftMargin,(topMargin+2*spacing),(width * 0.3f),(height * 0.1f));	// Highscores.
+		entries[3] = new LTRect(leftMargin,(topMargin+3*spacing),(width * 0.3f),(height * 0.1f));	// Hangar.
+		entries[4] = new LTRect(leftMargin,(topMargin+4*spacing),(width * 0.3f),(height * 0.1f));	// Credits.
+		entries[5] = new LTRect(leftMargin,(topMargin+5*spacing),(width * 0.3f),(height * 0.1f));	// Exit.
 
-		menus = new LTRect[8];
+		menus = new LTRect[9];
 		menus[0] = new LTRect(width, (height * 0.25f),(width * 0.85f), (height * 0.65f));				// Race.
 		menus[1] = new LTRect(width, (height * 0.3f),(width * 0.85f), (height * 0.6f));					// Exit.
 		menus[2] = new LTRect((width * 0.1f), (height * 0.2f), (width * 0.9f), (height * 0.8f));		// Arnaud's credits.
@@ -69,6 +76,7 @@ public class MenuAnimator : MonoBehaviour {
 		menus[5] = new LTRect((width * 0.1f), (height * 0.2f), (width * 0.9f), (height * 0.8f));		// Leonard's credits.
 		menus[6] = new LTRect(width, (height * 0.1f), (width * 0.5f), (height * 0.8f));					// Ship's images.
 		menus[7] = new LTRect((width * 0.1f), height, (width * 0.4f), (height * 0.8f));					// Ship's description.
+		menus[8] = new LTRect((width * 0.17f), height, (width * 0.62f), (height * 0.7f));				// Highscores container.
 
 		buttons = new LTRect[9];
 		buttons[0] = new LTRect(-(width * 0.6f), (height * 0.9f),(width * 0.6f),(height * 0.1f));			// Start race button.
@@ -84,12 +92,18 @@ public class MenuAnimator : MonoBehaviour {
 		backMenu = new LTRect(-(width * 0.1f), (height * 0.2f),(width * 0.1f),(height * 0.8f));
 		backMenu.alpha = 0f;
 
-		exitMessages = new string[]{"[Yes] Who needs to be on top of the leaderboard ?", "[Yes] I pretend I have work to do",
-									"[Yes] I'm a sissie", "[Yes] This is game is too hard for me"};
+		exitMessages = new string[]{"[Yes] I pretend I have work to do",
+									"[Yes] I'm a sissie", 
+									"[Yes] This is game is too hard for me"};
 
-		top = new Vector2(leftMargin, 0);
+		top = new Vector2(0, 0);
 		topSize = new Vector2((width * 0.5f), (height * 0.2f));
 		creditSelected = 2;
+
+		// Enable menu music.
+		if(GameConfiguration.Instance.menuMusicOn == true){
+			// TO DO: start music.
+		}
 	}
 
 	// -------------------------------------------------------------------------------------
@@ -102,7 +116,9 @@ public class MenuAnimator : MonoBehaviour {
 		// Main entries of the menu.
 		// ---------------------------------------------------------------------------------
 
-		if(GUI.Button(entries[0].rect, "RACE !")){
+		GUI.skin = skinMenu;
+
+		if(GUI.Button(entries[0].rect, "<size=" + (entries[0].rect.width * 0.148) + ">RACE !</size>")){
 			selected = 0; tempCount++;
 			select(entries[0]);
 
@@ -110,20 +126,21 @@ public class MenuAnimator : MonoBehaviour {
 			LeanTween.move(buttons[0], new Vector2((width * 0.4f), buttons[0].rect.y), 0.22f, new object[]{"ease",LeanTweenType.easeInOutBack});
 		}
 
-		else if(GUI.Button(entries[1].rect, "SETTINGS")){
+		else if(GUI.Button(entries[1].rect, "<size=" + (entries[1].rect.width * 0.148) + ">SETTINGS</size>")){
 			selected = 1; tempCount++;
 			select(entries[1]);
 		}
 
-		else if(GUI.Button(entries[2].rect, "HIGHSCORES")){
+		else if(GUI.Button(entries[2].rect, "<size=" + (entries[2].rect.width * 0.148) + ">HIGHSCORES</size>")){
 			selected = 2; tempCount++;
 			select(entries[2]);
 
 			LoadHighscores();
 			LeanTween.move(buttons[6], new Vector2((width * 0.8f), buttons[6].rect.y), translationSpeed * 3, new object[]{"ease",LeanTweenType.easeInOutBack});
+			LeanTween.move(menus[8], new Vector2((width * 0.17f), (height * 0.25f)), translationSpeed);
 		}
 
-		else if(GUI.Button(entries[3].rect, "HANGAR")){
+		else if(GUI.Button(entries[3].rect, "<size=" + (entries[3].rect.width * 0.148) + ">HANGAR</size>")){
 			selected = 3;
 			tempCount++;
 			select(entries[3]);
@@ -134,7 +151,7 @@ public class MenuAnimator : MonoBehaviour {
 			LeanTween.move(menus[7], new Vector2(menus[7].rect.x, (height * 0.2f)), translationSpeed * 2f);
 		}
 
-		else if(GUI.Button(entries[4].rect, "CREDITS")){
+		else if(GUI.Button(entries[4].rect, "<size=" + (entries[4].rect.width * 0.148) + ">CREDITS</size>")){
 			selected = 4; tempCount++;
 			select(entries[4]);
 
@@ -153,7 +170,7 @@ public class MenuAnimator : MonoBehaviour {
 			}
 		}
 
-		else if(GUI.Button(entries[5].rect, "EXIT")){
+		else if(GUI.Button(entries[5].rect, "<size=" + (entries[5].rect.width * 0.15) + ">EXIT</size>")){
 			selected = 5; tempCount++; tempRandom = Random.Range(0, exitMessages.Length);
 			select(entries[5]);
 
@@ -161,10 +178,14 @@ public class MenuAnimator : MonoBehaviour {
 			LeanTween.move(buttons[1], new Vector2((width * 0.375f), buttons[1].rect.y), translationSpeed, new object[]{"ease",LeanTweenType.easeInOutBack});
 		}
 
-		else if(GUI.Button(backMenu.rect, "<")){
+		GUI.skin = skinBackButton;
+
+		if(GUI.Button(backMenu.rect, "")){
 			menuBack.audio.Play();
 			reset();
 		}
+
+		GUI.skin = null;
 
 		// ---------------------------------------------------------------------------------
 		// Draw corresponding screens
@@ -176,10 +197,13 @@ public class MenuAnimator : MonoBehaviour {
 			GUI.Box(menus[0].rect, "Race Concept Art");
 			
 			// Start game button.
+			GUI.skin = skinHangarButtons;
+
 			if(GUI.Button(buttons[0].rect, "[Yes] Start")){
 				Application.LoadLevel(1);
 			}
 
+			GUI.skin = null;
 			break;
 
 		case 1:
@@ -197,32 +221,47 @@ public class MenuAnimator : MonoBehaviour {
 			int padd = (int)(height * 0.25f);
 			int listHeight = (int)(height * 0.071f);
 
+			GUI.Box(menus[8].rect,"");
+
 			if(this.highscores != null){
+				GUI.skin = skinHighscoresList;
+
 				foreach (HighscoreSaver.Highscore hs in this.highscores){
-					GUI.Box(new Rect((width * 0.18f),padd,(width * 0.6f), listHeight), hs.position + "\t" + hs.name + "\t" + hs.score);
+					GUI.Box(new Rect((width * 0.18f),padd,(width * 0.05f), listHeight), hs.position);
+					GUI.Box(new Rect((width * 0.25f),padd,(width * 0.4f), listHeight), hs.name);
+					GUI.Box(new Rect((width * 0.6f),padd,(width * 0.2f), listHeight), hs.score);
 					padd += listHeight;
 				}
+				GUI.skin = null;
 			}
 			else{
+
 				GUI.Box(new Rect((width * 0.35f),(height * 0.45f),(width * 0.3f),(height * 0.1f)), "LOADING");
 			}
 
-			if(GUI.Button(buttons[6].rect, "<->")){
+			GUI.skin = skinHighscoresButton;
+
+			if(GUI.Button(buttons[6].rect, "")){	// Refresh button.
 				LoadHighscores();
 			}
 
+			GUI.skin = null;
 			break;
 
 		case 3:
+			// Hangar.
+			GUI.skin = skinHangarButtons;
+
 			// Display selection of ships.
-			if(GUI.Button(buttons[7].rect, "Next")){
+			if(GUI.Button(buttons[7].rect, "NEXT")){
 
 			}
 
-			else if(GUI.Button(buttons[8].rect, "Select")){
+			else if(GUI.Button(buttons[8].rect, "SELECT")){
 				
 			}
 
+			GUI.skin = null;
 			GUI.Box(menus[6].rect, "Ship Arts");
 			GUI.Box(menus[7].rect, "Ship Description");
 
@@ -266,9 +305,13 @@ public class MenuAnimator : MonoBehaviour {
 			// Display exit confirmation menu.
 			GUI.Box(menus[1].rect, "Confirmation Dialog");
 
+			GUI.skin = skinExitButton;
+
 			if(GUI.Button(buttons[1].rect, exitMessages[tempRandom])){
 				Application.Quit();
 			}
+
+			GUI.skin = null;
 			break;
 		}
 	}
@@ -311,7 +354,7 @@ public class MenuAnimator : MonoBehaviour {
 		}
 
 		LeanTween.move(entries[selected], new Vector2(leftMargin, topMargin + selected * spacing), translationSpeed);
-		LeanTween.scale(entries[selected], new Vector2((width * 0.25f),(height * 0.1f)), scaleSpeed);
+		LeanTween.scale(entries[selected], new Vector2((width * 0.3f),(height * 0.1f)), scaleSpeed);
 
 		// Hide all menus.
 		switch(selected){
@@ -322,6 +365,7 @@ public class MenuAnimator : MonoBehaviour {
 
 		case 2:
 			LeanTween.move(buttons[6], new Vector2(width, buttons[6].rect.y), translationSpeed);
+			LeanTween.move(menus[8], new Vector2(menus[8].rect.x, height), translationSpeed);
 			break;
 
 		case 3:

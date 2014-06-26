@@ -1,8 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\GameMenu\MenuAnimator.cs">
     <Files>
-      <File FileName="Assets\GameMenu\MenuAnimator.cs" Line="134" Column="48" />
+      <File FileName="Assets\GameMenu\MenuAnimator.cs" Line="15" Column="24" />
       <File FileName="Assets\Scripts\Configuration\GameConfiguration.cs" Line="35" Column="34" />
       <File FileName="Assets\Scripts\Menu\Highscores\HighscoreLoader.cs" Line="46" Column="18" />
     </Files>
