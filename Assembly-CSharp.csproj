@@ -59,6 +59,7 @@
      <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSound.cs" />
      <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSparks.cs" />
      <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSpray.cs" />
+     <Compile Include="Assets\GameMenu\EarthRotation.cs" />
      <Compile Include="Assets\GameMenu\MenuAnimator.cs" />
      <Compile Include="Assets\LeanTween\Plugins\LeanTween.cs" />
      <Compile Include="Assets\Scripts\AnimSoundTrigger.cs" />
@@ -76,16 +77,6 @@
      <Compile Include="Assets\Scripts\Items\Powerup.cs" />
      <Compile Include="Assets\Scripts\Items\ShieldHandler.cs" />
      <Compile Include="Assets\Scripts\Items\SlowdownHandler.cs" />
-     <Compile Include="Assets\Scripts\Menu\Credits\CreditsNavController.cs" />
-     <Compile Include="Assets\Scripts\Menu\Highscores\EscController.cs" />
-     <Compile Include="Assets\Scripts\Menu\Highscores\HighscoreLoader.cs" />
-     <Compile Include="Assets\Scripts\Menu\Main Menu\CreditsController.cs" />
-     <Compile Include="Assets\Scripts\Menu\Main Menu\HighscoreController.cs" />
-     <Compile Include="Assets\Scripts\Menu\Main Menu\LaunchController.cs" />
-     <Compile Include="Assets\Scripts\Menu\Main Menu\NewGameController.cs" />
-     <Compile Include="Assets\Scripts\Menu\Main Menu\OptionsController.cs" />
-     <Compile Include="Assets\Scripts\Menu\Main Menu\PassbySound.cs" />
-     <Compile Include="Assets\Scripts\Menu\Upgrades\ControlsController.cs" />
      <Compile Include="Assets\Scripts\Navigation\CombineChildrenExtended.cs" />
      <Compile Include="Assets\Scripts\Navigation\NavigationBehaviour.cs" />
      <Compile Include="Assets\Scripts\Navigation\NavigationController.cs" />

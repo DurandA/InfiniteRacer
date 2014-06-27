@@ -27,6 +27,8 @@ public class MenuAnimator : MonoBehaviour {
 	public AudioSource click;
 	public AudioSource menuBack;
 	public Camera camera;
+	public GameObject LightBar;
+	public GameObject DarkBar;
 
 	public GUISkin skinMenu;
 	public GUISkin skinHangarButtons;
@@ -99,6 +101,8 @@ public class MenuAnimator : MonoBehaviour {
 		top = new Vector2(0, 0);
 		topSize = new Vector2((width * 0.5f), (height * 0.2f));
 		creditSelected = 2;
+
+		resetBars();
 
 		// Enable menu music.
 		if(GameConfiguration.Instance.menuMusicOn == true){
@@ -232,11 +236,13 @@ public class MenuAnimator : MonoBehaviour {
 					GUI.Box(new Rect((width * 0.6f),padd,(width * 0.2f), listHeight), hs.score);
 					padd += listHeight;
 				}
+
 				GUI.skin = null;
 			}
 			else{
-
-				GUI.Box(new Rect((width * 0.35f),(height * 0.45f),(width * 0.3f),(height * 0.1f)), "LOADING");
+				// If not loaded yet, display a waiting message.
+				GUI.skin = skinHighscoresButton;
+				GUI.Box(new Rect((width * 0.35f),(height * 0.45f),(width * 0.3f),(height * 0.1f)), "");	// Loading label.
 			}
 
 			GUI.skin = skinHighscoresButton;
@@ -324,6 +330,10 @@ public class MenuAnimator : MonoBehaviour {
 		LeanTween.move(entry, top, translationSpeed);
 		LeanTween.scale(entry, topSize, scaleSpeed);
 
+		// Move bars.
+		LeanTween.move(LightBar, new Vector3(4f, -11.5f, -1.75f), 0.1f);
+		LeanTween.move(DarkBar, new Vector3(1.85f, -9f, -1.1f), 0.2f);
+
 		menuTranslate(selected);
 
 		if(tempCount < 1){
@@ -355,6 +365,9 @@ public class MenuAnimator : MonoBehaviour {
 
 		LeanTween.move(entries[selected], new Vector2(leftMargin, topMargin + selected * spacing), translationSpeed);
 		LeanTween.scale(entries[selected], new Vector2((width * 0.3f),(height * 0.1f)), scaleSpeed);
+
+		// Reset bars.
+		resetBars();
 
 		// Hide all menus.
 		switch(selected){
@@ -390,6 +403,11 @@ public class MenuAnimator : MonoBehaviour {
 
 		tempCount = -1;
 		selected = -1;
+	}
+
+	private void resetBars(){
+		LeanTween.move(LightBar, new Vector3(-9.85f, 6.8f, -1.63f), 0.1f);
+		LeanTween.move(DarkBar, new Vector3(-8.2f, 4.7f, -1.1f), 0.2f);
 	}
 
 	// ------------------------------------------------------------------
