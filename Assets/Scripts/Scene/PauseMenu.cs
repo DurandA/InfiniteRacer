@@ -55,7 +55,7 @@ public class PauseMenu : MonoBehaviour {
 				GameConfiguration.Instance.paused = false;
 			}
 			
-			// Quit button.
+			// Main Menu button.
 			GUI.skin = pauseMainMenu;
 			if(GUI.Button(new Rect (width,height + (Screen.height * 0.1f),(Screen.width * 0.25f),(Screen.height * 0.1f)), "MAIN MENU"))
 			{
