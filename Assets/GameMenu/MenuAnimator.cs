@@ -110,7 +110,7 @@ public class MenuAnimator : MonoBehaviour {
 									"[Yes] I'm a sissie", 
 									"[Yes] This is game is too hard for me"};
 
-		top = new Vector2(0, 0);
+		top = new Vector2(0f, 0f);
 		topSize = new Vector2((width * 0.5f), (height * 0.2f));
 		creditSelected = 2;
 
@@ -361,7 +361,7 @@ public class MenuAnimator : MonoBehaviour {
 	// -------------------------------------------------------------------------------------
 
 	private void select(LTRect entry){
-		LeanTween.move(entry, top, translationSpeed);
+		LeanTween.move(entry, new Vector2(0f,0f), translationSpeed);
 		LeanTween.scale(entry, topSize, scaleSpeed);
 
 		// Move bars.
