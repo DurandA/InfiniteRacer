@@ -38,8 +38,11 @@ public class MenuAnimator : MonoBehaviour {
 	public GUISkin skinHighscoresList;
 	public GUISkin skinHighscoresButton;
 	public GUISkin skinHighscoresWindow;
+	public GUISkin skinRaceScreen;
 	public GUISkin skinSettingsScreen;
 	public GUISkin skinExitScreen;
+	public GUISkin skinCredits;
+	public GUISkin skinCreditsString;
 
 	public GUISkin[] shipsScreens;
 
@@ -76,7 +79,7 @@ public class MenuAnimator : MonoBehaviour {
 		entries[4] = new LTRect(leftMargin,(topMargin+4*spacing),(width * 0.3f),(height * 0.1f));	// Credits.
 		entries[5] = new LTRect(leftMargin,(topMargin+5*spacing),(width * 0.3f),(height * 0.1f));	// Exit.
 
-		menus = new LTRect[10];
+		menus = new LTRect[11];
 		menus[0] = new LTRect(width, (height * 0.3f),(width * 0.85f), (height * 0.6f));					// Race container.
 		menus[1] = new LTRect(width, (height * 0.3f),(width * 0.85f), (height * 0.6f));					// Exit container.
 		menus[2] = new LTRect((width * 0.1f), (height * 0.2f), (width * 0.9f), (height * 0.8f));		// Arnaud's credits.
@@ -87,6 +90,7 @@ public class MenuAnimator : MonoBehaviour {
 		menus[7] = new LTRect((width * 0.1f), height, (width * 0.4f), (height * 0.8f));					// Ship's description.
 		menus[8] = new LTRect((width * 0.17f), height, (width * 0.62f), (height * 0.7f));				// Highscores container.
 		menus[9] = new LTRect(width, (height * 0.3f),(width * 0.85f), (height * 0.6f));					// Settings container.
+		menus[10] = new LTRect((width * 0.1f), (height * 0.3f), (width * 0.9f), (height * 0.7f));		// Credits string container.
 
 		buttons = new LTRect[9];
 		buttons[0] = new LTRect(-(width * 0.6f), (height * 0.9f),(width * 0.6f),(height * 0.1f));			// Start race button.
@@ -213,7 +217,8 @@ public class MenuAnimator : MonoBehaviour {
 		switch(selected){
 		case 0:
 			// Display artwork for game.
-			GUI.Box(menus[0].rect, "Race Concept Art");
+			GUI.skin = skinRaceScreen;
+			GUI.Box(menus[0].rect, "");	// Race art.
 			
 			// Start game button.
 			GUI.skin = skinHangarButtons;
@@ -323,12 +328,17 @@ public class MenuAnimator : MonoBehaviour {
 				creditSelected = 5;
 			}
 
-			// Display the pannels.
-			GUI.Box(menus[2].rect, "Arnaud Credits");
-			GUI.Box(menus[3].rect, "Thomas Credits");
-			GUI.Box(menus[4].rect, "Didier Credits");
-			GUI.Box(menus[5].rect, "Leonard Credits");
-			
+			// Display the credit pannels.
+			GUI.skin = skinCredits;
+			GUI.Box(menus[2].rect, "LEAD PROGRAMMER");		// Credits AD.
+			GUI.Box(menus[3].rect, "LEAD ARTIST");			// Credits TR.
+			GUI.Box(menus[4].rect, "SOFTWARE ENGINEER");	// Credits DA.
+			GUI.Box(menus[5].rect, "SOFTWARE ENGINEER");	// Credits LS.
+
+			GUI.skin = skinCreditsString;
+			GUI.Box(menus[10].rect, "");
+
+			GUI.skin = null;
 			break;
 
 		case 5: 
