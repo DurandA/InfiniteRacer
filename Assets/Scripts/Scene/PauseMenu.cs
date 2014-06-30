@@ -49,7 +49,7 @@ public class PauseMenu : MonoBehaviour {
 			
 			// Resume button.
 			GUI.skin = pauseResume;
-			if(GUI.Button(new Rect (width,height,(Screen.width * 0.25f),(Screen.height * 0.1f)), "RESUME"))
+			if(GUI.Button(new Rect (width,height,(Screen.width * 0.3f),(Screen.height * 0.1f)), "<size=" + (width * 0.04f) + ">RESUME</size>"))
 			{
 				Time.timeScale = 1;
 				GameConfiguration.Instance.paused = false;
@@ -57,7 +57,7 @@ public class PauseMenu : MonoBehaviour {
 			
 			// Main Menu button.
 			GUI.skin = pauseMainMenu;
-			if(GUI.Button(new Rect (width,height + (Screen.height * 0.1f),(Screen.width * 0.25f),(Screen.height * 0.1f)), "MAIN MENU"))
+			if(GUI.Button(new Rect (width,height + (Screen.height * 0.1f),(Screen.width * 0.3f),(Screen.height * 0.1f)), "<size=" + (width * 0.04f) + ">MAIN MENU</size>"))
 			{
 				Application.LoadLevel(0);
 			}

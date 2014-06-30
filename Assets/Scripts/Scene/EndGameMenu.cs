@@ -9,131 +9,85 @@ using System.Security.Cryptography;
  */
 public class EndGameMenu : MonoBehaviour {
 
-	// GUI.
-	public GUISkin endedBackground;
-	public GUISkin button;
-	public GUISkin scoresSkin;
-	public Camera hudCamera;
-
+	// ------------------------------------------------------------------
 	// Variables.
-	private int width;
-	private int height;
-	private string playerName;
+	// ------------------------------------------------------------------
+
+	public GUISkin skinBackground;
+	public GUISkin skinbutton;
+	public Camera hudCamera;
+	public AudioSource engine;
+	public AudioSource endGameAmbiant;
+	
+	private int width = Screen.width;
+	private int height = Screen.height;
+	private string playerName = "Your Name";
 	private bool sent = false;
 	private bool received = false;
 	private bool invoked = false;
 	private bool guiEnabled = false;
-	private List<HighscoreSaver.Highscore> highscores;
 
-
-	// Use this for initialization.
-	void Start () {
-		width = (Screen.width / 2);
-		height = (Screen.height / 3);
-		playerName = "Your Name";
-	}
+	// ------------------------------------------------------------------
+	// Game loop.
+	// ------------------------------------------------------------------
 
 	void Update (){
-		if(GameConfiguration.Instance.ended && invoked==false){
+		if(GameConfiguration.Instance.ended && invoked == false){
 			Invoke ("EnableGUI", 2.5f);
-			invoked=true;
+			invoked = true;
 		}
 	}
 
 	void EnableGUI(){
-		guiEnabled=true;
+		guiEnabled = true;
+		engine.audio.Stop();
+		endGameAmbiant.audio.Play();
 	}
 
 	// ------------------------------------------------------------------
 	// GUI.
 	// ------------------------------------------------------------------
 
-	void OnGUI () 
-	{
-		if(guiEnabled)
-		{
+	void OnGUI(){
+		if(guiEnabled){
 			hudCamera.enabled = false;
 
-			// Put background image.
-			GUI.skin = endedBackground;
-			GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
+			// Put background image and title.
+			GUI.skin = skinBackground;
+			GUI.Box(new Rect(0, 0, width, height), "");
+			GUI.Label(new Rect((width * 0.1f),(height * 0.05f),(width * 0.8f),(height * 0.25f)), "<size=" + (width * 0.07f) + ">GAME OVER</size>");
 
-			GUI.skin = button;
+			// Score display.
+			GUI.Label(new Rect((width * 0.2f),(height * 0.35f),(width * 0.6f),(height * 0.15f)), "<size=" + (width * 0.03f) + ">SCORED : " + GameConfiguration.Instance.score.ToString() + "</size>");
 
-			// Submit score.
-			if(sent == false)
-			{
-				// Get player name.
-				playerName = GUI.TextField(new Rect(width - 200,height * 1.8f,400,50), playerName, 15);
+			// Highscore publish button.
+			GUI.skin = skinbutton;
 
-				// Score display.
-				GUI.Label(new Rect(0, height * 1.3f,width * 2,70), "SCORED : " + GameConfiguration.Instance.score.ToString());
-
+			if(sent == false){
 				// Submit button.
-				if(GUI.Button(new Rect (width + 200,height * 1.8f,70,70), "GO"))
-				{
+				if(GUI.Button(new Rect((width * 0.65f),(height * 0.45f),(width * 0.15f),(height * 0.15f)), "<size=" + (width * 0.02f) + ">SEND</size>")){
 					// TO DO : check internet connection.
-					HighscoreSaver.postScore(playerName, GameConfiguration.Instance.score.ToString(), this);
+					HighscoreSaver.postScore(playerName.ToUpper(), GameConfiguration.Instance.score.ToString(), this);
 					sent = true;
 				}
+
+				// Name textfield.
+				playerName = GUI.TextField(new Rect((width * 0.25f),(height * 0.45f),(width * 0.4f),(height * 0.15f)), playerName, 20);
+			}
+			else{
+				GUI.Label(new Rect((width * 0.25f),(height * 0.45f),(width * 0.5f),(height * 0.15f)), "<size=" + (width * 0.02f) + ">HIGHSCORE SUBMITTED</size>");
 			}
 
-			// Display best players.
-			else
-			{
-				if(received == true)
-				{
-					GUI.skin = scoresSkin;
-					float heightHS = 0.45f;
-					byte count = 0;
-					
-					foreach (HighscoreSaver.Highscore hs in this.highscores)
-					{
-						if(count < 3)
-						{ 
-							heightHS += 0.2f ;
-						}
-						else
-						{
-							heightHS += 0.6f;
-						}
-
-						GUI.Label(new Rect(width-250, height * heightHS,500, 60), hs.position + "    " + hs.name + "    " + hs.score);
-						count++;
-					}
-				}
-			}
-
-			// Control menu.
-			GUI.skin = button;
-
-			if(GUI.Button(new Rect (width-((Screen.width * 0.25f)/2), height * 2.275f,(Screen.width * 0.25f),(Screen.height * 0.1f)), "RESTART"))
-			{
+			// Control buttons.
+			if(GUI.Button(new Rect ((width * 0.65f), (height * 0.8f),(width * 0.3f),(height * 0.1f)), "<size=" + (width * 0.02f) + ">RESTART ></size>")){
 				Application.LoadLevel(1);
 			}
 
-			if(GUI.Button(new Rect (width-((Screen.width * 0.25f)/2), height * 2.28f + (Screen.height * 0.1f),(Screen.width * 0.25f),(Screen.height * 0.1f)), "EXIT"))
-			{
+			if(GUI.Button(new Rect ((width * 0.05f), (height * 0.8f),(width * 0.3f),(height * 0.1f)), "<size=" + (width * 0.02f) + ">< MAIN MENU</size>")){
 				Application.LoadLevel(0);
 			}
+
+			GUI.skin = null;
 		}
-	}
-
-	// ------------------------------------------------------------------
-	// OnHighscoreLoaded.
-	// ------------------------------------------------------------------
-
-	public void OnHighscoreLoaded(List<HighscoreSaver.Highscore> highscores)
-	{
-		this.highscores = highscores;
-		received = true;
-	}
-
-	// ------------------------------------------------------------------
-	// OnHighscorePosted.
-	// ------------------------------------------------------------------
-
-	public void OnHighscorePosted(){
-		HighscoreSaver.loadScores(this,HighscoreSaver.ScoreTypes.top3withlastscore);
 	}
 }
