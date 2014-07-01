@@ -9,7 +9,10 @@ using System.Collections;
  */
 public class Loader : MonoBehaviour {
 
+	// -------------------------------------------------------------------------------------
 	// Variables.
+	// -------------------------------------------------------------------------------------
+
 	public Texture loadingTexture;
 	public GUISkin skin;
 	public GameObject navigation;
@@ -17,27 +20,34 @@ public class Loader : MonoBehaviour {
 	public AudioSource engine;
 	public GameManager gameManager;
 
-	// On resume.
-	void Awake()
-	{
+	// -------------------------------------------------------------------------------------
+	// Stop the time during loading.
+	// -------------------------------------------------------------------------------------
+
+	void Awake(){
 		Time.timeScale = 0;
 	}
-	
-	void OnGUI () 
-	{
-		// Put background image.
+
+	// -------------------------------------------------------------------------------------
+	// GUI.
+	// -------------------------------------------------------------------------------------
+
+	void OnGUI () {
+		// Background image.
 		GUI.DrawTexture (new Rect(0,0,Screen.width,Screen.height), loadingTexture, ScaleMode.StretchToFill);
 		
 		// Create the "START" button when loading is complete.
 		GUI.skin = skin;
-		if(GUI.Button (new Rect (0, 0,Screen.width, Screen.height), "")
-		   || Input.GetKeyDown(KeyCode.Return))
-		{
+
+		if(GUI.Button (new Rect (0, 0,Screen.width, Screen.height), "") || Input.GetKeyDown(KeyCode.Return)){
 			// Reset values of the game.
 			gameManager.ResetConfiguration();
 
 			// Start the music and engine sound.
-			music.audio.Play();
+			if(GameConfiguration.Instance.gameMusicOn == true){
+				music.audio.Play();
+			}
+
 			engine.audio.Play();
 
 			// Start game.

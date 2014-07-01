@@ -3,36 +3,43 @@ using System.Collections;
 
 [RequireComponent(typeof(NavigationBehaviour))]
 public class OpenPipeGenerator : MonoBehaviour{
-	
+
+	// -------------------------------------------------------------------------------------
+	// Variables.
+	// -------------------------------------------------------------------------------------
+
 	public float splineRad=200f;
 	public float ringRad=25f;
-
 	private Transform[] lines;	
 	private Transform splineParent;
-
 	public Transform ringPrefab;
 	public int ringDistanceFactor=3;
 	public Material lineMaterial;
-	
 	public int segments=16;
 	
+	// -------------------------------------------------------------------------------------
+	// Functions.
+	// -------------------------------------------------------------------------------------
+
 	private void GenerateSplineNodes () {
 		float arc = Mathf.PI/2;
-		for (int i=0;i<segments; i++){
-			float bias=(i/(float)segments)*arc;
+
+		for (int i = 0;i<segments; i++){
+			float bias = (i/(float)segments)*arc;
 			GameObject node = GetComponent<NavigationBehaviour>().spline.AddSplineNode();
-			node.name=""+i;
+			node.name = ""+i;
 			
 			node.transform.parent = splineParent;
 			node.transform.localPosition = new Vector3(Mathf.Cos(bias)*splineRad-splineRad,0f,Mathf.Sin(bias)*splineRad);
 			node.transform.localRotation = Quaternion.Euler(new Vector3(0f,bias*-Mathf.Rad2Deg/*-90*/,0f));
 			
 		}
+
 		GetComponent<NavigationBehaviour>().spline.UpdateSpline();
 	}
 	
 	private Vector3 RotateAroundPoint(Vector3 point, Vector3 pivot, Quaternion angle){
-    	return angle * ( point - pivot) + pivot;
+    	return angle * (point - pivot) + pivot;
     }
 
 	void Awake () {
@@ -43,11 +50,15 @@ public class OpenPipeGenerator : MonoBehaviour{
 		
 		GenerateSplineNodes();
 	}
-	// Use this for initialization
+
+	// -------------------------------------------------------------------------------------
+	// Initialization.
+	// -------------------------------------------------------------------------------------
+
 	void Start () {
-		for(int i=0;i<(segments-1)/ringDistanceFactor+1;i++){
+		for(int i=0; i < (segments-1)/ringDistanceFactor +1; i++){
 			SplineNode node=GetComponent<NavigationBehaviour>().spline.SplineNodes[i*ringDistanceFactor];
-			((Transform)Instantiate(ringPrefab,node.Position,node.Rotation)).parent=transform;
+			((Transform) Instantiate(ringPrefab,node.Position,node.Rotation)).parent=transform;
 		}
 		
 		lines = new Transform[12];
@@ -62,7 +73,7 @@ public class OpenPipeGenerator : MonoBehaviour{
 			float rBias = (i/12f)*(2*Mathf.PI);
 			lines[i].gameObject.GetComponent<LineRenderer>().SetVertexCount(segments);
 
-			for (int j=0; j<segments;j++){
+			for (int j=0; j<segments; j++){
 				SplineNode node=GetComponent<NavigationBehaviour>().spline.SplineNodes[j];
 				lines[i].gameObject.GetComponent<LineRenderer>().useWorldSpace=false;
 				lines[i].gameObject.GetComponent<LineRenderer>().SetPosition(j,
@@ -70,10 +81,5 @@ public class OpenPipeGenerator : MonoBehaviour{
 				
 			}
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }

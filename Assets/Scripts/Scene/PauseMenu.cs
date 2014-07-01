@@ -8,15 +8,20 @@ using System.Collections;
  */
 public class PauseMenu : MonoBehaviour {
 	
-	// GUI.
+	// -------------------------------------------------------------------------------------
+	// Variables.
+	// -------------------------------------------------------------------------------------
+
 	public GUISkin pauseBackground;
 	public GUISkin pauseResume;
 	public GUISkin pauseMainMenu;
+	private int width;
+	private int height;
 	
-	private int width = 0;
-	private int height = 0;
-	
-	// Trigger for the pause menu.
+	// -------------------------------------------------------------------------------------
+	// Game loop.
+	// -------------------------------------------------------------------------------------
+
 	void Start()
 	{
 		width = (Screen.width / 6) * 4;
@@ -38,7 +43,11 @@ public class PauseMenu : MonoBehaviour {
 			Time.timeScale = 1;
 		}
 	}
-	
+
+	// -------------------------------------------------------------------------------------
+	// GUI.
+	// -------------------------------------------------------------------------------------
+
 	void OnGUI () 
 	{
 		if(GameConfiguration.Instance.paused)
