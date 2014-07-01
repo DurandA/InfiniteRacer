@@ -9,8 +9,8 @@ public class MenuAnimator : MonoBehaviour {
 	// Variables.
 	// -------------------------------------------------------------------------------------
 
-	private int width = Screen.width;
-	private int height = Screen.height;
+	private int width;
+	private int height;
 	private int leftMargin;
 	private int topMargin;
 	private int spacing;
@@ -18,7 +18,7 @@ public class MenuAnimator : MonoBehaviour {
 	private int creditSelected;
 	private int tempCount;
 	private int tempRandom;
-	private int tmpFontSize = 0;
+	private int tmpFontSize;
 
 	public float translationSpeed;
 	public float scaleSpeed;
@@ -62,18 +62,22 @@ public class MenuAnimator : MonoBehaviour {
 	private Vector2 topSize;
 	private Vector2 hidden;
 
-	private List<HighscoreSaver.Highscore> highscores = null;
+	private List<HighscoreSaver.Highscore> highscores;
 
 	// -------------------------------------------------------------------------------------
 	// Game loop.
 	// -------------------------------------------------------------------------------------
 
 	void Start(){
+		width = Screen.width;
+     	height = Screen.height;
 		leftMargin = (int)(width * 0.04f);
 		topMargin = (int)(height / 3);
 		spacing = (int)((height * 0.1f));
 		selected = -1;
 		tempCount = -1;
+		tmpFontSize = 0;
+		highscores = null;
 
 		entries = new LTRect[6];
 		entries[0] = new LTRect(leftMargin, topMargin,(width * 0.3f),(height * 0.1f));				// Race.
@@ -158,38 +162,38 @@ public class MenuAnimator : MonoBehaviour {
 			selected = 0; tempCount++;
 			select(entries[0]);
 
-			LeanTween.move(menus[0], new Vector2((width * 0.15f), menus[0].rect.y), translationSpeed, new object[]{"ease",LeanTweenType.easeInOutBack});
+			LeanTween.move(menus[0], new Vector2((width * 0.15f), menus[0].rect.y), translationSpeed).setEase(LeanTweenType.easeInOutBack);
 			LeanTween.move(buttons[0], new Vector2((width * 0.4f), buttons[0].rect.y), 0.22f);
 		}
 
-		else if(GUI.Button(entries[1].rect, "<size=" + (entries[1].rect.width * 0.148) + ">SETTINGS</size>")){
+		if(GUI.Button(entries[1].rect, "<size=" + (entries[1].rect.width * 0.148) + ">SETTINGS</size>")){
 			selected = 1; tempCount++;
 			select(entries[1]);
 
-			LeanTween.move(menus[9], new Vector2((width * 0.15f), menus[9].rect.y), translationSpeed, new object[]{"ease",LeanTweenType.easeInOutBack});
+			LeanTween.move(menus[9], new Vector2((width * 0.15f), menus[9].rect.y), translationSpeed).setEase(LeanTweenType.easeInOutBack);
 		}
 
-		else if(GUI.Button(entries[2].rect, "<size=" + (entries[2].rect.width * 0.148) + ">HIGHSCORES</size>")){
+		if(GUI.Button(entries[2].rect, "<size=" + (entries[2].rect.width * 0.148) + ">HIGHSCORES</size>")){
 			selected = 2; tempCount++;
 			select(entries[2]);
 
 			LoadHighscores();
-			LeanTween.move(buttons[6], new Vector2((width * 0.8f), buttons[6].rect.y), translationSpeed * 3, new object[]{"ease",LeanTweenType.easeInOutBack});
+			LeanTween.move(buttons[6], new Vector2((width * 0.8f), buttons[6].rect.y), translationSpeed * 3).setEase(LeanTweenType.easeInOutBack);
 			LeanTween.move(menus[8], new Vector2((width * 0.17f), (height * 0.25f)), translationSpeed);
 		}
 
-		else if(GUI.Button(entries[3].rect, "<size=" + (entries[3].rect.width * 0.148) + ">HANGAR</size>")){
+		if(GUI.Button(entries[3].rect, "<size=" + (entries[3].rect.width * 0.148) + ">HANGAR</size>")){
 			selected = 3;
 			tempCount++;
 			select(entries[3]);
 
-			LeanTween.move(buttons[7], new Vector2(buttons[7].rect.x, 0f), translationSpeed, new object[]{"ease",LeanTweenType.easeInOutBack});
-			LeanTween.move(buttons[8], new Vector2(buttons[8].rect.x, height - (height * 0.1f)), translationSpeed, new object[]{"ease",LeanTweenType.easeInOutBack});
+			LeanTween.move(buttons[7], new Vector2(buttons[7].rect.x, 0f), translationSpeed).setEase(LeanTweenType.easeInOutBack);
+			LeanTween.move(buttons[8], new Vector2(buttons[8].rect.x, height - (height * 0.1f)), translationSpeed).setEase(LeanTweenType.easeInOutBack);
 			LeanTween.move(menus[6], new Vector2((width * 0.5f), menus[6].rect.y), translationSpeed * 1.5f);
 			LeanTween.move(menus[7], new Vector2(menus[7].rect.x, (height * 0.2f)), translationSpeed * 2f);
 		}
 
-		else if(GUI.Button(entries[4].rect, "<size=" + (entries[4].rect.width * 0.148) + ">CREDITS</size>")){
+		if(GUI.Button(entries[4].rect, "<size=" + (entries[4].rect.width * 0.148) + ">CREDITS</size>")){
 			selected = 4; tempCount++;
 			select(entries[4]);
 
@@ -205,17 +209,17 @@ public class MenuAnimator : MonoBehaviour {
 					LeanTween.alpha(menus[i], 0f, 0.1f);
 				}
 				else{
-					LeanTween.alpha(menus[i], 1f, alphaSpeedCredits, new object[]{"ease",LeanTweenType.easeInOutBack});
+					LeanTween.alpha(menus[i], 1f, alphaSpeedCredits).setEase(LeanTweenType.easeInOutBack);
 				}
 			}
 		}
 
-		else if(GUI.Button(entries[5].rect, "<size=" + (entries[5].rect.width * 0.15) + ">EXIT</size>")){
+		if(GUI.Button(entries[5].rect, "<size=" + (entries[5].rect.width * 0.15) + ">EXIT</size>")){
 			selected = 5; tempCount++; tempRandom = Random.Range(0, exitMessages.Length);
 			select(entries[5]);
 
-			LeanTween.move(menus[1], new Vector2((width * 0.15f), menus[1].rect.y), translationSpeed, new object[]{"ease",LeanTweenType.easeInOutBack});
-			LeanTween.move(buttons[1], new Vector2((width * 0.275f), buttons[1].rect.y), translationSpeed, new object[]{"ease",LeanTweenType.easeInOutBack});
+			LeanTween.move(menus[1], new Vector2((width * 0.15f), menus[1].rect.y), translationSpeed).setEase(LeanTweenType.easeInOutBack);
+			LeanTween.move(buttons[1], new Vector2((width * 0.275f), buttons[1].rect.y), translationSpeed).setEase(LeanTweenType.easeInOutBack);
 		}
 
 		GUI.skin = skinBackButton;

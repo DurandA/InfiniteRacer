@@ -1340,7 +1340,7 @@ public static bool throwErrors = true;
 
 private static LTDescr[] tweens;
 private static int tweenMaxSearch = 0;
-private static int maxTweens = 400;
+private static int maxTweens = 500;
 private static int frameRendered= -1;
 private static GameObject _tweenEmpty;
 private static float dtEstimated;

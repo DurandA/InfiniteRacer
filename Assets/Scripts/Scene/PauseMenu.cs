@@ -59,6 +59,7 @@ public class PauseMenu : MonoBehaviour {
 			GUI.skin = pauseMainMenu;
 			if(GUI.Button(new Rect (width,height + (Screen.height * 0.1f),(Screen.width * 0.3f),(Screen.height * 0.1f)), "<size=" + (width * 0.04f) + ">MAIN MENU</size>"))
 			{
+				Time.timeScale = 1;
 				Application.LoadLevel(0);
 			}
 		}
