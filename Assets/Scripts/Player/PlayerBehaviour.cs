@@ -12,21 +12,21 @@ public class PlayerBehaviour : MonoBehaviour {
 	// Variables.
 	// ----------------------------------------------------------------------------
 
-	public float radius=20f;
-	public float depth=12;
-	public float cameraRadius=6f;
-	public float speed=0f;
-	public float maxSpeed=2f;
-	public float acceleration=2.0f;
-	public float deceleration=2.8f;
+	public float radius = 20f;
+	public float depth = 12;
+	public float cameraRadius = 6f;
+	public float speed = 0f;
+	public float maxSpeed;
+	public float acceleration;
+	public float deceleration;
 
 	public float motion;
-	public bool onCollision=false;
+	public bool onCollision = false;
 	public Transform rotationAxis;
 
 	private bool ft = false;	// FAFUK with variable's name ???
-	private float positionOnOrbit=0f;
-	private float shiftAmount=0f;
+	private float positionOnOrbit = 0f;
+	private float shiftAmount = 0f;
 	private bool inputEnabled = false;
 
 	// Scripts references.
@@ -62,17 +62,17 @@ public class PlayerBehaviour : MonoBehaviour {
 		//transform.position=new Vector3(0,-radius,depth);
 		//Camera.main.transform.position=Vector3.down*cameraRadius;
 
-		maxSpeed=1.6f;
-		acceleration=2.1f;
-		deceleration=2.9f;
+		maxSpeed = 1f;
+		acceleration = 2f;
+		deceleration = 2f;
 	}
 
 	void Update() {
 		// Reactivity adaptation.
-		relativeVelocity = ((GameConfiguration.Instance.speed - GameConfiguration.Instance.startSpeed) / 100);
+		relativeVelocity = ((GameConfiguration.Instance.speed - GameConfiguration.Instance.startSpeed) / 80);
 		
 		acceleration = 2.0f + relativeVelocity;
-		deceleration = 2.8f + relativeVelocity;
+		deceleration = 2.0f + relativeVelocity;
 	}
 
 	// Rotate arround.

@@ -8,8 +8,8 @@ public class Pipe0Behaviour : PipeBehaviour {
 
 	public void Awake(){
 		SpawnPowerUp(0.1f);
-		int rand = 	Random.Range(0,3);
-		int rand2 = 	Random.Range(0,3);
+		int rand = Random.Range(0,3);
+		int rand2 = Random.Range(0,3);
 		switch (rand)
 		{
 			case 1:
@@ -26,16 +26,12 @@ public class Pipe0Behaviour : PipeBehaviour {
 		{
 			case 1:
 				SpawnCoins(0.4f,4+rand+rand2,8.0f);
-				createTwoBlocks(0.7f);
 				break;
 			case 2:
-				createTwoBlocks(0.5f);
 				createBlock(0.6f);
-				createTwoBlocks(0.7f);
 				break;
 			default:
 				SpawnCoins(0.4f,4+rand+rand2,8.0f);
-				createTwoBlocks(0.7f);
 				break;
 		}
 		switch(rand)
@@ -44,10 +40,8 @@ public class Pipe0Behaviour : PipeBehaviour {
 			createBlock(maxPos);
 			break;
 		case 2:
-			createTwoBlocks(maxPos);
 			break;
 		default:
-			createTwoBlocks(maxPos);
 			break;
 		}
 	}

@@ -79,6 +79,7 @@
      <Compile Include="Assets\Scripts\Navigation\CombineChildrenExtended.cs" />
      <Compile Include="Assets\Scripts\Navigation\NavigationBehaviour.cs" />
      <Compile Include="Assets\Scripts\Navigation\NavigationController.cs" />
+     <Compile Include="Assets\Scripts\Navigation\ObstacleManager.cs" />
      <Compile Include="Assets\Scripts\Navigation\OpenPipeBehaviour.cs" />
      <Compile Include="Assets\Scripts\Navigation\Pipe0Behaviour.cs" />
      <Compile Include="Assets\Scripts\Navigation\Pipe0WinBehaviour.cs" />

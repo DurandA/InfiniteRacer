@@ -12,7 +12,7 @@ public class NavigationBehaviour : MonoBehaviour {
 	// Variables.
 	// --------------------------------------------------------------------------------------
 
-	public float torque=0f;
+	public float torque = 0f;
 
 	// --------------------------------------------------------------------------------------
 	// Getter/Setter.

@@ -2,16 +2,22 @@
 using System.Collections;
 
 public class OpenPipeBehaviour : PipeBehaviour {
+	
+	// -------------------------------------------------------------------------------------
+	// Variables.
+	// -------------------------------------------------------------------------------------
 
 	float minPos = 0.3f;
-
+	int rand = 0;
+	
+	// -------------------------------------------------------------------------------------
+	// Spawn random set of obstacles.
+	// -------------------------------------------------------------------------------------
 
 	public void Awake(){
-		SpawnPowerUp(0.1f);
-		int rand = 	Random.Range(0,3);
-		int rand2 = 	Random.Range(0,3);
-		switch (rand)
-		{
+		rand = Random.Range(0,3);
+
+		switch (rand){
 		case 1:
 			createLaser(minPos);
 			break;
@@ -22,8 +28,10 @@ public class OpenPipeBehaviour : PipeBehaviour {
 			createLaser(minPos);
 			break;
 		}
-		switch (rand2)
-		{
+
+		rand = Random.Range(0,3);
+
+		switch (rand){
 		case 1:
 			SpawnCoins(minPos+0.3f,10,0.0f);
 			break;
@@ -34,7 +42,7 @@ public class OpenPipeBehaviour : PipeBehaviour {
 			createLaser(minPos+0.3f);
 			break;
 		}
-		createLaser(0.8f);
 
+		createLaser(0.8f);
 	}
 }

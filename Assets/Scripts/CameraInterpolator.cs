@@ -7,8 +7,8 @@ public class CameraInterpolator : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		transform.position=cameraTarget.position;
-		transform.rotation=cameraTarget.rotation;
+		transform.position = cameraTarget.position;
+		transform.rotation = cameraTarget.rotation;
 	}
 	
 	// Update is called once per frame
@@ -16,8 +16,8 @@ public class CameraInterpolator : MonoBehaviour {
 		if (cameraTarget == null)
 			DestroyImmediate(this);
 		else {
-			transform.position=Vector3.Lerp(transform.position, cameraTarget.position, 0.3f);
-			transform.rotation=Quaternion.Lerp(transform.rotation, cameraTarget.rotation, 0.15f);
+			transform.position = Vector3.Lerp(transform.position, cameraTarget.position, 0.2f);
+			transform.rotation = Quaternion.Lerp(transform.rotation, cameraTarget.rotation, 0.1f);
 		}
 	}
 }
