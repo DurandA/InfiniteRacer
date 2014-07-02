@@ -16,6 +16,7 @@ public class OpenPipeGenerator : MonoBehaviour{
 	public int ringDistanceFactor = 3;
 	public Material lineMaterial;
 	public int segments = 16;
+	public int lineCount = 12;
 	
 	// -------------------------------------------------------------------------------------
 	// Functions.
@@ -61,16 +62,16 @@ public class OpenPipeGenerator : MonoBehaviour{
 			((Transform) Instantiate(ringPrefab,node.Position,node.Rotation)).parent=transform;
 		}
 		
-		lines = new Transform[12];
+		lines = new Transform[lineCount];
 		
-		for (int i = 0 ; i < 12 ; i++){
+		for (int i = 0 ; i < lineCount ; i++){
 			Transform line = new GameObject("Line").transform;
 			line.parent=transform;
 			line.localPosition = Vector3.zero;
 			line.localRotation = Quaternion.identity;
 			line.gameObject.AddComponent<LineRenderer>().material=lineMaterial;
 			lines[i]=line;
-			float rBias = (i/12f)*(2*Mathf.PI);
+			float rBias = (i / (float)lineCount) * (2 * Mathf.PI);
 			lines[i].gameObject.GetComponent<LineRenderer>().SetVertexCount(segments);
 
 			for (int j=0; j<segments; j++){

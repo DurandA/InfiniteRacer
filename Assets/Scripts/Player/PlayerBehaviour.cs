@@ -62,17 +62,15 @@ public class PlayerBehaviour : MonoBehaviour {
 		//transform.position=new Vector3(0,-radius,depth);
 		//Camera.main.transform.position=Vector3.down*cameraRadius;
 
-		maxSpeed = 1f;
-		acceleration = 2f;
-		deceleration = 2f;
+		maxSpeed = 0.9f;
 	}
 
 	void Update() {
 		// Reactivity adaptation.
-		relativeVelocity = ((GameConfiguration.Instance.speed - GameConfiguration.Instance.startSpeed) / 80);
+		relativeVelocity = ((GameConfiguration.Instance.speed - GameConfiguration.Instance.startSpeed) / 150);
 		
-		acceleration = 2.0f + relativeVelocity;
-		deceleration = 2.0f + relativeVelocity;
+		acceleration = 1.9f + relativeVelocity;
+		deceleration = 0.9f + relativeVelocity;
 	}
 
 	// Rotate arround.
@@ -100,10 +98,10 @@ public class PlayerBehaviour : MonoBehaviour {
 		motion = speed * Time.deltaTime;
 		motion += shiftAmount;
 
-		shiftAmount=0f;
+		shiftAmount = 0f;
 
-		positionOnOrbit+=motion;		
-		positionOnOrbit=(positionOnOrbit+1)%1;
+		positionOnOrbit += motion;		
+		positionOnOrbit = (positionOnOrbit +1) %1;
 
 		// If no collision allow the user to move in the tubes.
 		if (!onCollision){

@@ -135,6 +135,10 @@ public class MenuAnimator : MonoBehaviour {
 
 		resetBars();
 
+		// Reload the settings.
+		GameConfiguration.Instance.gameMusicOn = PlayerPrefs.GetInt("gameMusicOn", 1) == 1 ? true : false;
+		GameConfiguration.Instance.menuMusicOn = PlayerPrefs.GetInt("menuMusicOn", 1) == 1 ? true : false;
+
 		// Enable menu music.
 		if(GameConfiguration.Instance.menuMusicOn == true){
 			// TO DO: start music.
@@ -263,6 +267,10 @@ public class MenuAnimator : MonoBehaviour {
 
 			GameConfiguration.Instance.gameMusicOn = GUI.Toggle (new Rect ((width * 0.8f), (height * 0.4f), (height * 0.1f) ,(height * 0.1f)), GameConfiguration.Instance.gameMusicOn, "");
 			GameConfiguration.Instance.menuMusicOn = GUI.Toggle (new Rect ((width * 0.8f), (height * 0.5f), (height * 0.1f) ,(height * 0.1f)), GameConfiguration.Instance.menuMusicOn, "");
+
+			// Save settings.
+			PlayerPrefs.SetInt("gameMusicOn", GameConfiguration.Instance.gameMusicOn == true ? 1:0);
+			PlayerPrefs.SetInt("menuMusicOn", GameConfiguration.Instance.menuMusicOn == true ? 1:0);
 
 			GUI.skin = null;
 			break;

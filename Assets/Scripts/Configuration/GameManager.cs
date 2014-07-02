@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
 	public float startTimer;
 	public float timer;
 
+	private float speedCheck;
 	private PowerupStacker powerups = new PowerupStacker();
 
 	/*
@@ -57,6 +58,10 @@ public class GameManager : MonoBehaviour {
 
 	void Start() {
 		startTimer = timer = Time.time;
+
+		// Reload the settings.
+		GameConfiguration.Instance.gameMusicOn = PlayerPrefs.GetInt("gameMusicOn", 1) == 1 ? true : false;
+		GameConfiguration.Instance.menuMusicOn = PlayerPrefs.GetInt("menuMusicOn", 1) == 1 ? true : false;
 	}
 
 	void Update () {
@@ -65,7 +70,8 @@ public class GameManager : MonoBehaviour {
 		{
 			timer = Time.time;
 			GameConfiguration.Instance.score += 1;
-			GameConfiguration.Instance.speed += Mathf.Sqrt(Time.deltaTime)*8;
+			speedCheck = GameConfiguration.Instance.speed + Mathf.Sqrt(Time.deltaTime)*8;
+			GameConfiguration.Instance.speed = Mathf.Clamp(speedCheck, 90, 300);
 		}
 	}
 
@@ -94,5 +100,11 @@ public class GameManager : MonoBehaviour {
 		GameConfiguration.Instance.score = 0;
 		GameConfiguration.Instance.paused = false;
 		GameConfiguration.Instance.ended = false;
+	}
+
+	public void Destroy(){
+		// Save settings at the end before exiting the application.
+		PlayerPrefs.SetInt("gameMusicOn", GameConfiguration.Instance.gameMusicOn == true ? 1:0);
+		PlayerPrefs.SetInt("menuMusicOn", GameConfiguration.Instance.menuMusicOn == true ? 1:0);
 	}
 }

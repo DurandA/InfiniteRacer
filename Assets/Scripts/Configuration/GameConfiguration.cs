@@ -8,7 +8,7 @@ public class GameConfiguration {
 	// Variables.
 	// -------------------------------------------------------------------------------------
 
-	static GameConfiguration instance=null;
+	static GameConfiguration instance = null;
 	static readonly object padlock = new object();
 
 	GameConfiguration(){}
@@ -45,7 +45,8 @@ public class GameConfiguration {
 	public long highestPersonalScore = 0;
 	
 	// Settings.
-	public bool menuMusicOn = true;
-	public bool gameMusicOn = true;
+	public bool menuMusicOn;
+	public bool gameMusicOn;
+	public int gameMode = 0;
 	public short shipSelected = 0;
 }
