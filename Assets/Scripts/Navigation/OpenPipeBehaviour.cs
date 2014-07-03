@@ -15,6 +15,7 @@ public class OpenPipeBehaviour : PipeBehaviour {
 	// -------------------------------------------------------------------------------------
 
 	public void Awake(){
+		curved = true;
 		rand = Random.Range(0,3);
 
 		switch (rand){

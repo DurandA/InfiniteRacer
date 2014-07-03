@@ -66,9 +66,14 @@ public class EndGameMenu : MonoBehaviour {
 			if(sent == false){
 				// Submit button.
 				if(GUI.Button(new Rect((width * 0.65f),(height * 0.45f),(width * 0.15f),(height * 0.15f)), "<size=" + (width * 0.02f) + ">SEND</size>")){
-					// TO DO : check internet connection.
+					// Send highscore.
 					HighscoreSaver.postScore(playerName.ToUpper(), GameConfiguration.Instance.score.ToString(), this);
 					sent = true;
+
+					// Write best score internally.
+					if(PlayerPrefs.GetInt("highscore", 0) < GameConfiguration.Instance.score){
+						PlayerPrefs.SetFloat("highscore", (float) GameConfiguration.Instance.score);
+					}
 				}
 
 				// Name textfield.

@@ -4,6 +4,7 @@ using System.Collections;
 public class Pipe90HalfSBehaviour : PipeBehaviour {
 
 	public void Awake(){
+		curved = true;
 		SpawnPowerUp(0.1f);
 		createBlower(0.2f);
 		//createLaser(0.4f);	

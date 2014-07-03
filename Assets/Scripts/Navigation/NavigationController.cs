@@ -16,6 +16,7 @@ public class NavigationController : MonoBehaviour {
 
 	public NavigationBehaviour[] pipePrefabs;
 	public NavigationBehaviour startPipePrefab;
+	public Camera camera;
 
 	public Transform rotationAxis;
 	public PlayerBehaviour player;
@@ -31,28 +32,28 @@ public class NavigationController : MonoBehaviour {
 	void RespawnBlocks(){
 		Destroy(pipes[pipeIdx].gameObject);
 		
-		int prvIdx=(pipeIdx+pipes.Length-1) % pipes.Length;
+		int prvIdx = (pipeIdx+pipes.Length-1) % pipes.Length;
 		Spline previousSpline=pipes[prvIdx].GetComponent<Spline>();
 		
-		pipes[pipeIdx]=Instantiate(pipePrefabs[Random.Range(0,pipePrefabs.Length)], previousSpline.GetPositionOnSpline(1f), previousSpline.GetOrientationOnSpline(1f)) as NavigationBehaviour;
-		pipes[pipeIdx].transform.parent=transform;
+		pipes[pipeIdx] = Instantiate(pipePrefabs[Random.Range(0,pipePrefabs.Length)], previousSpline.GetPositionOnSpline(1f), previousSpline.GetOrientationOnSpline(1f)) as NavigationBehaviour;
+		pipes[pipeIdx].transform.parent = transform;
 		
-		pipes[pipeIdx].torque=GenerateTorque();
+		pipes[pipeIdx].torque = GenerateTorque();
 
 		pipes[pipeIdx].transform.Rotate(new Vector3(0,0,pipes[pipeIdx].torque), Space.Self);
-		pipeIdx=(pipeIdx+1)%pipes.Length;
+		pipeIdx = (pipeIdx +1) % pipes.Length;
 	}
 
 	void Start(){
-		pipes=new NavigationBehaviour[5];
+		pipes = new NavigationBehaviour[5];
 
-		Vector3 nextPosition=Vector3.zero;
-		Quaternion nextOrientation=Quaternion.identity;
-		Spline currentSpline=null;
+		Vector3 nextPosition = Vector3.zero;
+		Quaternion nextOrientation = Quaternion.identity;
+		Spline currentSpline = null;
 
 		NavigationBehaviour pipePrefab=startPipePrefab;
 		
-		for(int i=0; i<pipes.Length; i++){
+		for(int i = 0 ; i < pipes.Length; i++){
 			pipes[i]=Instantiate (pipePrefab, nextPosition, nextOrientation) as NavigationBehaviour;
 
 			pipes[i].transform.parent=transform;
@@ -69,26 +70,33 @@ public class NavigationController : MonoBehaviour {
 	}
 	
 	void Update (){
-		Spline spline=pipes[pipeIdx].spline;
-		splinePosition+=(GameConfiguration.Instance.speed*Time.deltaTime) / spline.Length;
+		Spline spline = pipes[pipeIdx].spline;
+		splinePosition += (GameConfiguration.Instance.speed * Time.deltaTime) / spline.Length;
 
 		if (splinePosition>1f)/*Change current tube*/{
-			float exceedingDistance=(splinePosition%1) * spline.Length;
-			Vector3 sOffset=-spline.GetPositionOnSpline(1f);
+			float exceedingDistance = (splinePosition % 1) * spline.Length;
+			Vector3 sOffset = -spline.GetPositionOnSpline(1f);
 			foreach (NavigationBehaviour tube in pipes){
       	      tube.transform.position+=sOffset;
        		 }
 			RespawnBlocks(); //Warning: change tubeIdx
-			spline=pipes[pipeIdx].spline;
-			splinePosition=exceedingDistance/spline.Length;
+			spline = pipes[pipeIdx].spline;
+			splinePosition = exceedingDistance/spline.Length;
 			player.Shift(-pipes[pipeIdx].torque/360);
 		}
 		
-		Vector3 offset=-spline.GetPositionOnSpline(splinePosition);
+		Vector3 offset = -spline.GetPositionOnSpline(splinePosition);
 		foreach (NavigationBehaviour tube in pipes){
-            tube.transform.position+=offset;
+            tube.transform.position += offset;
         }
 
 		rotationAxis.rotation=spline.GetOrientationOnSpline(splinePosition);
+
+		if(pipes[pipeIdx].curved == true){
+			camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, 87f, 0.01f);
+		}
+		else{
+			camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, 76f, 0.01f);
+		}
 	}
 }

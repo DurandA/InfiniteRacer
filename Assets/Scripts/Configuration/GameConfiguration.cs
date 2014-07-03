@@ -33,7 +33,7 @@ public class GameConfiguration {
 	
 	// Game init.
 	public float speed;
-	public float startSpeed = 90;
+	public float startSpeed = 100;
 
 	public bool isShieldEnabled = false;
 	public bool isOnPowerUp = false;
@@ -42,11 +42,9 @@ public class GameConfiguration {
 
 	public int coins = 0;
 	public long score = 0;
-	public long highestPersonalScore = 0;
 	
 	// Settings.
-	public bool menuMusicOn;
 	public bool gameMusicOn;
-	public int gameMode = 0;
+	public bool hardcoreMode = false;
 	public short shipSelected = 0;
 }

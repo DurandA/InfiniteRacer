@@ -19,6 +19,7 @@ public class MenuAnimator : MonoBehaviour {
 	private int tempCount;
 	private int tempRandom;
 	private int tmpFontSize;
+	private bool tmpBool;
 
 	public float translationSpeed;
 	public float scaleSpeed;
@@ -45,6 +46,7 @@ public class MenuAnimator : MonoBehaviour {
 	public GUISkin skinCredits;
 	public GUISkin skinCreditsString;
 	public GUISkin skinCreditsAttributions;
+	public GUISkin hardcore;
 
 	public GUISkin[] creditHeads;
 	public GUISkin[] shipsScreens;
@@ -77,6 +79,7 @@ public class MenuAnimator : MonoBehaviour {
 		selected = -1;
 		tempCount = -1;
 		tmpFontSize = 0;
+		tmpBool = false;
 		highscores = null;
 
 		entries = new LTRect[6];
@@ -101,7 +104,7 @@ public class MenuAnimator : MonoBehaviour {
 		menus[10] = new LTRect((width * 0.1f), (height * 0.3f), (width * 0.9f), (height * 0.7f));		// Credits title + name container.
 		menus[11] = new LTRect((width * 0.1f), (height * 0.4f), (width * 0.9f), (height * 0.6f));		// Credits attributions container.
 
-		buttons = new LTRect[9];
+		buttons = new LTRect[11];
 		buttons[0] = new LTRect(-(width * 0.6f), (height * 0.9f),(width * 0.6f),(height * 0.1f));			// Start race button.
 		buttons[1] = new LTRect(width, (height * 0.675f),(width * 0.6f),(height * 0.1f));					// Confirm exit button.
 		buttons[2] = new LTRect((width * 0.5f),-(height * 0.2f),(width * 0.125f),(height * 0.2f));			// Arnaud credits button.
@@ -111,6 +114,8 @@ public class MenuAnimator : MonoBehaviour {
 		buttons[6] = new LTRect(width + (width * 0.1f), (height * 0.25f), (width * 0.1f), (height * 0.7f));	// Highscore refresh button.
 		buttons[7] = new LTRect((width * 0.5f), -(height * 0.15f), (width * 0.5f), (height * 0.1f));		// Ship selection next button.
 		buttons[8] = new LTRect((width * 0.5f), height + (height * 0.15f), (width * 0.5f), (height * 0.1f));// Ship select button.
+		buttons[9] = new LTRect(width, (height * 0.2f), (width * 0.42f), (height * 0.1f));					// Normal game mode.
+		buttons[10] = new LTRect(width, (height * 0.2f), (width * 0.42f), (height * 0.1f));					// Hardcore game mode.
 
 		backMenu = new LTRect(-(width * 0.1f), (height * 0.2f),(width * 0.1f),(height * 0.8f));
 		backMenu.alpha = 0f;
@@ -137,12 +142,7 @@ public class MenuAnimator : MonoBehaviour {
 
 		// Reload the settings.
 		GameConfiguration.Instance.gameMusicOn = PlayerPrefs.GetInt("gameMusicOn", 1) == 1 ? true : false;
-		GameConfiguration.Instance.menuMusicOn = PlayerPrefs.GetInt("menuMusicOn", 1) == 1 ? true : false;
-
-		// Enable menu music.
-		if(GameConfiguration.Instance.menuMusicOn == true){
-			// TO DO: start music.
-		}
+		//GameConfiguration.Instance.hardcoreMode = PlayerPrefs.GetInt("gameMode", 0) == 0 ? false : true;
 	}
 
 	void Update(){
@@ -168,6 +168,9 @@ public class MenuAnimator : MonoBehaviour {
 
 			LeanTween.move(menus[0], new Vector2((width * 0.15f), menus[0].rect.y), translationSpeed).setEase(LeanTweenType.easeInOutBack);
 			LeanTween.move(buttons[0], new Vector2((width * 0.4f), buttons[0].rect.y), 0.22f);
+			LeanTween.move(buttons[9], new Vector2((width * 0.15f), buttons[9].rect.y), 0.22f);
+			LeanTween.move(buttons[10], new Vector2((width * 0.58f), buttons[10].rect.y), 0.22f);
+
 		}
 
 		if(GUI.Button(entries[1].rect, "<size=" + (entries[1].rect.width * 0.148) + ">SETTINGS</size>")){
@@ -252,6 +255,21 @@ public class MenuAnimator : MonoBehaviour {
 				Application.LoadLevel(1);
 			}
 
+			if(GUI.Button(buttons[9].rect, "<size=" + (buttons[0].rect.width * 0.04f) + ">[Normal Mode]</size>")){
+				GameConfiguration.Instance.hardcoreMode = false;
+				PlayerPrefs.SetInt("gameMode", GameConfiguration.Instance.hardcoreMode == true ? 1:0);
+			}
+
+			if(GUI.Button(buttons[10].rect, "<size=" + (buttons[0].rect.width * 0.04f) + ">[Hardcore Mode]</size>")){
+				GameConfiguration.Instance.hardcoreMode = true;
+				PlayerPrefs.SetInt("gameMode", GameConfiguration.Instance.hardcoreMode == true ? 1:0);
+			}
+
+			if(PlayerPrefs.GetInt("gameMode",0) == 1){
+				GUI.skin = hardcore;
+				GUI.Box(new Rect((width * 0.6f), (height * 0.3f), (width * 0.5f), (height * 0.6f)) , "<size=" + ((width * 0.5f) * 0.04f) + ">EXTRA REWARDS</size>");
+			}
+
 			GUI.skin = null;
 			break;
 
@@ -262,15 +280,15 @@ public class MenuAnimator : MonoBehaviour {
 
 			tmpFontSize = (int) ((width * 0.5f) * 0.05);
 
-			GUI.Label(new Rect ((width * 0.2f), (height * 0.4f), (width * 0.5f), (height * 0.1f)), "<size=" + tmpFontSize + ">" + "Enable Menu Music</size>");
-			GUI.Label(new Rect ((width * 0.2f), (height * 0.5f), (width * 0.5f), (height * 0.1f)), "<size=" + tmpFontSize + ">" + "Enable In-Game Music</size>");
+			GUI.Label(new Rect ((width * 0.2f), (height * 0.4f), (width * 0.7f), (height * 0.1f)), "<size=" + tmpFontSize + ">" + "ENABLE IN-GAME MUSIC</size>");
+			//GUI.Label(new Rect ((width * 0.2f), (height * 0.5f), (width * 0.7f), (height * 0.1f)), "<size=" + tmpFontSize + ">" + "ENABLE HARDCORE MODE</size>");
 
 			GameConfiguration.Instance.gameMusicOn = GUI.Toggle (new Rect ((width * 0.8f), (height * 0.4f), (height * 0.1f) ,(height * 0.1f)), GameConfiguration.Instance.gameMusicOn, "");
-			GameConfiguration.Instance.menuMusicOn = GUI.Toggle (new Rect ((width * 0.8f), (height * 0.5f), (height * 0.1f) ,(height * 0.1f)), GameConfiguration.Instance.menuMusicOn, "");
+			//GameConfiguration.Instance.hardcoreMode = GUI.Toggle (new Rect ((width * 0.8f), (height * 0.5f), (height * 0.1f) ,(height * 0.1f)), GameConfiguration.Instance.hardcoreMode, "");
 
 			// Save settings.
 			PlayerPrefs.SetInt("gameMusicOn", GameConfiguration.Instance.gameMusicOn == true ? 1:0);
-			PlayerPrefs.SetInt("menuMusicOn", GameConfiguration.Instance.menuMusicOn == true ? 1:0);
+			//PlayerPrefs.SetInt("gameMode", GameConfiguration.Instance.hardcoreMode == true ? 1:0);
 
 			GUI.skin = null;
 			break;
@@ -286,12 +304,33 @@ public class MenuAnimator : MonoBehaviour {
 			if(this.highscores != null){
 				GUI.skin = skinHighscoresList;
 				tmpFontSize = (int) ((width * 0.5f) * 0.05);
+				int count = 0;
 
 				foreach (HighscoreSaver.Highscore hs in this.highscores){
-					GUI.Box(new Rect((width * 0.18f),padd,(width * 0.05f), listHeight), "<size=" + tmpFontSize + ">" + hs.position + "</size>");
-					GUI.Box(new Rect((width * 0.25f),padd,(width * 0.4f), listHeight), "<size=" + tmpFontSize + ">" + hs.name + "</size>");
-					GUI.Box(new Rect((width * 0.6f),padd,(width * 0.2f), listHeight), "<size=" + tmpFontSize + ">" + hs.score + "</size>");
-					padd += listHeight;
+					if(count < 10){
+						if(long.Parse(hs.score) > (long)PlayerPrefs.GetFloat("highscore", 0f) && count < 9){
+							GUI.Box(new Rect((width * 0.18f),padd,(width * 0.05f), listHeight), "<size=" + tmpFontSize + ">" + hs.position + "</size>");
+							GUI.Box(new Rect((width * 0.25f),padd,(width * 0.4f), listHeight), "<size=" + tmpFontSize + ">" + hs.name + "</size>");
+							GUI.Box(new Rect((width * 0.6f),padd,(width * 0.2f), listHeight), "<size=" + tmpFontSize + ">" + hs.score + "</size>");
+							padd += listHeight;
+							count ++;
+						}
+						else{
+							GUI.Box(new Rect((width * 0.18f),padd,(width * 0.05f), listHeight), "<size=" + tmpFontSize + ">>" + ">" + "</size>");
+							GUI.Box(new Rect((width * 0.25f),padd,(width * 0.4f), listHeight), "<size=" + tmpFontSize + ">" + "YOUR BEST" + "</size>");
+							GUI.Box(new Rect((width * 0.6f),padd,(width * 0.2f), listHeight), "<size=" + tmpFontSize + ">" + (long)PlayerPrefs.GetFloat("highscore", 0f) + "</size>");
+							padd += listHeight;
+							count ++;
+
+							if(count < 9){
+								GUI.Box(new Rect((width * 0.18f),padd,(width * 0.05f), listHeight), "<size=" + tmpFontSize + ">" + hs.position + "</size>");
+								GUI.Box(new Rect((width * 0.25f),padd,(width * 0.4f), listHeight), "<size=" + tmpFontSize + ">" + hs.name + "</size>");
+								GUI.Box(new Rect((width * 0.6f),padd,(width * 0.2f), listHeight), "<size=" + tmpFontSize + ">" + hs.score + "</size>");
+								padd += listHeight;
+								count ++;
+							}
+						}
+					}
 				}
 
 				GUI.skin = null;
@@ -411,7 +450,7 @@ public class MenuAnimator : MonoBehaviour {
 		menuTranslate(selected);
 
 		if(tempCount < 1){
-			LeanTween.move(backMenu, new Vector2(backMenu.rect.x +(width * 0.1f), backMenu.rect.y), translationSpeed);
+			LeanTween.move(backMenu, new Vector2(backMenu.rect.x + (width * 0.1f), backMenu.rect.y), translationSpeed);
 			click.audio.Play();
 		}
 	}
@@ -448,7 +487,9 @@ public class MenuAnimator : MonoBehaviour {
 		case 0:
 			LeanTween.move(menus[0], new Vector2(width, menus[0].rect.y), translationSpeed);
 			LeanTween.move(buttons[0], new Vector2(-(width * 0.6f), buttons[0].rect.y), translationSpeed);
-			break;
+			LeanTween.move(buttons[9], new Vector2(width, (height * 0.2f)), translationSpeed);
+			LeanTween.move(buttons[10], new Vector2(width, (height * 0.2f)), translationSpeed);
+        	break;
 
 		case 1:
 			LeanTween.move(menus[9], new Vector2(width, menus[9].rect.y), translationSpeed);

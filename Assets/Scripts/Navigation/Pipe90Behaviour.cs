@@ -5,6 +5,7 @@ public class Pipe90Behaviour : PipeBehaviour {
 	float minpos = 0.3f;
 
 	void Awake(){
+		curved = true;
 		SpawnPowerUp(0.1f);
 		int rand = 	Random.Range(0,3);
 		switch (rand)

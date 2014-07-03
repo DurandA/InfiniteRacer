@@ -17,12 +17,12 @@ public class CameraInterpolator : MonoBehaviour {
 			transform.position = Vector3.Slerp(transform.position, cameraTarget.position, 0.1f);
 
 			// Check if hardcore mode is on or not and uses the right type of camera.
-			if(GameConfiguration.Instance.gameMode == 0){
-				transform.rotation = Quaternion.Slerp(transform.rotation, cameraTarget.rotation, 0.035f);
+			if(GameConfiguration.Instance.hardcoreMode == false){
+				transform.rotation = Quaternion.Slerp(transform.rotation, cameraTarget.rotation, 0.06f);
 			}
 			else{
 				transform.rotation = Quaternion.Slerp(transform.rotation, cameraTarget.rotation, 0.04f);
-				cameraViewTarget.rotation = Quaternion.Slerp(cameraViewTarget.rotation, cameraTarget.rotation, 0.04f);
+				cameraViewTarget.rotation = Quaternion.Slerp(cameraViewTarget.rotation, cameraTarget.rotation, 0.035f);
 				transform.LookAt(cameraViewTarget);
 			}
 		}

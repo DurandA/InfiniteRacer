@@ -4,6 +4,7 @@ using System.Collections;
 public class Pipe90VHalfBehaviour : PipeBehaviour {
 	
 	public void Awake(){
+		curved = true;
 		SpawnPowerUp(0.1f);
 		int rand = 	Random.Range(0,3);
 		if(rand== 2)

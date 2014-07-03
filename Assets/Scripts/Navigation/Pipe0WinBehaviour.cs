@@ -7,6 +7,7 @@ public class Pipe0WinBehaviour : PipeBehaviour {
 	public float maxPos = 0.9f;
 	
 	public void Awake(){
+		curved = false;
 		SpawnPowerUp(0.1f);
 		int rand = Random.Range(0,3);
 

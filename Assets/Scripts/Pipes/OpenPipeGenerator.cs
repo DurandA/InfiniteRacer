@@ -58,15 +58,15 @@ public class OpenPipeGenerator : MonoBehaviour{
 
 	void Start () {
 		for(int i = 0 ; i < (segments-1)/ringDistanceFactor +1 ; i++){
-			SplineNode node=GetComponent<NavigationBehaviour>().spline.SplineNodes[i*ringDistanceFactor];
-			((Transform) Instantiate(ringPrefab,node.Position,node.Rotation)).parent=transform;
+			SplineNode node = GetComponent<NavigationBehaviour>().spline.SplineNodes[i * ringDistanceFactor];
+			((Transform) Instantiate(ringPrefab,node.Position,node.Rotation)).parent = transform;
 		}
 		
 		lines = new Transform[lineCount];
 		
 		for (int i = 0 ; i < lineCount ; i++){
 			Transform line = new GameObject("Line").transform;
-			line.parent=transform;
+			line.parent = transform;
 			line.localPosition = Vector3.zero;
 			line.localRotation = Quaternion.identity;
 			line.gameObject.AddComponent<LineRenderer>().material=lineMaterial;

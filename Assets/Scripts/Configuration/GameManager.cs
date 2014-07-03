@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour {
 
 		// Reload the settings.
 		GameConfiguration.Instance.gameMusicOn = PlayerPrefs.GetInt("gameMusicOn", 1) == 1 ? true : false;
-		GameConfiguration.Instance.menuMusicOn = PlayerPrefs.GetInt("menuMusicOn", 1) == 1 ? true : false;
+		GameConfiguration.Instance.hardcoreMode = PlayerPrefs.GetInt("gameMode", 1) == 1 ? true : false;
 	}
 
 	void Update () {
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour {
 		if(Time.time - timer >= 1f && GameConfiguration.Instance.ended == false)
 		{
 			timer = Time.time;
-			GameConfiguration.Instance.score += 1;
+			GameConfiguration.Instance.score += 1 + (GameConfiguration.Instance.hardcoreMode == true ? 1:0);
 			speedCheck = GameConfiguration.Instance.speed + Mathf.Sqrt(Time.deltaTime)*8;
 			GameConfiguration.Instance.speed = Mathf.Clamp(speedCheck, 90, 300);
 		}
@@ -105,6 +105,6 @@ public class GameManager : MonoBehaviour {
 	public void Destroy(){
 		// Save settings at the end before exiting the application.
 		PlayerPrefs.SetInt("gameMusicOn", GameConfiguration.Instance.gameMusicOn == true ? 1:0);
-		PlayerPrefs.SetInt("menuMusicOn", GameConfiguration.Instance.menuMusicOn == true ? 1:0);
+		PlayerPrefs.SetInt("gameMode", GameConfiguration.Instance.hardcoreMode == true ? 1:0);
 	}
 }

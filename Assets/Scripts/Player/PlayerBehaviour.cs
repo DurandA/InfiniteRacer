@@ -80,10 +80,10 @@ public class PlayerBehaviour : MonoBehaviour {
 
 	// User input management.
 	void LateUpdate () {
-		if ((inputEnabled==true && (Input.GetKey ("left")||(Input.GetMouseButton(0)&&Input.mousePosition.x<Screen.width/2))&&(speed > -maxSpeed)))
+		if ((inputEnabled == true && (Input.GetKey ("left")||(Input.GetMouseButton(0)&&Input.mousePosition.x<Screen.width/2))&&(speed > -maxSpeed)))
        		speed = speed - acceleration * Time.deltaTime;
 
-		else if( (inputEnabled==true && (Input.GetKey ("right")||(Input.GetMouseButton(0)&&Input.mousePosition.x>Screen.width/2))&&(speed < maxSpeed)))
+		else if( (inputEnabled == true && (Input.GetKey ("right")||(Input.GetMouseButton(0)&&Input.mousePosition.x>Screen.width/2))&&(speed < maxSpeed)))
        		speed = speed + acceleration * Time.deltaTime;
 
      	else {
