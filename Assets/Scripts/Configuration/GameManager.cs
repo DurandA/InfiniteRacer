@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void ResetConfiguration () {
-		GameConfiguration.Instance.speed = 90;
+		GameConfiguration.Instance.speed = 120;
 		GameConfiguration.Instance.coins = 0;
 		GameConfiguration.Instance.score = 0;
 		GameConfiguration.Instance.paused = false;

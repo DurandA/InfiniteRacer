@@ -33,7 +33,7 @@ public class GameConfiguration {
 	
 	// Game init.
 	public float speed;
-	public float startSpeed = 100;
+	public float startSpeed = 120;
 
 	public bool isShieldEnabled = false;
 	public bool isOnPowerUp = false;

@@ -71,7 +71,7 @@ public class EndGameMenu : MonoBehaviour {
 					sent = true;
 
 					// Write best score internally.
-					if(PlayerPrefs.GetInt("highscore", 0) < GameConfiguration.Instance.score){
+					if((long) (PlayerPrefs.GetFloat("highscore", 0f)) < GameConfiguration.Instance.score){
 						PlayerPrefs.SetFloat("highscore", (float) GameConfiguration.Instance.score);
 					}
 				}
