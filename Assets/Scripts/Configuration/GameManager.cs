@@ -4,16 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 
 /*
- * Author : Arnaud Durand, adaptations by Thomas Rouvinez
- * Description : handle speed and score.
+ * Authors: Arnaud Durand, Thomas Rouvinez
+ * Description: handle speed, score and rewards.
  */
 public class GameManager : MonoBehaviour {
 	public GUISkin powerupSkins;
 	public float startTimer;
 	public float timer;
-
+	
 	private float speedCheck;
 	private PowerupStacker powerups = new PowerupStacker();
+
+	private int width;
+	private int height;
+	private bool rewardOn = false;
+
+	private LTRect reward;
 
 	/*
 	 * Author : Arnaud Durand
@@ -58,6 +64,11 @@ public class GameManager : MonoBehaviour {
 
 	void Start() {
 		startTimer = timer = Time.time;
+		width = Screen.width;
+		height = Screen.height;
+
+		reward = new LTRect((width * 0.25f), (height * 0.1f), (width * 0.5f), (height * 0.2f));
+		reward.color.a = 0f;
 
 		// Reload the settings.
 		GameConfiguration.Instance.gameMusicOn = PlayerPrefs.GetInt("gameMusicOn", 1) == 1 ? true : false;
@@ -66,27 +77,31 @@ public class GameManager : MonoBehaviour {
 
 	void Update () {
 		// Update and detect each second.
-		if(Time.time - timer >= 1f && GameConfiguration.Instance.ended == false)
-		{
+		if(Time.time - timer >= 1f && GameConfiguration.Instance.ended == false){
 			timer = Time.time;
 			GameConfiguration.Instance.score += 1 + (GameConfiguration.Instance.hardcoreMode == true ? 1:0);
 			speedCheck = GameConfiguration.Instance.speed + Mathf.Sqrt(Time.deltaTime)*8;
 			GameConfiguration.Instance.speed = Mathf.Clamp(speedCheck, 90, 300);
 		}
+
+		StartCoroutine(checkDistance());
 	}
 
 	void OnGUI(){
-		if (!GameConfiguration.Instance.ended) {
+		if (!GameConfiguration.Instance.ended){
 			GUI.skin = powerupSkins;
 
-			for (int i=0; i<powerups.icons.Length; i++)
-			{
-				if (GUI.Button (new Rect (Screen.width - (Screen.width / 10) - i * (Screen.width / 10), Screen.height - (Screen.width / 10), (Screen.width / 12), (Screen.width / 12)), powerups.icons [i])
+			for (int i = 0 ; i < powerups.icons.Length; i++){
+				if (GUI.Button (new Rect (width - (width / 10) - i * (width / 10), height - (width / 10), (width / 12), (width / 12)), powerups.icons [i])
 				    || Input.GetKey (KeyCode.Space) && GameConfiguration.Instance.isOnPowerUp == false)
 				{
 					powerups.Pop (i);
 				}
 			}				
+		}
+
+		if(rewardOn == true){
+			GUI.Box(reward.rect, "" + GameConfiguration.Instance.thresholdValues[GameConfiguration.Instance.thresholdIndex -1]);
 		}
 	}
 
@@ -98,6 +113,8 @@ public class GameManager : MonoBehaviour {
 		GameConfiguration.Instance.speed = 120;
 		GameConfiguration.Instance.coins = 0;
 		GameConfiguration.Instance.score = 0;
+		GameConfiguration.Instance.distance = 0;
+		GameConfiguration.Instance.thresholdIndex = 0;
 		GameConfiguration.Instance.paused = false;
 		GameConfiguration.Instance.ended = false;
 	}
@@ -106,5 +123,36 @@ public class GameManager : MonoBehaviour {
 		// Save settings at the end before exiting the application.
 		PlayerPrefs.SetInt("gameMusicOn", GameConfiguration.Instance.gameMusicOn == true ? 1:0);
 		PlayerPrefs.SetInt("gameMode", GameConfiguration.Instance.hardcoreMode == true ? 1:0);
+	}
+
+	// -------------------------------------------------------------------------------------
+	// Check if the reward tag should be displayed or not.
+	// -------------------------------------------------------------------------------------
+
+	IEnumerator checkDistance(){
+		if(GameConfiguration.Instance.thresholdIndex < 4 && GameConfiguration.Instance.distance > GameConfiguration.Instance.thresholdValues[GameConfiguration.Instance.thresholdIndex]){
+			// Give score bonus (distance milestone / 100).
+			GameConfiguration.Instance.score += (GameConfiguration.Instance.thresholdValues[GameConfiguration.Instance.thresholdIndex]) / 100;
+
+			// Draw the reward tag for 2 seconds.
+			rewardOn = true;
+			reward.color.a = 1f;
+			++GameConfiguration.Instance.thresholdIndex;
+			StartCoroutine(fadeOut(1.5f, reward));
+		}
+
+		yield return new WaitForSeconds(.5f);
+	}
+
+	// Reward disappearence function.
+	IEnumerator fadeOut(float waitTime, LTRect reward){
+		yield return new WaitForSeconds(waitTime);
+
+		while(reward.color.a > 0){ 
+			reward.color.a -= Time.deltaTime;
+			yield return null;
+		}
+
+		rewardOn = false;
 	}
 }

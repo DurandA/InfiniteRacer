@@ -11,7 +11,7 @@ public class CameraInterpolator : MonoBehaviour {
 		transform.rotation = cameraTarget.rotation;
 	}
 
-	void Update () {
+	void LateUpdate () {
 		if(cameraTarget != null){
 			// Catch on the target's position.
 			transform.position = Vector3.Slerp(transform.position, cameraTarget.position, 0.1f);

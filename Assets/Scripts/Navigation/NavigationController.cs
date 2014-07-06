@@ -1,4 +1,6 @@
 using UnityEngine;
+using System;
+using System.Collections;
 
 /*
  * Author: Arnaud Durand
@@ -26,22 +28,7 @@ public class NavigationController : MonoBehaviour {
 	//private NavigationController navigationScript;
 	
 	float GenerateTorque(){
-		return Random.Range(0,12) * 60f;
-	}
-
-	void RespawnBlocks(){
-		Destroy(pipes[pipeIdx].gameObject);
-		
-		int prvIdx = (pipeIdx+pipes.Length-1) % pipes.Length;
-		Spline previousSpline=pipes[prvIdx].GetComponent<Spline>();
-		
-		pipes[pipeIdx] = Instantiate(pipePrefabs[Random.Range(0,pipePrefabs.Length)], previousSpline.GetPositionOnSpline(1f), previousSpline.GetOrientationOnSpline(1f)) as NavigationBehaviour;
-		pipes[pipeIdx].transform.parent = transform;
-		
-		pipes[pipeIdx].torque = GenerateTorque();
-
-		pipes[pipeIdx].transform.Rotate(new Vector3(0,0,pipes[pipeIdx].torque), Space.Self);
-		pipeIdx = (pipeIdx +1) % pipes.Length;
+		return UnityEngine.Random.Range(0,12) * 60f;
 	}
 
 	void Start(){
@@ -65,7 +52,7 @@ public class NavigationController : MonoBehaviour {
 			nextPosition=currentSpline.GetPositionOnSpline(1f);
 			nextOrientation=currentSpline.GetOrientationOnSpline(1f);
 
-			pipePrefab=pipePrefabs[Random.Range(0,pipePrefabs.Length)];
+			pipePrefab=pipePrefabs[UnityEngine.Random.Range(0,pipePrefabs.Length)];
 		}
 	}
 	
@@ -73,12 +60,15 @@ public class NavigationController : MonoBehaviour {
 		Spline spline = pipes[pipeIdx].spline;
 		splinePosition += (GameConfiguration.Instance.speed * Time.deltaTime) / spline.Length;
 
-		if (splinePosition>1f)/*Change current tube*/{
+		if(splinePosition > 1f)/*Change current tube*/{
+			GameConfiguration.Instance.distance += pipes[pipeIdx].length;
 			float exceedingDistance = (splinePosition % 1) * spline.Length;
 			Vector3 sOffset = -spline.GetPositionOnSpline(1f);
+			
 			foreach (NavigationBehaviour tube in pipes){
-      	      tube.transform.position+=sOffset;
-       		 }
+				tube.transform.position += sOffset;
+			}
+			
 			RespawnBlocks(); //Warning: change tubeIdx
 			spline = pipes[pipeIdx].spline;
 			splinePosition = exceedingDistance/spline.Length;
@@ -99,5 +89,24 @@ public class NavigationController : MonoBehaviour {
 		else{
 			camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, 76f, 0.01f);
 		}
+	}
+
+	// --------------------------------------------------------------------------------------
+	// Functions.
+	// --------------------------------------------------------------------------------------
+
+	void RespawnBlocks(){
+		Destroy(pipes[pipeIdx].gameObject);
+		
+		int prvIdx = (pipeIdx + pipes.Length-1) % pipes.Length;
+		Spline previousSpline=pipes[prvIdx].GetComponent<Spline>();
+		
+		pipes[pipeIdx] = Instantiate(pipePrefabs[UnityEngine.Random.Range(0,pipePrefabs.Length)], previousSpline.GetPositionOnSpline(1f), previousSpline.GetOrientationOnSpline(1f)) as NavigationBehaviour;
+		pipes[pipeIdx].transform.parent = transform;
+		
+		pipes[pipeIdx].torque = GenerateTorque();
+		
+		pipes[pipeIdx].transform.Rotate(new Vector3(0,0,pipes[pipeIdx].torque), Space.Self);
+		pipeIdx = (pipeIdx +1) % pipes.Length;
 	}
 }

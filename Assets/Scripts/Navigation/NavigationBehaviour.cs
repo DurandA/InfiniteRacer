@@ -14,6 +14,7 @@ public class NavigationBehaviour : MonoBehaviour {
 
 	public float torque = 0f;
 	public bool curved = true;
+	public int length;
 
 	// --------------------------------------------------------------------------------------
 	// Getter/Setter.
