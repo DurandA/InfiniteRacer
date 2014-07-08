@@ -82,7 +82,7 @@ public class NavigationController : MonoBehaviour {
 
 		rotationAxis.rotation=spline.GetOrientationOnSpline(splinePosition);
 
-		// Modification of the FOV depending on the type of tubes.
+		// FOV modification depending on the type of tubes.
 		if(pipes[pipeIdx].curved == true){
 			camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, 87f, 0.01f);
 		}

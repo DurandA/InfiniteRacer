@@ -16,12 +16,4 @@ public class ObstacleManager : MonoBehaviour {
 	public Transform shield;
 	public Transform booster;
 	public Transform slowDown;
-
-	// -------------------------------------------------------------------------------------
-	// Getters.
-	// -------------------------------------------------------------------------------------
-
-	public Transform getBlockObstacle(){
-		return this.blockObstacle;
-	}
 }

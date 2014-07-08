@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour {
 
 		// Reload the settings.
 		GameConfiguration.Instance.gameMusicOn = PlayerPrefs.GetInt("gameMusicOn", 1) == 1 ? true : false;
+		GameConfiguration.Instance.menuMusicOn = PlayerPrefs.GetInt("menuMusicOn", 1) == 1 ? true : false;
 		GameConfiguration.Instance.hardcoreMode = PlayerPrefs.GetInt("gameMode", 1) == 1 ? true : false;
 	}
 
@@ -122,6 +123,7 @@ public class GameManager : MonoBehaviour {
 	public void Destroy(){
 		// Save settings at the end before exiting the application.
 		PlayerPrefs.SetInt("gameMusicOn", GameConfiguration.Instance.gameMusicOn == true ? 1:0);
+		PlayerPrefs.SetInt("menuMusicOn", GameConfiguration.Instance.gameMusicOn == true ? 1:0);
 		PlayerPrefs.SetInt("gameMode", GameConfiguration.Instance.hardcoreMode == true ? 1:0);
 	}
 

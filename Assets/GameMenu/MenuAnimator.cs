@@ -33,6 +33,7 @@ public class MenuAnimator : MonoBehaviour {
 	public GameObject LightBar;
 	public GameObject DarkBar;
 	public GameObject earth;
+	public AudioSource menuMusic;
 
 	public GUISkin skinMenu;
 	public GUISkin skinHangarButtons;
@@ -142,12 +143,28 @@ public class MenuAnimator : MonoBehaviour {
 
 		// Reload the settings.
 		GameConfiguration.Instance.gameMusicOn = PlayerPrefs.GetInt("gameMusicOn", 1) == 1 ? true : false;
-		//GameConfiguration.Instance.hardcoreMode = PlayerPrefs.GetInt("gameMode", 0) == 0 ? false : true;
+		GameConfiguration.Instance.menuMusicOn = PlayerPrefs.GetInt("menuMusicOn", 1) == 0 ? false : true;
 	}
 
 	void Update(){
 		earth.transform.Rotate(Vector3.up * Time.deltaTime, Space.Self);
 		earth.transform.Rotate(Vector3.right * Time.deltaTime, Space.Self);
+
+		StartCoroutine(checkAudio());
+	}
+
+	IEnumerator checkAudio(){
+		if(GameConfiguration.Instance.menuMusicOn == false && menuMusic.audio.isPlaying){
+			menuMusic.audio.Stop();
+		}
+
+		yield return new WaitForSeconds(0.2f);
+
+		if(GameConfiguration.Instance.menuMusicOn == true && !menuMusic.audio.isPlaying){
+			menuMusic.audio.Play();
+		}
+
+		yield return new WaitForSeconds(0.2f);
 	}
 
 	// -------------------------------------------------------------------------------------
@@ -281,14 +298,14 @@ public class MenuAnimator : MonoBehaviour {
 			tmpFontSize = (int) ((width * 0.5f) * 0.05);
 
 			GUI.Label(new Rect ((width * 0.2f), (height * 0.4f), (width * 0.7f), (height * 0.1f)), "<size=" + tmpFontSize + ">" + "ENABLE IN-GAME MUSIC</size>");
-			//GUI.Label(new Rect ((width * 0.2f), (height * 0.5f), (width * 0.7f), (height * 0.1f)), "<size=" + tmpFontSize + ">" + "ENABLE HARDCORE MODE</size>");
+			GUI.Label(new Rect ((width * 0.2f), (height * 0.5f), (width * 0.7f), (height * 0.1f)), "<size=" + tmpFontSize + ">" + "ENABLE MENU MUSIC</size>");
 
 			GameConfiguration.Instance.gameMusicOn = GUI.Toggle (new Rect ((width * 0.8f), (height * 0.4f), (height * 0.1f) ,(height * 0.1f)), GameConfiguration.Instance.gameMusicOn, "");
-			//GameConfiguration.Instance.hardcoreMode = GUI.Toggle (new Rect ((width * 0.8f), (height * 0.5f), (height * 0.1f) ,(height * 0.1f)), GameConfiguration.Instance.hardcoreMode, "");
+			GameConfiguration.Instance.menuMusicOn = GUI.Toggle (new Rect ((width * 0.8f), (height * 0.5f), (height * 0.1f) ,(height * 0.1f)), GameConfiguration.Instance.menuMusicOn, "");
 
 			// Save settings.
 			PlayerPrefs.SetInt("gameMusicOn", GameConfiguration.Instance.gameMusicOn == true ? 1:0);
-			//PlayerPrefs.SetInt("gameMode", GameConfiguration.Instance.hardcoreMode == true ? 1:0);
+			PlayerPrefs.SetInt("menuMusicOn", GameConfiguration.Instance.menuMusicOn == true ? 1:0);
 
 			GUI.skin = null;
 			break;
@@ -305,6 +322,7 @@ public class MenuAnimator : MonoBehaviour {
 				GUI.skin = skinHighscoresList;
 				tmpFontSize = (int) ((width * 0.5f) * 0.05);
 				int count = 0;
+				bool isIn = false;
 
 				foreach (HighscoreSaver.Highscore hs in this.highscores){
 					if(count < 10){
@@ -316,13 +334,16 @@ public class MenuAnimator : MonoBehaviour {
 							count ++;
 						}
 						else{
-							GUI.Box(new Rect((width * 0.18f),padd,(width * 0.05f), listHeight), "<size=" + tmpFontSize + ">>" + ">" + "</size>");
-							GUI.Box(new Rect((width * 0.25f),padd,(width * 0.4f), listHeight), "<size=" + tmpFontSize + ">" + "YOUR BEST" + "</size>");
-							GUI.Box(new Rect((width * 0.6f),padd,(width * 0.2f), listHeight), "<size=" + tmpFontSize + ">" + (long)PlayerPrefs.GetFloat("highscore", 0f) + "</size>");
-							padd += listHeight;
-							count ++;
+							if(isIn == false){
+								GUI.Box(new Rect((width * 0.18f),padd,(width * 0.05f), listHeight), "<size=" + tmpFontSize + ">>" + ">" + "</size>");
+								GUI.Box(new Rect((width * 0.25f),padd,(width * 0.4f), listHeight), "<size=" + tmpFontSize + ">" + "YOUR BEST" + "</size>");
+								GUI.Box(new Rect((width * 0.6f),padd,(width * 0.2f), listHeight), "<size=" + tmpFontSize + ">" + (long)PlayerPrefs.GetFloat("highscore", 0f) + "</size>");
+								padd += listHeight;
+								count ++;
+								isIn = true;
+							}
 
-							if(count < 9){
+							if(count < 10){
 								GUI.Box(new Rect((width * 0.18f),padd,(width * 0.05f), listHeight), "<size=" + tmpFontSize + ">" + hs.position + "</size>");
 								GUI.Box(new Rect((width * 0.25f),padd,(width * 0.4f), listHeight), "<size=" + tmpFontSize + ">" + hs.name + "</size>");
 								GUI.Box(new Rect((width * 0.6f),padd,(width * 0.2f), listHeight), "<size=" + tmpFontSize + ">" + hs.score + "</size>");

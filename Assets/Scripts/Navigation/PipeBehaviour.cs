@@ -2,29 +2,23 @@
 using System.Collections;
 
 public class PipeBehaviour : NavigationBehaviour { 
+
+	// -------------------------------------------------------------------------------------
+	// Obstacles.
+	// -------------------------------------------------------------------------------------
+	
+	public IEnumerator spawnObstacle(Transform obstacle, Transform parent, float position, Vector3 rotation){
+		yield return new WaitForSeconds(.1f);
+
+		Transform obsPC1 = Instantiate(obstacle, spline.GetPositionOnSpline(position), spline.GetOrientationOnSpline(position)) as Transform;
+		obsPC1.transform.parent = parent;
+		yield return new WaitForSeconds(.1f);
 		
-	// -------------------------------------------------------------------------------------
-	// Variables.
-	// -------------------------------------------------------------------------------------
-
-	private int boosterProbability = 15; 	// 2/30 chances to appear
-	private int shieldProbability = 1; 		// 3/30 chances to appear
-	private int slowDownProbability = 1;	// 2/30 chances to appear
-	private int coinPackProbability = 2; 	// 2/30 chances to appear
-
-	private GameObject navigation;
-	private ObstacleManager spawnableTypes;
-
-	// -------------------------------------------------------------------------------------
-	// Functions.
-	// -------------------------------------------------------------------------------------
-
-	public void Start(){
-		navigation = GameObject.Find("Navigation");
-		spawnableTypes = navigation.GetComponent<ObstacleManager>();
+		obsPC1.transform.Rotate(rotation,Space.Self);
+		yield return null;
 	}
 
-	public virtual void SpawnPowerUp(float postionOnSpline){
+	/*public virtual void SpawnPowerUp(float postionOnSpline){
 		// max 20/30 that a power up (each power up has max 5/30 to appear) appears and min 10/30 that no power ups appear
 		// min 4/40 that a power up (each power up has min 1/30 to appear) appears and max 26/30 that no power ups appear
 		int rand = Random.Range(0,30);
@@ -41,13 +35,13 @@ public class PipeBehaviour : NavigationBehaviour {
 		else if(rand > (boosterProbability +shieldProbability+slowDownProbability) && rand <= (boosterProbability +shieldProbability+slowDownProbability+coinPackProbability)){
 			SpawnCoinPack(postionOnSpline);  Debug.Log("spawn coin pack " + rand);
 		}
-	}
+	}*/
 
 	// -------------------------------------------------------------------------------------
 	// Power-ups.
 	// -------------------------------------------------------------------------------------
 
-	public virtual void SpawnShield(float positionOnSpline){
+	/*public virtual void SpawnShield(float positionOnSpline){
 		Transform obs = Instantiate(spawnableTypes.shield, spline.GetPositionOnSpline(positionOnSpline), spline.GetOrientationOnSpline(positionOnSpline)) as Transform;
 		obs.transform.parent=transform;
 	}
@@ -83,31 +77,5 @@ public class PipeBehaviour : NavigationBehaviour {
 			coins[i].transform.Rotate(new Vector3(0,0,shiftAdd),Space.Self);
 			shiftAdd += shift;
 		}
-	}
-
-	// -------------------------------------------------------------------------------------
-	// Obstacles.
-	// -------------------------------------------------------------------------------------
-	
-	public void createBlock(float newPosition){
-		float x = (Random.Range(0,6) * 60f);
-		Transform obs = Instantiate(spawnableTypes.getBlockObstacle(), spline.GetPositionOnSpline(newPosition), spline.GetOrientationOnSpline(newPosition)) as Transform;
-		obs.transform.parent=transform;
-		obs.transform.Rotate(new Vector3(180,0,x),Space.Self);
-	}
-
-	public void createHexa(float newPosition){
-		Transform hexa = Instantiate (spawnableTypes.hexaObstacle, spline.GetPositionOnSpline (newPosition), spline.GetOrientationOnSpline(newPosition)) as Transform;
-		hexa.transform.parent = transform;
-	}
-	
-	public void createBlower(float newPosition){
-		Transform obs = Instantiate(spawnableTypes.blockObstacle, spline.GetPositionOnSpline(newPosition), spline.GetOrientationOnSpline(newPosition)) as Transform;
-		obs.transform.parent = transform;
-	}
-
-	public void createLaser(float newPosition){
-		Transform obs = Instantiate(spawnableTypes.laserObstacle, spline.GetPositionOnSpline(newPosition), spline.GetOrientationOnSpline(newPosition)) as Transform;
-		obs.transform.parent = transform;
-	}
+	}*/
 }

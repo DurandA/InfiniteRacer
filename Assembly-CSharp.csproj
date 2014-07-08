@@ -78,7 +78,6 @@
     <Compile Include="Assets\Scripts\Navigation\CombineChildrenExtended.cs" />
     <Compile Include="Assets\Scripts\Navigation\NavigationBehaviour.cs" />
     <Compile Include="Assets\Scripts\Navigation\NavigationController.cs" />
-    <Compile Include="Assets\Scripts\Navigation\ObstacleManager.cs" />
     <Compile Include="Assets\Scripts\Navigation\OpenPipeBehaviour.cs" />
     <Compile Include="Assets\Scripts\Navigation\Pipe0Behaviour.cs" />
     <Compile Include="Assets\Scripts\Navigation\Pipe0WinBehaviour.cs" />
@@ -98,6 +97,7 @@
     <Compile Include="Assets\Scripts\Player\GameSounds.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerBehaviour.cs" />
     <Compile Include="Assets\Scripts\Player\ShipAnimator.cs" />
+    <Compile Include="Assets\Scripts\Player\SoundAnalysis.cs" />
     <Compile Include="Assets\Scripts\Scene\EndGameMenu.cs" />
     <Compile Include="Assets\Scripts\Scene\HUD.cs" />
     <Compile Include="Assets\Scripts\Scene\HudRenderer.cs" />
