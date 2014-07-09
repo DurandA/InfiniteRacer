@@ -1,18 +1,30 @@
 fileFormatVersion: 2
-guid: e8e1a78fedad55944ac6478f7076df5c
+guid: f11b5384f17634c479f26b5130c615ff
 ModelImporter:
-  serializedVersion: 15
+  serializedVersion: 16
   fileIDToRecycleName:
-    100000: Cube.1
-    100002: //RootNode
-    400000: Cube.1
-    400002: //RootNode
-    2300000: Cube.1
-    2300002: //RootNode
-    3300000: Cube.1
-    3300002: //RootNode
-    4300000: Obs_a_2
-    4300002: Cube.1
+    100000: Center
+    100002: Faces
+    100004: Interior
+    100006: //RootNode
+    100008: Structure
+    400000: Center
+    400002: Faces
+    400004: Interior
+    400006: //RootNode
+    400008: Structure
+    2300000: Center
+    2300002: Faces
+    2300004: Interior
+    2300006: Structure
+    3300000: Center
+    3300002: Faces
+    3300004: Interior
+    3300006: Structure
+    4300000: Center
+    4300002: Structure
+    4300004: Faces
+    4300006: Interior
     9500000: //RootNode
   materials:
     importMaterials: 0
@@ -22,6 +34,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
+    motionNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -33,7 +46,7 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: .5
-    meshCompression: 0
+    meshCompression: 3
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
@@ -65,4 +78,5 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  additionalBone: 0
   userData: 

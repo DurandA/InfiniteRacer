@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\Audio FX\ObstacleFXHandler.cs" />
      <Compile Include="Assets\Scripts\Audio FX\PipeFXHandler.cs" />
      <Compile Include="Assets\Scripts\CameraInterpolator.cs" />
+     <Compile Include="Assets\Scripts\Configuration\CombineChildrenExtended.cs" />
      <Compile Include="Assets\Scripts\Configuration\GameConfiguration.cs" />
      <Compile Include="Assets\Scripts\Configuration\GameManager.cs" />
      <Compile Include="Assets\Scripts\Configuration\HighscoreSaver.cs" />
@@ -76,7 +77,6 @@
      <Compile Include="Assets\Scripts\Items\Powerup.cs" />
      <Compile Include="Assets\Scripts\Items\ShieldHandler.cs" />
      <Compile Include="Assets\Scripts\Items\SlowdownHandler.cs" />
-     <Compile Include="Assets\Scripts\Navigation\CombineChildrenExtended.cs" />
      <Compile Include="Assets\Scripts\Navigation\NavigationBehaviour.cs" />
      <Compile Include="Assets\Scripts\Navigation\NavigationController.cs" />
      <Compile Include="Assets\Scripts\Navigation\ObstacleManager.cs" />
