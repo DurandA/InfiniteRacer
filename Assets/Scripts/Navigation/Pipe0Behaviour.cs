@@ -4,7 +4,7 @@ using System.Collections;
 public class Pipe0Behaviour : PipeBehaviour {
 
 	public float minPos = 0.2f;
-	public float maxPos = 0.9f;
+	public float maxPos = 0.5f;
 	private float tempPosition;
 	private float tempRotation;
 
