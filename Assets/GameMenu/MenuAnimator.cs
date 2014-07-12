@@ -277,7 +277,7 @@ public class MenuAnimator : MonoBehaviour {
 				PlayerPrefs.SetInt("gameMode", GameConfiguration.Instance.hardcoreMode == true ? 1:0);
 			}
 
-			if(GUI.Button(buttons[10].rect, "<size=" + (buttons[0].rect.width * 0.04f) + ">[Hardcore Mode]</size>")){
+			if(GUI.Button(buttons[10].rect, "<size=" + (buttons[0].rect.width * 0.04f) + ">[Bastard Mode]</size>")){
 				GameConfiguration.Instance.hardcoreMode = true;
 				PlayerPrefs.SetInt("gameMode", GameConfiguration.Instance.hardcoreMode == true ? 1:0);
 			}

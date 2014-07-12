@@ -48,11 +48,11 @@ public class NavigationController : MonoBehaviour {
 			pipes[i].torque = i != 0 ? GenerateTorque(): 0 ;
 			pipes[i].transform.Rotate(new Vector3(0,0,pipes[i].torque), Space.Self);
 
-			currentSpline=pipes[i].spline;
-			nextPosition=currentSpline.GetPositionOnSpline(1f);
-			nextOrientation=currentSpline.GetOrientationOnSpline(1f);
+			currentSpline = pipes[i].spline;
+			nextPosition = currentSpline.GetPositionOnSpline(1f);
+			nextOrientation = currentSpline.GetOrientationOnSpline(1f);
 
-			pipePrefab=pipePrefabs[UnityEngine.Random.Range(0,pipePrefabs.Length)];
+			pipePrefab = pipePrefabs[UnityEngine.Random.Range(0,pipePrefabs.Length)];
 		}
 	}
 	

@@ -4,19 +4,27 @@ using System.Collections;
 public class PipeBehaviour : NavigationBehaviour { 
 
 	// -------------------------------------------------------------------------------------
-	// Obstacles.
+	// Functions for all the children to be able to spawn obstacles.
 	// -------------------------------------------------------------------------------------
-	
-	public IEnumerator spawnObstacle(Transform obstacle, Transform parent, float position, Vector3 rotation){
-		yield return new WaitForSeconds(.1f);
 
-		Transform obsPC1 = Instantiate(obstacle, spline.GetPositionOnSpline(position), spline.GetOrientationOnSpline(position)) as Transform;
-		obsPC1.transform.parent = parent;
+	// Returns a value between 280 and 100 unity of available density for obstacles in a pipe.
+	public int getDensity(){
+		return (int) (GameConfiguration.Instance.maxSpeed - GameConfiguration.Instance.speed);
+	}
+
+	// Generic function to spawn an obstacle (a spawnable).
+	public IEnumerator spawnObstacle(Transform obstacle, Transform parent, float position, Vector3 rotation){
+		Transform spawnable = Instantiate(obstacle, spline.GetPositionOnSpline(position), spline.GetOrientationOnSpline(position)) as Transform;
+		spawnable.transform.parent = parent;
 		yield return new WaitForSeconds(.1f);
 		
-		obsPC1.transform.Rotate(rotation,Space.Self);
+		spawnable.transform.Rotate(rotation,Space.Self);
 		yield return null;
 	}
+
+	// -------------------------------------------------------------------------------------
+	// Power-ups.
+	// -------------------------------------------------------------------------------------
 
 	/*public virtual void SpawnPowerUp(float postionOnSpline){
 		// max 20/30 that a power up (each power up has max 5/30 to appear) appears and min 10/30 that no power ups appear
@@ -36,10 +44,6 @@ public class PipeBehaviour : NavigationBehaviour {
 			SpawnCoinPack(postionOnSpline);  Debug.Log("spawn coin pack " + rand);
 		}
 	}*/
-
-	// -------------------------------------------------------------------------------------
-	// Power-ups.
-	// -------------------------------------------------------------------------------------
 
 	/*public virtual void SpawnShield(float positionOnSpline){
 		Transform obs = Instantiate(spawnableTypes.shield, spline.GetPositionOnSpline(positionOnSpline), spline.GetOrientationOnSpline(positionOnSpline)) as Transform;
